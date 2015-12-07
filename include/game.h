@@ -13,32 +13,49 @@ void keyboard_event(int scan_code);
 
 /* 按键相关 */
 void press_key(int scan_code);
+void press_snake_key(int scan_code);
 void release_key(int ch);
+void release_snake(int ch);
 bool query_key(int ch);
+bool query_snake_key(int ch);
 int last_key_code(void);
 
 /* 定义fly_t链表 */
+
 LINKLIST_DEF(fly)
 	float x, y;
 	int text;
 	float v;
 LINKLIST_DEF_FI(fly)
-
+LINKLIST_DEF(snake)
+	int  x,y;
+	int direction;
+LINKLIST_DEF_FI(snake)
+LINKLIST_DEF(food)
+	int x;
+	int y;
+	int exist;
+LINKLIST_DEF_FI(food)
 /* 主循环 */
 void main_loop(void);
 
 /* 游戏逻辑相关 */
 void create_new_letter(void);
+void creat_new_snake(void);
 void update_letter_pos(void);
-bool update_keypress(void);
+void update_keypress(void);
 
 int get_hit(void);
 int get_miss(void);
 int get_fps(void);
 void set_fps(int fps);
-fly_t characters(void);
+snake_t characters(void);
 
 void redraw_screen(void);
+
+
+//void init(void);
+
 
 /* 随机数 */
 int rand(void);
