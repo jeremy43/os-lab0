@@ -89,17 +89,68 @@ void
 draw_door(int x,int y,int color)
 {
 	int i,j;
+	color=66;
+	int color2=112;
+	uint8_t b[16][16];
 	for (i=0;i<16;++i)
 		for (j=0;j<16;++j)
-			draw_pixel(x+i,y+j,color);
+			b[i][j]=color;
+	for (i=1;i<=14;++i)
+	{
+		b[2][i]=color2;
+		b[14][i]=color2;
+        }
+	b[2][7]=color;b[2][8]=color;
+	b[14][7]=color;b[14][8]=color;
+	for (i=2;i<=14;++i)
+	{
+		b[i][1]=color2;
+		b[i][14]=color2;
+	}
+	for (i=4;i<=6;++i)
+	{
+		b[5][i]=color2;
+		b[9][i]=color2;
+		b[5][i+5]=color2;
+		b[9][i+5]=color2;
+	}
+	for (i=2;i<=5;++i)
+	{
+		b[i][6]=color2;
+		b[i][9]=color2;
+	}
+	for (i=9;i<=14;++i)
+	{
+		b[i][6]=color2;
+		b[i][9]=color2;
+	}
+	b[7][3]=color2;b[7][12]=color2;
+	for (i=0;i<16;++i)
+		for (j=0;j<16;++j)
+			draw_pixel(x+i,y+j,b[i][j]);
+	
+	
 }
 void
 draw_aixin(int x,int y,int color)
 {
   int i,j;
   for (i=0;i<16;++i)
-	  for (j=0;j<16;++j) draw_pixel(x+i,y+j,color);
+	  for (j=0;j<16;++j)
+		  draw_pixel(x+i,y+j,65);
+  for (i=0;i<=7;++i)
+	  for (j=0;j<16;++j)
+	  {
+		  draw_pixel(x+2*i+1,y+j,6);
+		  draw_pixel(x+j,y+2*i+1,6);
+	  }
+  
 
+/*  for (i=0;i<16;++i)
+	  for (j=0;j<16;++j)
+		  for (k=0;k<7;++k)
+			  for (l=0;l<7;++l) draw_pixel(60+7*i+k,185+7*j+l,16*i+j);
+*/
 }
 /*void 
 draw_rgb()
@@ -153,15 +204,76 @@ void
 draw_people(int x,int y,int color)
 {
 	int i,j;
+	uint8_t  a[16][16];
+	for (i=0;i<16;++i) 
+		for (j=0;j<16;++j) a[i][j]=0;
+	for (i=6;i<=9;++i) a[1][i]=6;
+	for (i=6;i<=9;++i)
+		for (j=2;j<=4;++j)a[i][j]=54;
+	for (i=7;i<=8;++i) a[5][i]=90;
+	for (i=3;i<=12;++i)
+		for (j=6;j<=9;++j) a[j][i]=54;
+	for (i=5;i<=10;++i)
+		for (j=10;j<=14;++j) a[j][i]=54;
+	a[14][4]=0;
+	a[13][7]=0;
+	a[14][7]=0;
+	a[13][10]=0;
+	a[9][2]=90;
+	a[10][2]=90;
+	a[10][3]=90;
+	a[9][13]=90;
+	a[10][12]=90;
+	a[10][13]=90;
 	for (i=0;i<16;++i)
        for (j=0;j<16;++j)
-	       draw_pixel(x+i,y+j,color);
+	       draw_pixel(x+i,y+j,a[i][j]);
 }
 void 
 draw_monster(int x,int y,int color)
-{
+{//color 100
    int i,j;
-   for (i=2;i<=5;++i)
+   color=96;
+   int color2=15;
+   uint8_t a[16][16];
+   for (i=0;i<16;++i)
+	   for (j=0;j<16;++j) a[i][j]=0;
+   for (i=2;i<=13;++i)
+	   for (j=4;j<=11;++j) a[j][i]=color;
+   for (i=5;i<=10;++i)
+   {
+	   a[2][i]=color;
+	   a[14][i]=color;
+   }
+   for (i=3;i<=12;++i)
+   {
+	   a[3][i]=color;
+	   a[12][i]=color;
+
+   }
+   for (i=4;i<=11;++i) a[13][i]=color;
+   for (i=6;i<=9;++i)
+   
+   {
+	   a[i][1]=color;
+	   a[i][14]=color;
+  }
+   for (i=3;i<=6;++i)
+{
+           a[7][i]=color2;
+           a[8][i]=color2;
+           a[7][5+i]=color2;
+           a[8][5+i]=color2;	   
+}
+for (i=4;i<=5;++i)
+for (j=7;j<=8;++j) 
+{
+	a[j][i]=0;
+	a[j][i+5]=0;
+}
+for (i=0;i<16;++i)
+for (j=0;j<16;++j) draw_pixel(x+i,y+j,a[i][j]);
+  /* for (i=2;i<=5;++i)
    {
 	   draw_pixel(x,y+i,color);
 	   draw_pixel(x,y+8+i,color);
@@ -185,5 +297,5 @@ draw_monster(int x,int y,int color)
  for(j=i-9;j<=24-i;++j) draw_pixel(x+i,y+j,color);
  draw_pixel(x+15,y+7,color);
  draw_pixel(x+15,y+8,color);
-
+*/
 }

@@ -24,8 +24,9 @@ int last_key_code(void);
 int map[1][12][12];
 int key_number;
 int blood;
+int floor;
 #define monster_blood 30
-
+int FLOOR;
 LINKLIST_DEF(fly)
 	float x, y;
 	int text;

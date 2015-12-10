@@ -55,7 +55,9 @@ void init_map(void)
 {
   int i;
   blood=100;
-  key_number=0;
+  floor=1;
+  key_number=5;
+  FLOOR=0;
  for (i=0;i<12;++i)
  {
 	 map[0][i][0]=1;
@@ -81,6 +83,7 @@ map[0][10][7]=1;
 for (i=5;i<=11;++i)
         map[0][8][i]=1;
 	map[0][3][4]=door;
+	map[0][5][6]=door;
 	map[0][5][2]=door;
 	map[0][8][2]=door;
 	map[0][8][5]=door;
@@ -95,7 +98,40 @@ for (i=5;i<=11;++i)
         map[0][9][3]=yaoshi;
         map[0][10][3]=yaoshi;
         map[0][9][5]=yaoshi;
-        map[0][3][8]=yaoshi;	
+        map[0][3][8]=yaoshi;
+       for (i=0;i<=11;++i) 
+       {
+	       map[1][0][i]=wall;
+               map[1][11][i]=wall;
+	       map[1][i][0]=wall;
+	       map[1][i][11]=wall;
+       }	       
+       for (i=0;i<=5;++i) map[1][i][4]=wall;
+       for (i=0;i<=3;++i) map[1][i][6]=wall;
+       for (i=6;i<=8;++i) map[1][3][i]=wall;
+       for (i=4;i<=6;++i) map[1][i][8]=wall;
+       for (i=2;i<=5;++i) map[1][7][i]=wall;
+       map[1][6][2]=wall;
+       for (i=5;i<=10;++i)map[1][8][i]=wall;
+       for (i=1;i<=3;++i) map[1][9][i]=wall;
+       map[1][9][5]=wall;
+       map[1][10][5]=wall;
+       map[1][1][3]=yaoshi;
+       map[1][2][2]=yaoshi;
+       map[1][3][1]=yaoshi;
+       map[1][4][9]=yaoshi;
+       map[1][5][9]=yaoshi;
+       map[1][10][10]=yaoshi;
+       map[1][10][9]=yaoshi;
+       map[1][4][2]=door;
+       map[1][3][5]=door;
+       map[1][8][8]=door;
+       map[1][3][2]=monster;
+       map[1][6][1]=monster;
+       map[1][7][1]=monster;
+       map[1][6][5]=monster;
+       map[1][9][6]=monster;
+       map[1][9][10]=monster;
 }
 void creat_new_snake(void)
 {
@@ -180,6 +216,12 @@ bool decide(int x,int y)
 				   return 1;
 				   break;
 		           }
+	        case up:
+			   {
+				   FLOOR=1;
+				   return 1;
+				   break;
+			   }
         }
 /*	snake_t i;
 	food_t ifood=fhead;
