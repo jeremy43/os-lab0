@@ -101,6 +101,62 @@ draw_aixin(int x,int y,int color)
 	  for (j=0;j<16;++j) draw_pixel(x+i,y+j,color);
 
 }
+/*void 
+draw_rgb()
+{
+	int i,j,k,l;
+	for (i=1;i<=16;++i)
+		for (j=1;j<=16;++j)
+		for (k=1;k<=8;++k)
+			for (k=
+}*/
+void 
+draw_yaoshi(int x,int y)
+{
+	int color=90;
+	int i,j;
+	uint8_t a[16][16];
+	for (i=0;i<=15;++i)
+		for(j=0;j<=15;++j)
+			a[i][j]=0;
+	a[1][14]=1;a[1][15]=1;
+	a[2][14]=1;a[2][15]=1;
+	for (i=12;i<=15;++i) a[3][i]=1;
+	for (i=12;i<=14;++i) a[4][i]=1;
+	a[5][5]=1;
+	a[5][6]=1;
+	for (i=10;i<=13;++i) a[5][i]=1;
+	for (i=3;i<=12;++i) a[6][i]=1;
+a[6][8]=0;
+	for (i=2;i<=10;++i) 
+	{
+		a[7][i]=1;
+		a[8][i]=1;
+	}
+	for (i=9;i<=11;++i)
+		for (j=1;j<=9;++j) a[i][j]=1;
+	for (i=2;i<=8;++i)a[12][i]=1;
+	for(i=3;i<=8;++i)a[13][i]=1;
+	for (i=4;i<=7;++i)a[14][i]=1;
+	for(i=5;i<=6;++i)a[15][i]=1;
+	for (i=10;i<=11;++i)
+		for (j=4;j<=6;++j)a[i][j]=0;
+	a[9][5]=0;
+	a[12][5]=0;
+
+	if (a[0][0]) draw_pixel(x,y,color);
+	for (i=0;i<16;++i)
+		for (j=0;j<16;++j)
+			if(a[i][j]) draw_pixel(x+i,y+j,color);
+} 
+void 
+draw_people(int x,int y,int color)
+{
+	int i,j;
+	for (i=0;i<16;++i)
+       for (j=0;j<16;++j)
+	       draw_pixel(x+i,y+j,color);
+}
 void 
 draw_monster(int x,int y,int color)
 {

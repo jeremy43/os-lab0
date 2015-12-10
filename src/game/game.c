@@ -44,7 +44,7 @@ main_loop(void) {
 	int now = 0, target;
 	int num_draw = 0;
 	bool redraw;
-	food_t ifood;
+	//food_t ifood;
 	init_map();
         creat_new_snake();
 	 creat_new_food();
@@ -62,8 +62,8 @@ main_loop(void) {
 		redraw = FALSE;
 	
 		update_keypress();
-		ifood=icharacters();
-                if(!ifood->exist) creat_new_food();
+//		ifood=icharacters();
+  //              if(!ifood->exist) creat_new_food();
 		/* 依次模拟已经错过的时钟中断。一次主循环如果执行时间长，期间可能到来多次时钟中断，
 		 * 从而主循环中维护的时钟可能与实际时钟相差较多。为了维持游戏的正常运行，必须补上
 		 * 期间错过的每一帧游戏逻辑。 */

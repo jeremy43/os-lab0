@@ -22,6 +22,10 @@ int last_key_code(void);
 
 /* 定义fly_t链表 */
 int map[1][12][12];
+int key_number;
+int blood;
+#define monster_blood 30
+
 LINKLIST_DEF(fly)
 	float x, y;
 	int text;

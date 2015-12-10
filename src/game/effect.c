@@ -7,6 +7,7 @@
 # define wall 1 
 #define door 2
 #define monster 3
+#define yaoshi 4
 //LINKLIST_IMPL(fly, 10000)
 LINKLIST_IMPL(snake,1000)
 //static fly_t head = NULL;
@@ -53,6 +54,8 @@ create_new_letter(void) {
 void init_map(void)
 {
   int i;
+  blood=100;
+  key_number=0;
  for (i=0;i<12;++i)
  {
 	 map[0][i][0]=1;
@@ -88,7 +91,11 @@ for (i=5;i<=11;++i)
 	map[0][4][2]=monster;
 	map[0][5][7]=monster;
 	map[0][5][8]=monster;
-	
+        map[0][6][1]=yaoshi;
+        map[0][9][3]=yaoshi;
+        map[0][10][3]=yaoshi;
+        map[0][9][5]=yaoshi;
+        map[0][3][8]=yaoshi;	
 }
 void creat_new_snake(void)
 {
@@ -96,9 +103,9 @@ void creat_new_snake(void)
 	{
 		shead=snake_new();
 	}
-	shead->x=0;
+	shead->x=9;
 //	shead->y=10;
-	shead->y= rand() % (SCR_WIDTH / 8 - 2) * 10 + 8;
+	shead->y= 5;
         shead->direction=rand()%4;
         release_snake(shead->direction);	
 
@@ -113,7 +120,11 @@ void creat_new_food(void)
 	fhead->y=rand()%(SCR_WIDTH/7+6)*3+9;
 	fhead->exist=1;
 }
-/* 逻辑时钟前进1单位 */
+/* 逻辑时钟前进1单位 */	
+void die(void)
+{
+	draw_string("i am died", 100,strlen("i am died")*8,90);
+}
 void
 update_letter_pos(void) {
 /*	fly_t it;
@@ -129,7 +140,48 @@ update_letter_pos(void) {
 		}
 		it = next;
 	}*/
-	snake_t i;
+}
+bool decide(int x,int y)
+{
+	
+	switch(map[0][x][y])
+	{
+		case wall: return 0;break;
+	        case monster : 
+			   {
+				if (blood>monster)
+				{
+
+				   blood-=monster_blood;
+                                   map[0][x][y]=0;
+				   return 1;
+				 }
+				 else 
+				 {
+					 die();
+					 return 0;
+				          break;
+			        }
+		           }
+	        case door :
+			   {
+				  if(key_number>=1)
+				  {
+					  key_number-=1;
+					  map[0][x][y]=0;
+					  return 1;
+				  }
+				  return 0; break;
+			  }
+	        case yaoshi:
+			   {
+				   key_number+=1;
+				   map[0][x][y]=0;
+				   return 1;
+				   break;
+		           }
+        }
+/*	snake_t i;
 	food_t ifood=fhead;
 	i=shead;
 	//printk("i->x= %d  i->y= %d i->direction%d\n",i->x,i->y,i->direction);
@@ -163,6 +215,8 @@ update_letter_pos(void) {
 		
 		i=i->_next;
 	}
+  */
+return 1;
 }
 
 // 更新按键 
@@ -188,6 +242,13 @@ void  update_keypress(void) {
 	       if (query_snake_key(j))
 	       {
 		       i->direction=j;
+		       switch (j)
+		       {
+			       case 0: i->y-=1;if(!decide(i->x,i->y)) i->y+=1;break;
+			       case 1: i->x-=1;if(!decide(i->x,i->y))i->x+=1;break;
+			       case 2: i->y+=1;if(!decide(i->x,i->y)) i->y-=1;break;
+   			       case 3: i->x+=1;if(!decide(i->x,i->y))i->x-=1;break;
+		       }
 		       printk("方向在这看我看我%d\n",i->direction);
 		        enable_interrupt();
 			release_snake(i->direction);
