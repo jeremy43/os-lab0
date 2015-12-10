@@ -42,6 +42,7 @@ void main_loop(void);
 /* 游戏逻辑相关 */
 void create_new_letter(void);
 void creat_new_snake(void);
+void creat_new_food(void);
 void update_letter_pos(void);
 void update_keypress(void);
 
@@ -50,7 +51,7 @@ int get_miss(void);
 int get_fps(void);
 void set_fps(int fps);
 snake_t characters(void);
-
+food_t icharacters(void);
 void redraw_screen(void);
 
 

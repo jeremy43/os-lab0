@@ -22,4 +22,5 @@ void prepare_buffer(void);
 void display_buffer(void);
 
 void draw_string(const char*, int, int, int);
+void draw_aixin(int ,int,int);
 #endif

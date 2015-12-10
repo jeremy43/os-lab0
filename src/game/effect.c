@@ -27,7 +27,10 @@ snake_t
 characters(void) {
 	return shead;
 }
-
+food_t
+icharacters(void){
+	return fhead;
+}
 /* 在屏幕上创建一个新的字母 */
 /*void
 create_new_letter(void) {
@@ -64,9 +67,9 @@ void creat_new_food(void)
 	{
 		fhead=food_new();
 	}
-	food->x=rand()%(SCR_HEIGHT/8)*4+3;
-	food->y=rand()%(SCR_WHDTH/7+6)*3+9;
-	food->exist=1;
+	fhead->x=rand()%(SCR_HEIGHT/8)*4+3;
+	fhead->y=rand()%(SCR_WIDTH/7+6)*3+9;
+	fhead->exist=1;
 }
 /* 逻辑时钟前进1单位 */
 void
@@ -85,6 +88,7 @@ update_letter_pos(void) {
 		it = next;
 	}*/
 	snake_t i;
+	food_t ifood=fhead;
 	i=shead;
 	//printk("i->x= %d  i->y= %d i->direction%d\n",i->x,i->y,i->direction);
 	for (i=shead;i!=NULL;)
@@ -103,12 +107,18 @@ update_letter_pos(void) {
 				i->y+=1;
 			else i->x +=1;
 		}
-		else 
+		else
 		{
 			i->x=0;
 			i->y=0;
-			printk("嘿嘿嘿\n");
 		}
+		if(i->x==ifood->x&&i->y==ifood->y)
+		{
+
+			ifood->exist=0;
+
+		}
+		
 		i=i->_next;
 	}
 }

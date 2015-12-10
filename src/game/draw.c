@@ -14,6 +14,7 @@ redraw_screen() {
 	//const char *hit, *miss;
         //const char * miss;
 	snake_t it;
+	food_t ifood;
 	prepare_buffer(); /* 准备缓冲区 */
 
 	/* 绘制每个字符 */
@@ -29,6 +30,12 @@ redraw_screen() {
 	    buf[0]='X';
 	    draw_string(buf,it->x,it->y,15);
 	}
+	for (ifood=icharacters();ifood!=NULL;ifood=ifood->_next)
+	{
+		static char buf2[1];
+		buf2[0]='A';
+		draw_string(buf2,ifood->x,ifood->y,15);
+	}
 	/* 绘制命中数、miss数、最后一次按键扫描码和fps */
 //	draw_string(itoa(last_key_code()), SCR_HEIGHT - 8, 0, 48);
 //	hit = itoa(get_hit());
@@ -39,6 +46,7 @@ redraw_screen() {
 //	draw_string("FPS", 0, strlen(itoa(get_fps())) * 8, 14);
         //draw_string("JEREMY",8,strlen("JEREMY"),50);
         draw_string("wayne",8,strlen("wayne")*8,50);
+	draw_aixin(14,15,60);
 	display_buffer(); /* 绘制缓冲区 */
 }
 
