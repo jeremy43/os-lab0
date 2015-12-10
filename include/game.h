@@ -21,7 +21,7 @@ bool query_snake_key(int ch);
 int last_key_code(void);
 
 /* 定义fly_t链表 */
-
+int map[1][12][12];
 LINKLIST_DEF(fly)
 	float x, y;
 	int text;
@@ -43,6 +43,7 @@ void main_loop(void);
 void create_new_letter(void);
 void creat_new_snake(void);
 void creat_new_food(void);
+void init_map(void);
 void update_letter_pos(void);
 void update_keypress(void);
 

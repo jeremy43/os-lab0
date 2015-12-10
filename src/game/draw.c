@@ -1,7 +1,9 @@
 #include "game.h"
 #include "string.h"
 #include "device/video.h"
-
+#define wall 1
+#define door 2
+#define monster 3
 /* 绘制屏幕上的内容。
  * 注意程序在绘图之前调用了prepare_buffer，结束前调用了display_buffer。
  * prepare_buffer会准备一个空白的绘图缓冲区，display_buffer则会将缓冲区绘制到屏幕上，
@@ -24,6 +26,16 @@ redraw_screen() {
 		draw_string(buf, it->x, it->y, 15);
 	}
         */
+	int i,j;
+	for (i=0;i<12;++i)
+        for (j=0;j<12;++j)
+		switch(map[0][i][j])
+		{
+		    case wall:	draw_aixin(i*16,j*16,60); break;
+		    case door:  draw_door(i*16,j*16,40);break;
+                    case monster:draw_monster(i*16,j*16,30);break;
+		}
+
 	for (it=characters();it!=NULL;it=it->_next)
 	{
             static char buf[1];

@@ -85,4 +85,49 @@ draw_string(const char *str, int x, int y, int color) {
 		}
 	}
 }
+void 
+draw_door(int x,int y,int color)
+{
+	int i,j;
+	for (i=0;i<16;++i)
+		for (j=0;j<16;++j)
+			draw_pixel(x+i,y+j,color);
+}
+void
+draw_aixin(int x,int y,int color)
+{
+  int i,j;
+  for (i=0;i<16;++i)
+	  for (j=0;j<16;++j) draw_pixel(x+i,y+j,color);
 
+}
+void 
+draw_monster(int x,int y,int color)
+{
+   int i,j;
+   for (i=2;i<=5;++i)
+   {
+	   draw_pixel(x,y+i,color);
+	   draw_pixel(x,y+8+i,color);
+   }
+   for (i=1;i<=6;++i)
+  {
+	 draw_pixel(x+1,y+i,color);
+	 draw_pixel(x+1,y+8,color);
+ }
+  for (i=1;i<=14;++i)
+  {
+ 	  draw_pixel(x+2,y+i,color);
+	  draw_pixel(x+9,y+i,color);
+	  draw_pixel(x+10,y+i,color);
+ }
+ for (i=3;i<=8;++i)
+	for (j=0;j<=15;++j)
+	       draw_pixel(x+i,y+j,color);
+
+ for (i=11;i<=14;++i)
+ for(j=i-9;j<=24-i;++j) draw_pixel(x+i,y+j,color);
+ draw_pixel(x+15,y+7,color);
+ draw_pixel(x+15,y+8,color);
+
+}

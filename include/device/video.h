@@ -20,7 +20,8 @@ draw_pixel(int x, int y, int color) {
 
 void prepare_buffer(void);
 void display_buffer(void);
-
+void draw_door(int,int ,int);
+void draw_monster(int,int,int);
 void draw_string(const char*, int, int, int);
 void draw_aixin(int ,int,int);
 #endif

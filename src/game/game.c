@@ -45,6 +45,7 @@ main_loop(void) {
 	int num_draw = 0;
 	bool redraw;
 	food_t ifood;
+	init_map();
         creat_new_snake();
 	 creat_new_food();
 	while (TRUE) {

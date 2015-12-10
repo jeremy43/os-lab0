@@ -4,7 +4,9 @@
 #include "adt/linklist.h"
 #include "device/video.h"
 #include "x86/x86.h"
-
+# define wall 1 
+#define door 2
+#define monster 3
 //LINKLIST_IMPL(fly, 10000)
 LINKLIST_IMPL(snake,1000)
 //static fly_t head = NULL;
@@ -48,6 +50,46 @@ create_new_letter(void) {
 	head->text = rand() % 26;
 	release_key(head->text); // 清除过往的按键 
 }*/
+void init_map(void)
+{
+  int i;
+ for (i=0;i<12;++i)
+ {
+	 map[0][i][0]=1;
+	 map[0][i][11]=1;
+	 map[0][0][i]=1;
+         map[0][11][i]=1;
+ }
+ for (i=0;i<10;++i) map[0][2][i]=1;
+ for (i=2;i<=11;++i) map[0][i][4]=1;
+ for (i=1;i<=3;++i)
+ {
+	 map[0][5][i]=1;
+	 map[0][8][i]=1;
+	 map[0][6][5+i]=1;
+ }
+ for(i=3;i<=6;++i)
+{
+	map[0][i][6]=1;
+	map[0][i][9]=1;
+}
+map[0][9][7]=1;
+map[0][10][7]=1;
+for (i=5;i<=11;++i)
+        map[0][8][i]=1;
+	map[0][3][4]=door;
+	map[0][5][2]=door;
+	map[0][8][2]=door;
+	map[0][8][5]=door;
+	map[0][8][9]=door;
+	map[0][1][2]=monster;
+	map[0][1][3]=monster;
+	map[0][1][4]=monster;
+	map[0][4][2]=monster;
+	map[0][5][7]=monster;
+	map[0][5][8]=monster;
+	
+}
 void creat_new_snake(void)
 {
 	if(shead==NULL)
