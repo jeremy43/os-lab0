@@ -8,6 +8,8 @@
 #define door 2
 #define monster 3
 #define yaoshi 4
+#define up 5
+#define down 6
 //LINKLIST_IMPL(fly, 10000)
 LINKLIST_IMPL(snake,1000)
 //static fly_t head = NULL;
@@ -15,7 +17,7 @@ LINKLIST_IMPL(food,100)
 static snake_t shead=NULL;//snake
 static food_t fhead=NULL;
 static int hit = 0, miss = 0;
-
+static int FLOOR;
 int
 get_hit(void) {
 	return hit;
@@ -25,7 +27,11 @@ int
 get_miss(void) {
 	return miss;
 }
-
+int 
+get_floor(void)
+{
+	return FLOOR;
+}
 snake_t
 characters(void) {
 	return shead;
@@ -55,9 +61,12 @@ void init_map(void)
 {
   int i;
   blood=100;
-  floor=1;
   key_number=5;
   FLOOR=0;
+  floor_number[0].up_x=1;
+  floor_number[0].up_y=1;
+  floor_number[1].down_x=10;
+  floor_number[1].down_y=1;
  for (i=0;i<12;++i)
  {
 	 map[0][i][0]=1;
@@ -99,7 +108,8 @@ for (i=5;i<=11;++i)
         map[0][10][3]=yaoshi;
         map[0][9][5]=yaoshi;
         map[0][3][8]=yaoshi;
-       for (i=0;i<=11;++i) 
+        map[0][1][1]=up;
+ 	for (i=0;i<=11;++i) 
        {
 	       map[1][0][i]=wall;
                map[1][11][i]=wall;
@@ -132,6 +142,7 @@ for (i=5;i<=11;++i)
        map[1][6][5]=monster;
        map[1][9][6]=monster;
        map[1][9][10]=monster;
+       map[1][10][1]=down;
 }
 void creat_new_snake(void)
 {
@@ -180,7 +191,8 @@ update_letter_pos(void) {
 bool decide(int x,int y)
 {
 	
-	switch(map[0][x][y])
+
+	switch(map[FLOOR][x][y])
 	{
 		case wall: return 0;break;
 	        case monster : 
@@ -189,7 +201,7 @@ bool decide(int x,int y)
 				{
 
 				   blood-=monster_blood;
-                                   map[0][x][y]=0;
+                                   map[FLOOR][x][y]=0;
 				   return 1;
 				 }
 				 else 
@@ -204,7 +216,7 @@ bool decide(int x,int y)
 				  if(key_number>=1)
 				  {
 					  key_number-=1;
-					  map[0][x][y]=0;
+					  map[FLOOR][x][y]=0;
 					  return 1;
 				  }
 				  return 0; break;
@@ -212,16 +224,23 @@ bool decide(int x,int y)
 	        case yaoshi:
 			   {
 				   key_number+=1;
-				   map[0][x][y]=0;
+				   map[FLOOR][x][y]=0;
 				   return 1;
 				   break;
 		           }
-	        case up:
+	       case up:
 			   {
-				   FLOOR=1;
+				   FLOOR+=1;
+				   return 1;
+				   break;
+		           }	   
+	      case down:
+			   {
+				   FLOOR-=1;
 				   return 1;
 				   break;
 			   }
+	  return 1;
         }
 /*	snake_t i;
 	food_t ifood=fhead;
@@ -291,7 +310,21 @@ void  update_keypress(void) {
 			       case 2: i->y+=1;if(!decide(i->x,i->y)) i->y-=1;break;
    			       case 3: i->x+=1;if(!decide(i->x,i->y))i->x-=1;break;
 		       }
-		       printk("方向在这看我看我%d\n",i->direction);
+		       if(map[FLOOR][i->x][i->y]==up)
+		       {
+			       //FLOOR+=1;
+			       printk("%d\n",FLOOR);
+			       i->x=floor_number[FLOOR].down_x;
+			       i->y=floor_number[FLOOR].down_y;
+			       break;
+		       }
+		       else  if(map[FLOOR][i->x][i->y]==down)
+		       {
+			//       FLOOR-=1;
+			      
+			       i->x=floor_number[FLOOR].up_x;
+			       i->y=floor_number[FLOOR].up_y;
+			}
 		        enable_interrupt();
 			release_snake(i->direction);
 		       return;

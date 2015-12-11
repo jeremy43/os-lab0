@@ -21,12 +21,19 @@ bool query_snake_key(int ch);
 int last_key_code(void);
 
 /* 定义fly_t链表 */
-int map[1][12][12];
+int map[2][12][12];
 int key_number;
 int blood;
-int floor;
+
 #define monster_blood 30
-int FLOOR;
+typedef  struct 
+{
+	int up_x;
+	int up_y;
+	int down_x;
+	int down_y;
+}FLOOR_NUMBER;
+FLOOR_NUMBER floor_number[10];
 LINKLIST_DEF(fly)
 	float x, y;
 	int text;
@@ -51,7 +58,7 @@ void creat_new_food(void);
 void init_map(void);
 void update_letter_pos(void);
 void update_keypress(void);
-
+int get_floor(void);
 int get_hit(void);
 int get_miss(void);
 int get_fps(void);

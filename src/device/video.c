@@ -201,6 +201,59 @@ a[6][8]=0;
 			if(a[i][j]) draw_pixel(x+i,y+j,color);
 } 
 void 
+draw_up(int x,int y)
+{
+	int i,j;
+	uint8_t a[16][16];
+	for (i=0;i<=15;++i)
+		for (j=0;j<=15;++j)a[i][j]=0;
+	for(i=11;i<=15;++i)
+		for (j=2;j<=4;++j) a[j][i]=45;
+	for (i=7;i<=14;++i)
+		for (j=6;j<=8;++j) a[j][i]=45;
+	a[8][14]=0;
+	for (i=10;i<=12;++i)
+		for (j=3;j<=12;++j) a[i][j]=45;
+	for (i=14;i<=15;++i)
+		for (j=3;j<=11;++j)a[i][j]=45;
+	for (i=12;i<=15;++i)
+		for (j=12;j<=15;++j)a[i][j]=60;
+	for (i=13;i<=15;++i)
+		for (j=10;j<=11;++j) a[j][i]=60;
+	for (i=14;i<=15;++i)
+		for (j=7;j<=8;++j) a[j][i]=60;
+	a[5][15]=60;
+	a[6][15]=60;
+	for (i=0;i<16;++i)
+		for (j=0;j<16;++j)
+			draw_pixel(x+i,y+j,a[i][j]);
+}
+void draw_down(int x,int y)
+{
+	uint8_t a[16][16];
+	int i,j;
+	int color=60;
+	for (i=0;i<16;++i)
+		for (j=0;j<16;++j)
+			a[i][j]=0;
+	for (i=9;i<=15;++i)
+		for (j=0;j<=1;++j) a[i][j]=color;
+	for (i=7;i<=15;++i)
+		for (j=3;j<=4;++j) a[i][j]=color;
+	for (i=5;i<=15;++i)
+		for (j=6;j<=7;++j) a[i][j]=color;
+	for (i=3;i<=15;++i)
+		for (j=9;j<=10;++j)
+			a[i][j]=color;
+	for (i=1;i<=15;++i)
+		for (j=12;j<=13;++j)
+			a[i][j]=color;
+	for (i=0;i<=15;++i)
+		for (j=0;j<=15;++j)
+			draw_pixel(x+i,y+j,a[i][j]);
+
+}
+void 
 draw_people(int x,int y,int color)
 {
 	int i,j;

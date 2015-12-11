@@ -23,6 +23,8 @@ void display_buffer(void);
 void draw_door(int,int ,int);
 void draw_monster(int,int,int);
 void draw_yaoshi(int,int);
+void draw_down(int,int);
+void draw_up(int,int);
 void draw_string(const char*, int, int, int);
 void draw_aixin(int ,int,int);
 #endif
