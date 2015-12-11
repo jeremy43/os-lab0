@@ -10,6 +10,7 @@
 #define yaoshi 4
 #define up 5
 #define down 6
+#define bottle 7
 //LINKLIST_IMPL(fly, 10000)
 LINKLIST_IMPL(snake,1000)
 //static fly_t head = NULL;
@@ -109,6 +110,10 @@ for (i=5;i<=11;++i)
         map[0][9][5]=yaoshi;
         map[0][3][8]=yaoshi;
         map[0][1][1]=up;
+	map[0][3][1]=bottle;
+	map[0][6][1]=bottle;
+	map[0][9][1]=bottle;
+	map[0][9][8]=bottle;
  	for (i=0;i<=11;++i) 
        {
 	       map[1][0][i]=wall;
@@ -126,6 +131,8 @@ for (i=5;i<=11;++i)
        for (i=1;i<=3;++i) map[1][9][i]=wall;
        map[1][9][5]=wall;
        map[1][10][5]=wall;
+       map[1][4][1]=wall;
+       map[1][4][3]=wall;
        map[1][1][3]=yaoshi;
        map[1][2][2]=yaoshi;
        map[1][3][1]=yaoshi;
@@ -143,6 +150,7 @@ for (i=5;i<=11;++i)
        map[1][9][6]=monster;
        map[1][9][10]=monster;
        map[1][10][1]=down;
+       map[1][1][10]=up;
 }
 void creat_new_snake(void)
 {
@@ -231,9 +239,19 @@ bool decide(int x,int y)
 	       case up:
 			   {
 				   FLOOR+=1;
+				   //shead->x=floor_number[FLOOR].down_x;
+				   //shead->y=floor_number[FLOOR].down_y;
+				  // printk("X=%d Y=%d\n",shead->x,shead->y);
 				   return 1;
 				   break;
-		           }	   
+		           }	
+		case bottle:
+			  {
+				  blood+=60;
+				  map[FLOOR][x][y]=0;
+				  return 1;
+				  break;
+			  }	  
 	      case down:
 			   {
 				   FLOOR-=1;
@@ -316,6 +334,7 @@ void  update_keypress(void) {
 			       printk("%d\n",FLOOR);
 			       i->x=floor_number[FLOOR].down_x;
 			       i->y=floor_number[FLOOR].down_y;
+			       printk("x=  %d  y=  %d\n",i->x,i->y);
 			       break;
 		       }
 		       else  if(map[FLOOR][i->x][i->y]==down)

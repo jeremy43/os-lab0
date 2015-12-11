@@ -18,6 +18,7 @@ draw_pixel(int x, int y, int color) {
 	vmem[(x << 8) + (x << 6) + y] = color;
 }
 void draw_people(int ,int,int );
+void draw_bottle(int,int );
 void prepare_buffer(void);
 void display_buffer(void);
 void draw_door(int,int ,int);

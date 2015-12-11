@@ -1,0 +1,90 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BLUE_SCREEN_TEXT	lib/abort.c	14;"	d	file:
+CHARACTER_PER_SECOND	game/game.c	7;"	d	file:
+FPS	game/game.c	6;"	d	file:
+FREQ_8253	device/timer.c	7;"	d	file:
+INTERLACE	device/video.c	15;"	d	file:
+INTERRUPT_GATE_32	irq/idt.c	3;"	d	file:
+IRQ_SLAVE	irq/i8259.c	5;"	d	file:
+NR_PALETTE_ENTRY	device/palette.c	10;"	d	file:
+PARTIAL_UPDATE	device/video.c	14;"	d	file:
+PARTIAL_UPDATE	device/video.c	18;"	d	file:
+PORT_PIC_MASTER	irq/i8259.c	3;"	d	file:
+PORT_PIC_SLAVE	irq/i8259.c	4;"	d	file:
+SERIAL_PORT	device/serial.c	3;"	d	file:
+SLOW	device/video.c	11;"	d	file:
+TIMER_PORT	device/timer.c	6;"	d	file:
+TRAP_GATE_32	irq/idt.c	4;"	d	file:
+UPDATE_PER_SECOND	game/game.c	8;"	d	file:
+VGA_DAC_DATA	device/palette.c	7;"	d	file:
+VGA_DAC_READ_INDEX	device/palette.c	5;"	d	file:
+VGA_DAC_WRITE_INDEX	device/palette.c	6;"	d	file:
+abort	lib/abort.c	/^abort(const char *fname, int line) {$/;"	f
+append	lib/abort.c	/^append(char **p, const char *str) {$/;"	f	file:
+asm_do_irq	irq/do_irq.S	/^asm_do_irq:$/;"	l
+blue_screen	lib/abort.c	/^blue_screen(const char *file, int line) {$/;"	f	file:
+characters	game/effect.c	/^characters(void) {$/;"	f
+create_new_letter	game/effect.c	/^create_new_letter(void) {$/;"	f
+display_buffer	device/video.c	/^display_buffer(void) {$/;"	f
+do_keyboard	irq/irq_handle.c	/^static void (*do_keyboard)(int);$/;"	v	file:
+do_timer	irq/irq_handle.c	/^static void (*do_timer)(void);$/;"	v	file:
+draw_character	device/video.c	/^draw_character(char ch, int x, int y, int color) {$/;"	f	file:
+draw_string	device/video.c	/^draw_string(const char *str, int x, int y, int color) {$/;"	f
+font8x8_basic	device/font.c	/^char font8x8_basic[128][8] = {$/;"	v
+game_init	main.c	/^game_init(void) {$/;"	f
+get_fps	game/game.c	/^get_fps() {$/;"	f
+get_hit	game/effect.c	/^get_hit(void) {$/;"	f
+get_miss	game/effect.c	/^get_miss(void) {$/;"	f
+head	game/effect.c	/^static fly_t head = NULL;$/;"	v	file:
+hit	game/effect.c	/^static int hit = 0, miss = 0;$/;"	v	file:
+idt	irq/idt.c	/^struct GateDescriptor idt[NR_IRQ];$/;"	v	typeref:struct:GateDescriptor
+init_idt	irq/idt.c	/^void init_idt() {$/;"	f
+init_intr	irq/i8259.c	/^init_intr(void) {$/;"	f
+init_serial	device/serial.c	/^init_serial(void) {$/;"	f
+init_timer	device/timer.c	/^init_timer(void) {$/;"	f
+irq_handle	irq/irq_handle.c	/^irq_handle(struct TrapFrame *tf) {$/;"	f
+itoa	lib/string.c	/^char *itoa(int a) {$/;"	f
+key_code	game/keyboard.c	/^static volatile int key_code = 0;$/;"	v	file:
+keyboard_event	game/keyboard.c	/^keyboard_event(int code) {$/;"	f
+last_key_code	game/keyboard.c	/^int last_key_code(void) {$/;"	f
+letter_code	game/keyboard.c	/^static int letter_code[] = {$/;"	v	file:
+letter_pressed	game/keyboard.c	/^static bool letter_pressed[26];$/;"	v	file:
+main_loop	game/game.c	/^main_loop(void) {$/;"	f
+memcpy	lib/string.c	/^void memcpy(void *dest, const void *src, size_t size) {$/;"	f
+memset	lib/string.c	/^void memset(void *dest, int data, size_t size) {$/;"	f
+miss	game/effect.c	/^static int hit = 0, miss = 0;$/;"	v	file:
+palette	device/palette.c	/^static uint8_t palette[NR_PALETTE_ENTRY][3] = {$/;"	v	file:
+prepare_buffer	device/video.c	/^prepare_buffer(void) {$/;"	f
+press_key	game/keyboard.c	/^press_key(int scan_code) {$/;"	f
+printk	lib/printk.c	/^printk(const char *ctl, ...) {$/;"	f
+query_key	game/keyboard.c	/^query_key(int index) {$/;"	f
+rand	lib/random.c	/^rand(void) {$/;"	f
+read_palette	device/palette.c	/^void read_palette() {$/;"	f
+real_fps	game/game.c	/^static int real_fps;$/;"	v	file:
+redraw_screen	game/draw.c	/^redraw_screen() {$/;"	f
+release_key	game/keyboard.c	/^release_key(int index) {$/;"	f
+seed	lib/random.c	/^static int seed = 0;$/;"	v	file:
+serial_idle	device/serial.c	/^serial_idle(void) {$/;"	f	file:
+serial_printc	device/serial.c	/^serial_printc(char ch) {$/;"	f
+set_fps	game/game.c	/^set_fps(int value) {$/;"	f
+set_intr	irq/idt.c	/^set_intr(struct GateDescriptor *ptr, uint32_t selector, uint32_t offset, uint32_t dpl) {$/;"	f	file:
+set_keyboard_intr_handler	irq/irq_handle.c	/^set_keyboard_intr_handler( void (*ptr)(int) ) {$/;"	f
+set_timer_intr_handler	irq/irq_handle.c	/^set_timer_intr_handler( void (*ptr)(void) ) {$/;"	f
+set_trap	irq/idt.c	/^set_trap(struct GateDescriptor *ptr, uint32_t selector, uint32_t offset, uint32_t dpl) {$/;"	f	file:
+srand	lib/random.c	/^srand(int s) {$/;"	f
+strcpy	lib/string.c	/^void strcpy(char *d, const char *s) {$/;"	f
+strlen	lib/string.c	/^size_t strlen(const char *str) {$/;"	f
+tick	game/game.c	/^volatile int tick = 0;$/;"	v
+timer_event	game/game.c	/^timer_event(void) {$/;"	f
+update_keypress	game/effect.c	/^update_keypress(void) {$/;"	f
+update_letter_pos	game/effect.c	/^update_letter_pos(void) {$/;"	f
+vbuf	device/video.c	/^static uint8_t vbuf[SCR_SIZE];$/;"	v	file:
+vfprintf	lib/printk.c	/^void vfprintf(void (*printer)(char), const char *ctl, void **args) {$/;"	f
+vmem	device/video.c	/^uint8_t *vmem = VMEM_ADDR;$/;"	v
+vref	device/video.c	/^static uint8_t vref[SCR_SIZE];$/;"	v	file:
+write_palette	device/palette.c	/^void write_palette() {$/;"	f
