@@ -1,7 +1,7 @@
 #ifndef __X86_CPU_H__
 #define __X86_CPU_H__
 
-#include "common.h"
+#include "../common.h"
 
 /* 将CPU置入休眠状态直到下次中断到来 */
 static inline void

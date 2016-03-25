@@ -17,11 +17,10 @@ void press_snake_key(int scan_code);
 void release_key(int ch);
 void release_snake(int ch);
 bool query_key(int ch);
-bool query_snake_key(int ch);
 int last_key_code(void);
 
 /* 定义fly_t链表 */
-int map[2][12][12];
+/*int map[2][12][12];
 int key_number;
 int blood;
 
@@ -48,10 +47,10 @@ LINKLIST_DEF(food)
 	int y;
 	int exist;
 LINKLIST_DEF_FI(food)
-/* 主循环 */
+// 主循环 
 void main_loop(void);
 
-/* 游戏逻辑相关 */
+ 游戏逻辑相关 
 void create_new_letter(void);
 void creat_new_snake(void);
 void creat_new_food(void);
@@ -71,8 +70,8 @@ void redraw_screen(void);
 //void init(void);
 
 
-/* 随机数 */
+// 随机数
 int rand(void);
 void srand(int seed);
-
+*/
 #endif

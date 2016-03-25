@@ -1,6 +1,6 @@
-#include "common.h"
+#include "../game/include/common.h"
 
-int vfprintf(void (*printer)(char), const char *ctl, void **args) {
+static int vfprintf(void (*printer)(char), const char *ctl, void **args) {
 	static char buf[32] = {0};
 	char *data = NULL;
 	char *print_ptr = NULL;
@@ -67,11 +67,19 @@ int vfprintf(void (*printer)(char), const char *ctl, void **args) {
 	return count;
 }
 
-extern void serial_printc(char);
+char buf[256];
+int len;
 
-/* __attribute__((__noinline__))  here is to disable inlining for this function to avoid some optimization problems for gcc 4.7 */
+void sprint(char ch) {
+	buf[len ++] = ch;
+}
+
+void write(char *, int);
+
 void __attribute__((__noinline__)) 
-printk(const char *ctl, ...) {
+printf(const char *ctl, ...) {
+	len = 0;
 	void **args = (void **)&ctl + 1;
-	vfprintf(serial_printc, ctl, args);
+	vfprintf(sprint, ctl, args);
+	write(buf, len);
 }

@@ -1,5 +1,5 @@
-#include "common.h"
-#include "string.h"
+#include "../game/include/common.h"
+#include "../game/include/string.h"
 
 /* 注意！itoa只有一个缓冲，因此
  * char *p = itoa(100);
