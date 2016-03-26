@@ -1,0 +1,358 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ASFLAGS	Makefile	/^ASFLAGS = -m32 -MD$/;"	m
+BLUE_SCREEN_TEXT	kernel/lib/abort.c	14;"	d	file:
+CC	Makefile	/^CC = gcc$/;"	m
+CFILES	Makefile	/^CFILES = $(shell find kernel\/ lib\/ game\/ -name "*.c")$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -m32 -static -MD -std=gnu89 -ggdb \\$/;"	m
+CHARACTER_PER_SECOND	game/game.c	7;"	d	file:
+DPL_KERNEL	game/include/x86/memory.h	4;"	d
+DPL_KERNEL	kernel/include/x86/memory.h	4;"	d
+DPL_USER	game/include/x86/memory.h	5;"	d
+DPL_USER	kernel/include/x86/memory.h	5;"	d
+ELFHeader	boot/boot.h	/^struct ELFHeader {$/;"	s
+FALSE	game/include/const.h	5;"	d
+FALSE	kernel/include/const.h	5;"	d
+FLOOR	game/lib/effect.c	/^static int FLOOR;$/;"	v	file:
+FLOOR_NUMBER	game/include/game.h	/^}FLOOR_NUMBER;$/;"	t	typeref:struct:__anon3
+FPS	game/game.c	6;"	d	file:
+FREQ_8253	kernel/device/timer.c	7;"	d	file:
+GAME_CFILES	Makefile	/^GAME_CFILES = $(shell find lib\/ game\/ -name "*.c")$/;"	m
+GAME_OBJS	Makefile	/^GAME_OBJS = $(GAME_CFILES:.c=.o) $(GAME_SFILES:.S=.o)$/;"	m
+GAME_SFILES	Makefile	/^GAME_SFILES = $(shell find lib\/ game\/ -name "*.S")$/;"	m
+GDT_ENTRY	boot/asm.h	2;"	d
+GateDescriptor	game/include/x86/memory.h	/^struct GateDescriptor {$/;"	s
+GateDescriptor	kernel/include/x86/memory.h	/^struct GateDescriptor {$/;"	s
+HZ	game/include/device/timer.h	4;"	d
+HZ	kernel/include/device/timer.h	4;"	d
+INTERLACE	game/device/video.c	15;"	d	file:
+INTERRUPT_GATE_32	kernel/irq/idt.c	3;"	d	file:
+IRQ_SLAVE	kernel/irq/i8259.c	5;"	d	file:
+KERN_CFILES	Makefile	/^KERN_CFILES = $(shell find kernel\/ -name "*.c")$/;"	m
+KERN_OBJS	Makefile	/^KERN_OBJS = $(KERN_CFILES:.c=.o) $(KERN_SFILES:.S=.o)$/;"	m
+KERN_SFILES	Makefile	/^KERN_SFILES = $(shell find kernel\/ -name "*.S")$/;"	m
+LD	Makefile	/^LD = ld$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS = -melf_i386$/;"	m
+LINKLIST_DEF	game/include/adt/linklist.h	27;"	d
+LINKLIST_DEF	kernel/include/adt/linklist.h	27;"	d
+LINKLIST_DEF_FI	game/include/adt/linklist.h	31;"	d
+LINKLIST_DEF_FI	kernel/include/adt/linklist.h	31;"	d
+LINKLIST_IMPL	game/include/adt/linklist.h	43;"	d
+LINKLIST_IMPL	kernel/include/adt/linklist.h	43;"	d
+NR_IRQ	game/include/x86/cpu.h	34;"	d
+NR_IRQ	kernel/include/x86/cpu.h	34;"	d
+NR_PALETTE_ENTRY	kernel/device/palette.c	10;"	d	file:
+NR_SEGMENTS	game/include/x86/memory.h	7;"	d
+NR_SEGMENTS	kernel/include/x86/memory.h	7;"	d
+NULL	game/include/const.h	7;"	d
+NULL	kernel/include/const.h	7;"	d
+OBJS	Makefile	/^OBJS = $(CFILES:.c=.o) $(SFILES:.S=.o)$/;"	m
+PARTIAL_UPDATE	game/device/video.c	14;"	d	file:
+PARTIAL_UPDATE	game/device/video.c	18;"	d	file:
+PORT_PIC_MASTER	kernel/irq/i8259.c	3;"	d	file:
+PORT_PIC_SLAVE	kernel/irq/i8259.c	4;"	d	file:
+ProgramHeader	boot/boot.h	/^struct ProgramHeader {$/;"	s
+QEMU	Makefile	/^QEMU = qemu-system-i386$/;"	m
+SCR_HEIGHT	game/include/device/video.h	9;"	d
+SCR_HEIGHT	kernel/include/device/video.h	9;"	d
+SCR_SIZE	game/include/device/video.h	10;"	d
+SCR_SIZE	kernel/include/device/video.h	10;"	d
+SCR_WIDTH	game/include/device/video.h	8;"	d
+SCR_WIDTH	kernel/include/device/video.h	8;"	d
+SECTSIZE	boot/main.c	11;"	d	file:
+SEG_ASM	boot/asm.h	9;"	d
+SEG_KERNEL_CODE	game/include/x86/memory.h	8;"	d
+SEG_KERNEL_CODE	kernel/include/x86/memory.h	8;"	d
+SEG_KERNEL_DATA	game/include/x86/memory.h	9;"	d
+SEG_KERNEL_DATA	kernel/include/x86/memory.h	9;"	d
+SEG_NULLASM	boot/asm.h	5;"	d
+SERIAL_PORT	kernel/serial.c	3;"	d	file:
+SFILES	Makefile	/^SFILES = $(shell find kernel\/ lib\/ game\/ -name "*.S")$/;"	m
+SLOW	game/device/video.c	11;"	d	file:
+SYS_draw	game/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon2	file:
+SYS_draw	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+SYS_keyboard1	game/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon2	file:
+SYS_keyboard1	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+SYS_time1	game/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon2	file:
+SYS_time1	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+SYS_write1	game/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon2	file:
+SYS_write1	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+TIMER_PORT	kernel/device/timer.c	6;"	d	file:
+TRAP_GATE_32	kernel/irq/idt.c	4;"	d	file:
+TRUE	game/include/const.h	4;"	d
+TRUE	kernel/include/const.h	4;"	d
+TrapFrame	game/include/x86/memory.h	/^struct TrapFrame {$/;"	s
+TrapFrame	kernel/include/x86/memory.h	/^struct TrapFrame {$/;"	s
+UPDATE_PER_SECOND	game/game.c	8;"	d	file:
+UPDATE_kbd	game/lib/syscall.c	/^void UPDATE_kbd(int * key)$/;"	f
+VGA_DAC_DATA	kernel/device/palette.c	7;"	d	file:
+VGA_DAC_READ_INDEX	kernel/device/palette.c	5;"	d	file:
+VGA_DAC_WRITE_INDEX	kernel/device/palette.c	6;"	d	file:
+VMEM_ADDR	game/include/device/video.h	11;"	d
+VMEM_ADDR	kernel/include/device/video.h	11;"	d
+__ASSERT_H__	kernel/include/assert.h	2;"	d
+__COMMON_H__	game/include/common.h	2;"	d
+__COMMON_H__	kernel/include/common.h	2;"	d
+__CONST_H__	game/include/const.h	2;"	d
+__CONST_H__	kernel/include/const.h	2;"	d
+__FONT_H__	game/include/device/font.h	2;"	d
+__FONT_H__	kernel/include/device/font.h	2;"	d
+__GAME_H__	game/include/game.h	2;"	d
+__GAME_H__	kernel/include/game.h	2;"	d
+__IRQ_H__	kernel/include/irq.h	2;"	d
+__LINKLIST_H__	game/include/adt/linklist.h	2;"	d
+__LINKLIST_H__	kernel/include/adt/linklist.h	2;"	d
+__PALETTE_H__	game/include/device/palette.h	2;"	d
+__PALETTE_H__	kernel/include/device/palette.h	2;"	d
+__STRING_H__	game/include/string.h	2;"	d
+__STRING_H__	kernel/include/string.h	2;"	d
+__TIMER_H__	game/include/device/timer.h	2;"	d
+__TIMER_H__	kernel/include/device/timer.h	2;"	d
+__TYPES_H__	game/include/types.h	2;"	d
+__TYPES_H__	kernel/include/types.h	2;"	d
+__VIDEO_H__	game/include/device/video.h	2;"	d
+__VIDEO_H__	kernel/include/device/video.h	2;"	d
+__X86_CPU_H__	game/include/x86/cpu.h	2;"	d
+__X86_CPU_H__	kernel/include/x86/cpu.h	2;"	d
+__X86_IO_H__	game/include/x86/io.h	2;"	d
+__X86_IO_H__	kernel/include/x86/io.h	2;"	d
+__X86_MEMORY_H__	game/include/x86/memory.h	2;"	d
+__X86_MEMORY_H__	kernel/include/x86/memory.h	2;"	d
+__x86_H__	game/include/x86/x86.h	2;"	d
+__x86_H__	kernel/include/x86/x86.h	2;"	d
+abort	kernel/lib/abort.c	/^abort(const char *fname, int line) {$/;"	f
+align	boot/boot.h	/^	unsigned int align;$/;"	m	struct:ProgramHeader
+append	kernel/lib/abort.c	/^append(char **p, const char *str) {$/;"	f	file:
+asm_do_irq	kernel/irq/do_irq.S	/^asm_do_irq:$/;"	l
+assert	kernel/include/assert.h	7;"	d
+blood	game/include/game.h	/^int blood;$/;"	v
+blue_screen	kernel/lib/abort.c	/^blue_screen(const char *file, int line) {$/;"	f	file:
+bool	game/include/types.h	/^typedef int bool;$/;"	t
+bool	kernel/include/types.h	/^typedef int bool;$/;"	t
+bootmain	boot/main.c	/^bootmain(void) {$/;"	f
+bottle	game/lib/draw.c	10;"	d	file:
+bottle	game/lib/effect.c	13;"	d	file:
+buf	lib/printf.c	/^char buf[256];$/;"	v
+characters	game/lib/effect.c	/^characters(void) {$/;"	f
+creat_new_food	game/lib/effect.c	/^void creat_new_food(void)$/;"	f
+creat_new_snake	game/lib/effect.c	/^void creat_new_snake(void)$/;"	f
+decide	game/lib/effect.c	/^bool decide(int x,int y)$/;"	f
+die	game/lib/effect.c	/^void die(void)$/;"	f
+direction	game/include/game.h	/^	int direction;$/;"	v
+disable_interrupt	game/include/x86/cpu.h	/^disable_interrupt(void) {$/;"	f
+disable_interrupt	kernel/include/x86/cpu.h	/^disable_interrupt(void) {$/;"	f
+display_buffer	game/device/video.c	/^display_buffer(void) {$/;"	f
+do_keyboard	kernel/irq/irq_handle.c	/^static void (*do_keyboard)(int);$/;"	v	file:
+do_syscall	kernel/syscall/do_syscall.c	/^void do_syscall(struct TrapFrame *tf) {$/;"	f
+do_timer	kernel/irq/irq_handle.c	/^static void (*do_timer)(void);$/;"	v	file:
+door	game/lib/draw.c	5;"	d	file:
+door	game/lib/effect.c	8;"	d	file:
+down	game/lib/draw.c	9;"	d	file:
+down	game/lib/effect.c	12;"	d	file:
+down_x	game/include/game.h	/^	int down_x;$/;"	m	struct:__anon3
+down_y	game/include/game.h	/^	int down_y;$/;"	m	struct:__anon3
+draw_aixin	game/device/video.c	/^draw_aixin(int x,int y,int color)$/;"	f
+draw_bottle	game/device/video.c	/^draw_bottle(int x,int y)$/;"	f
+draw_character	game/device/video.c	/^draw_character(char ch, int x, int y, int color) {$/;"	f	file:
+draw_door	game/device/video.c	/^draw_door(int x,int y,int color)$/;"	f
+draw_down	game/device/video.c	/^void draw_down(int x,int y)$/;"	f
+draw_monster	game/device/video.c	/^draw_monster(int x,int y,int color)$/;"	f
+draw_people	game/device/video.c	/^draw_people(int x,int y,int color)$/;"	f
+draw_pixel	game/include/device/video.h	/^draw_pixel(int x, int y, int color) {$/;"	f
+draw_pixel	kernel/include/device/video.h	/^draw_pixel(int x, int y, int color) {$/;"	f
+draw_string	game/device/video.c	/^draw_string(const char *str, int x, int y, int color) {$/;"	f
+draw_up	game/device/video.c	/^draw_up(int x,int y)$/;"	f
+draw_yaoshi	game/device/video.c	/^draw_yaoshi(int x,int y)$/;"	f
+eax	game/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+eax	kernel/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ebp	game/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ebp	kernel/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ebx	game/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ebx	kernel/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ecx	game/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ecx	kernel/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+edi	game/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+edi	kernel/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+edx	game/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+edx	kernel/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ehsize	boot/boot.h	/^	unsigned short ehsize;$/;"	m	struct:ELFHeader
+elf	boot/boot.h	/^	unsigned char  elf[12];$/;"	m	struct:ELFHeader
+enable_interrupt	game/include/x86/cpu.h	/^enable_interrupt(void) {$/;"	f
+enable_interrupt	kernel/include/x86/cpu.h	/^enable_interrupt(void) {$/;"	f
+entry	boot/boot.h	/^	unsigned int   entry;$/;"	m	struct:ELFHeader
+esi	game/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+esi	kernel/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+exist	game/include/game.h	/^	int exist;$/;"	v
+fhead	game/lib/effect.c	/^static food_t fhead=NULL;$/;"	v	file:
+filesz	boot/boot.h	/^	unsigned int filesz;$/;"	m	struct:ProgramHeader
+flags	boot/boot.h	/^	unsigned int   flags;$/;"	m	struct:ELFHeader
+flags	boot/boot.h	/^	unsigned int flags;$/;"	m	struct:ProgramHeader
+floor_number	game/include/game.h	/^FLOOR_NUMBER floor_number[10];$/;"	v
+font8x8_basic	game/device/font.c	/^char font8x8_basic[128][8] = {$/;"	v
+gdt	boot/start.S	/^gdt:$/;"	l
+gdtdesc	boot/start.S	/^gdtdesc:                           # GDT描述符$/;"	l
+get_floor	game/lib/effect.c	/^get_floor(void)$/;"	f
+get_fps	game/game.c	/^get_fps() {$/;"	f
+get_hit	game/lib/effect.c	/^get_hit(void) {$/;"	f
+get_miss	game/lib/effect.c	/^get_miss(void) {$/;"	f
+get_time	kernel/time.c	/^int get_time(void)$/;"	f
+hhh	game/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon2	file:
+hhhh	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+hit	game/lib/effect.c	/^static int hit = 0, miss = 0;$/;"	v	file:
+icharacters	game/lib/effect.c	/^icharacters(void){$/;"	f
+idt	kernel/irq/idt.c	/^struct GateDescriptor idt[NR_IRQ];$/;"	v	typeref:struct:GateDescriptor
+in_byte	boot/boot.h	/^in_byte(short port) {$/;"	f
+in_byte	game/include/x86/io.h	/^in_byte(uint16_t port) {$/;"	f
+in_byte	kernel/include/x86/io.h	/^in_byte(uint16_t port) {$/;"	f
+in_long	boot/boot.h	/^in_long(short port) {$/;"	f
+init_idt	kernel/irq/idt.c	/^void init_idt() {$/;"	f
+init_intr	kernel/irq/i8259.c	/^init_intr(void) {$/;"	f
+init_map	game/lib/effect.c	/^void init_map(void)$/;"	f
+init_serial	kernel/serial.c	/^init_serial(void) {$/;"	f
+init_timer	kernel/device/timer.c	/^init_timer(void) {$/;"	f
+int16_t	game/include/types.h	/^typedef          short int16_t;$/;"	t
+int16_t	kernel/include/types.h	/^typedef          short int16_t;$/;"	t
+int32_t	game/include/types.h	/^typedef          int   int32_t;$/;"	t
+int32_t	kernel/include/types.h	/^typedef          int   int32_t;$/;"	t
+int8_t	game/include/types.h	/^typedef          char  int8_t;$/;"	t
+int8_t	kernel/include/types.h	/^typedef          char  int8_t;$/;"	t
+irq	game/include/x86/memory.h	/^	int32_t irq;$/;"	m	struct:TrapFrame
+irq	kernel/include/x86/memory.h	/^	int32_t irq;$/;"	m	struct:TrapFrame
+irq_handle	kernel/irq/irq_handle.c	/^irq_handle(struct TrapFrame *tf) {$/;"	f
+itoa	lib/string.c	/^char *itoa(int a) {$/;"	f
+kernel_init	kernel/main.c	/^kernel_init(void) {$/;"	f
+key_code	game/lib/kbd.c	/^static volatile int key_code = 0;$/;"	v	file:
+key_code	kernel/keyboard.c	/^static volatile int key_code = 0;$/;"	v	file:
+key_number	game/include/game.h	/^int key_number;$/;"	v
+keyboard_event	kernel/keyboard.c	/^keyboard_event(int code) {$/;"	f
+last_key_code	game/lib/kbd.c	/^int last_key_code(void) {$/;"	f
+len	lib/printf.c	/^int len;$/;"	v
+machine	boot/boot.h	/^	unsigned short machine;$/;"	m	struct:ELFHeader
+magic	boot/boot.h	/^	unsigned int   magic;$/;"	m	struct:ELFHeader
+main_loop	game/game.c	/^main_loop(void) {$/;"	f
+map	game/include/game.h	/^int map[2][12][12];$/;"	v
+memcpy	lib/string.c	/^void memcpy(void *dest, const void *src, size_t size) {$/;"	f
+memset	lib/string.c	/^void memset(void *dest, int data, size_t size) {$/;"	f
+memsz	boot/boot.h	/^	unsigned int memsz;$/;"	m	struct:ProgramHeader
+miss	game/lib/effect.c	/^static int hit = 0, miss = 0;$/;"	v	file:
+monster	game/lib/draw.c	6;"	d	file:
+monster	game/lib/effect.c	9;"	d	file:
+monster_blood	game/include/game.h	28;"	d
+off	boot/boot.h	/^	unsigned int off;$/;"	m	struct:ProgramHeader
+offset_15_0	game/include/x86/memory.h	/^	uint32_t offset_15_0      : 16;$/;"	m	struct:GateDescriptor
+offset_15_0	kernel/include/x86/memory.h	/^	uint32_t offset_15_0      : 16;$/;"	m	struct:GateDescriptor
+offset_31_16	game/include/x86/memory.h	/^	uint32_t offset_31_16     : 16;$/;"	m	struct:GateDescriptor
+offset_31_16	kernel/include/x86/memory.h	/^	uint32_t offset_31_16     : 16;$/;"	m	struct:GateDescriptor
+out_byte	boot/boot.h	/^out_byte(short port, char data) {$/;"	f
+out_byte	game/include/x86/io.h	/^out_byte(uint16_t port, int8_t data) {$/;"	f
+out_byte	kernel/include/x86/io.h	/^out_byte(uint16_t port, int8_t data) {$/;"	f
+pad0	game/include/x86/memory.h	/^	uint32_t pad0             : 8;$/;"	m	struct:GateDescriptor
+pad0	kernel/include/x86/memory.h	/^	uint32_t pad0             : 8;$/;"	m	struct:GateDescriptor
+paddr	boot/boot.h	/^	unsigned int paddr;$/;"	m	struct:ProgramHeader
+palette	kernel/device/palette.c	/^static uint8_t palette[NR_PALETTE_ENTRY][3] = {$/;"	v	file:
+phentsize	boot/boot.h	/^	unsigned short phentsize;$/;"	m	struct:ELFHeader
+phnum	boot/boot.h	/^	unsigned short phnum;$/;"	m	struct:ELFHeader
+phoff	boot/boot.h	/^	unsigned int   phoff;$/;"	m	struct:ELFHeader
+prepare_buffer	game/device/video.c	/^prepare_buffer(void) {$/;"	f
+present	game/include/x86/memory.h	/^	uint32_t present          : 1;$/;"	m	struct:GateDescriptor
+present	kernel/include/x86/memory.h	/^	uint32_t present          : 1;$/;"	m	struct:GateDescriptor
+press_snake_key	kernel/keyboard.c	/^void press_snake_key(int scan_code)$/;"	f
+printf	lib/printf.c	/^printf(const char *ctl, ...) {$/;"	f
+printk	kernel/lib/printk.c	/^printk(const char *ctl, ...) {$/;"	f
+privilege_level	game/include/x86/memory.h	/^	uint32_t privilege_level  : 2;$/;"	m	struct:GateDescriptor
+privilege_level	kernel/include/x86/memory.h	/^	uint32_t privilege_level  : 2;$/;"	m	struct:GateDescriptor
+query_key	kernel/keyboard.c	/^bool query_key(int index)$/;"	f
+query_snake_key	game/lib/kbd.c	/^bool query_snake_key(int index)$/;"	f
+rand	kernel/lib/random.c	/^rand(void) {$/;"	f
+read_palette	kernel/device/palette.c	/^void read_palette() {$/;"	f
+readsect	boot/main.c	/^readsect(void *dst, int offset) {$/;"	f
+readseg	boot/main.c	/^readseg(unsigned char *pa, int count, int offset) {$/;"	f
+real_fps	game/game.c	/^static int real_fps;$/;"	v	file:
+realdraw	game/lib/syscall.c	/^void realdraw(uint8_t *buf) {$/;"	f
+redraw_screen	game/lib/draw.c	/^redraw_screen() {$/;"	f
+release_snake	game/lib/kbd.c	/^release_snake(int index)$/;"	f
+save_idt	game/include/x86/cpu.h	/^save_idt(void *addr, uint32_t size) {$/;"	f
+save_idt	kernel/include/x86/cpu.h	/^save_idt(void *addr, uint32_t size) {$/;"	f
+seed	kernel/lib/random.c	/^static int seed = 0;$/;"	v	file:
+segment	game/include/x86/memory.h	/^	uint32_t segment          : 16;$/;"	m	struct:GateDescriptor
+segment	kernel/include/x86/memory.h	/^	uint32_t segment          : 16;$/;"	m	struct:GateDescriptor
+serial_idle	kernel/serial.c	/^serial_idle(void) {$/;"	f	file:
+serial_printc	kernel/serial.c	/^serial_printc(char ch) {$/;"	f
+set_fps	game/game.c	/^set_fps(int value) {$/;"	f
+set_intr	kernel/irq/idt.c	/^set_intr(struct GateDescriptor *ptr, uint32_t selector, uint32_t offset, uint32_t dpl) {$/;"	f	file:
+set_keyboard_intr_handler	kernel/irq/irq_handle.c	/^set_keyboard_intr_handler( void (*ptr)(int) ) {$/;"	f
+set_timer_intr_handler	kernel/irq/irq_handle.c	/^set_timer_intr_handler( void (*ptr)(void) ) {$/;"	f
+set_trap	kernel/irq/idt.c	/^set_trap(struct GateDescriptor *ptr, uint32_t selector, uint32_t offset, uint32_t dpl) {$/;"	f	file:
+shead	game/lib/effect.c	/^static snake_t shead=NULL;\/\/snake$/;"	v	file:
+shentsize	boot/boot.h	/^	unsigned short shentsize;$/;"	m	struct:ELFHeader
+shnum	boot/boot.h	/^	unsigned short shnum;$/;"	m	struct:ELFHeader
+shoff	boot/boot.h	/^	unsigned int   shoff;$/;"	m	struct:ELFHeader
+shstrndx	boot/boot.h	/^	unsigned short shstrndx;$/;"	m	struct:ELFHeader
+size_t	game/include/types.h	/^typedef int32_t size_t;$/;"	t
+size_t	kernel/include/types.h	/^typedef int32_t size_t;$/;"	t
+snake_code	kernel/keyboard.c	/^static int snake_code[]=$/;"	v	file:
+snake_pressed	game/lib/kbd.c	/^static bool snake_pressed[4];$/;"	v	file:
+snake_pressed	kernel/keyboard.c	/^static bool snake_pressed[4];$/;"	v	file:
+sprint	lib/printf.c	/^void sprint(char ch) {$/;"	f
+srand	kernel/lib/random.c	/^srand(int s) {$/;"	f
+start	boot/start.S	/^start:$/;"	l
+start32	boot/start.S	/^start32:$/;"	l
+strcpy	lib/string.c	/^void strcpy(char *d, const char *s) {$/;"	f
+strlen	lib/string.c	/^size_t strlen(const char *str) {$/;"	f
+sys_draw	kernel/syscall/do_syscall.c	/^static void sys_draw(struct TrapFrame *tf) {$/;"	f	file:
+sys_keyboard	kernel/syscall/do_syscall.c	/^static void sys_keyboard(struct TrapFrame *tf)$/;"	f	file:
+sys_write	kernel/syscall/do_syscall.c	/^static void sys_write(struct TrapFrame *tf) {$/;"	f	file:
+syscall	game/lib/syscall.c	/^int syscall(int id, int val1, int val2, int val3) {$/;"	f
+system	game/include/x86/memory.h	/^	uint32_t system           : 1;$/;"	m	struct:GateDescriptor
+system	kernel/include/x86/memory.h	/^	uint32_t system           : 1;$/;"	m	struct:GateDescriptor
+text	game/include/game.h	/^	int text;$/;"	v
+tick	kernel/time.c	/^volatile int tick = 0;$/;"	v
+time	game/lib/syscall.c	/^int time(void)$/;"	f
+timer_event	kernel/time.c	/^timer_event(void) {$/;"	f
+type	boot/boot.h	/^	unsigned int type;$/;"	m	struct:ProgramHeader
+type	boot/boot.h	/^	unsigned short type;$/;"	m	struct:ELFHeader
+type	game/include/x86/memory.h	/^	uint32_t type             : 4;$/;"	m	struct:GateDescriptor
+type	kernel/include/x86/memory.h	/^	uint32_t type             : 4;$/;"	m	struct:GateDescriptor
+uint16_t	game/include/types.h	/^typedef unsigned short uint16_t;$/;"	t
+uint16_t	kernel/include/types.h	/^typedef unsigned short uint16_t;$/;"	t
+uint32_t	game/include/types.h	/^typedef unsigned int   uint32_t;$/;"	t
+uint32_t	kernel/include/types.h	/^typedef unsigned int   uint32_t;$/;"	t
+uint8_t	game/include/types.h	/^typedef unsigned char  uint8_t;$/;"	t
+uint8_t	kernel/include/types.h	/^typedef unsigned char  uint8_t;$/;"	t
+up	game/lib/draw.c	8;"	d	file:
+up	game/lib/effect.c	11;"	d	file:
+up_x	game/include/game.h	/^	int up_x;$/;"	m	struct:__anon3
+up_y	game/include/game.h	/^	int up_y;$/;"	m	struct:__anon3
+update_kbd	game/lib/kbd.c	/^void update_kbd()$/;"	f
+update_keypress	game/lib/effect.c	/^void  update_keypress(void) {$/;"	f
+update_letter_pos	game/lib/effect.c	/^update_letter_pos(void) {$/;"	f
+v	game/include/game.h	/^	float v;$/;"	v
+v_buf	game/device/video.c	/^static uint8_t v_buf[320*200];$/;"	v	file:
+vaddr	boot/boot.h	/^	unsigned int vaddr;$/;"	m	struct:ProgramHeader
+vbuf	game/device/video.c	/^static uint8_t vbuf[SCR_SIZE];$/;"	v	file:
+version	boot/boot.h	/^	unsigned int   version;$/;"	m	struct:ELFHeader
+vfprintf	kernel/lib/printk.c	/^int vfprintf(void (*printer)(char), const char *ctl, void **args) {$/;"	f
+vfprintf	lib/printf.c	/^static int vfprintf(void (*printer)(char), const char *ctl, void **args) {$/;"	f	file:
+vmem	game/device/video.c	/^uint8_t *vmem = v_buf;$/;"	v
+vref	game/device/video.c	/^static uint8_t vref[SCR_SIZE];$/;"	v	file:
+wait_for_interrupt	game/include/x86/cpu.h	/^wait_for_interrupt() {$/;"	f
+wait_for_interrupt	kernel/include/x86/cpu.h	/^wait_for_interrupt() {$/;"	f
+waitdisk	boot/main.c	/^waitdisk(void) {$/;"	f
+wall	game/lib/draw.c	4;"	d	file:
+wall	game/lib/effect.c	7;"	d	file:
+write	game/lib/syscall.c	/^void  write(char *buf, int len) {$/;"	f
+write_palette	kernel/device/palette.c	/^void write_palette() {$/;"	f
+x	game/include/game.h	/^	float x, y;$/;"	v
+x	game/include/game.h	/^	int  x,y;$/;"	v
+x	game/include/game.h	/^	int x;$/;"	v
+xxx	game/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+xxx	kernel/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+y	game/include/game.h	/^	float x, y;$/;"	v
+y	game/include/game.h	/^	int  x,y;$/;"	v
+y	game/include/game.h	/^	int y;$/;"	v
+yaoshi	game/lib/draw.c	7;"	d	file:
+yaoshi	game/lib/effect.c	10;"	d	file:
