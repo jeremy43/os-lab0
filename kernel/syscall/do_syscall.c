@@ -1,5 +1,5 @@
 //#include "irq.h"
-#include "../include/x86/x86.h"
+#include "x86/x86.h"
 #include "string.h"
 //#include <sys/syscall.h>
 enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};

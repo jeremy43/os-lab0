@@ -1,8 +1,9 @@
-#include"memlayout.h"
-#include"x86.h"
-#include"pmap.h"
-
-
+#include"../include/memlayout.h"
+#include"../include/x86/x86.h"
+#include"../include/pmap.h"
+#include"../include/string.h"
+#include"../include/common.h"
+#define E_NO_MEM 4
 #define npages (1<<15)			// Amount of physical memory (in pages)
 
 // These variables are set in mem_init()
@@ -27,7 +28,7 @@ page_init(void)
 	// free pages!
 	unsigned long i;
 	int lower=PGNUM(IOPHYSMEM);
-	int upper=PGNUM(ROUNDUP(USTACKTOP,PGSIZE));
+	int upper=PGNUM(1<<22);
 	for (i = 0; i < npages; i++) {
 		pages[i].pp_ref = 0;
 		if(i==0) continue;
@@ -53,12 +54,21 @@ struct PageInfo *
 page_alloc(int alloc_flags)
 {
 	
-	if(!LIST_EMPTY(&page_free_list))
+	if(page_free_list==NULL)
+		return NULL;
+	struct PageInfo *result=page_free_list;
+	page_free_list=page_free_list->pp_link;
+	if(alloc_flags&ALLOC_ZERO)
+	{
+		memset(page2kva(result),0,PGSIZE);
+	}
+	return result;
+	/*if(!LIST_EMPTY(&page_free_list))
 	{
 		*pp_store=LIST_FIRST(&page_free_list);
 		LIST_REMOVE(LIST_FIRST(&page_free_list),pp_link);
 	        return 0;
-	}
+	}*/
 	// Fill this function in
 	return 0;//此处不确定
 }
@@ -70,7 +80,15 @@ page_alloc(int alloc_flags)
 void
 page_free(struct PageInfo *pp)
 {
-	LIST_INSERT_HEAD(&page_free_list,pp,pp_link);
+       if(pp->pp_ref!=0||pp->pp_link!=NULL)
+       {
+	       printk("page_free is wrong");  
+	       return;
+	}
+       pp->pp_link=page_free_list;
+       page_free_list=pp;
+       return;
+//	LIST_INSERT_HEAD(&page_free_list,pp,pp_link);
 	// Fill this function in
 	// Hint: You may want to panic if pp->pp_ref is nonzero or
 	// pp->pp_link is not NULL.
@@ -113,7 +131,7 @@ pte_t *
 pgdir_walk(pde_t *pgdir, const void *va, int create)
 {
 	// Fill this function in
-        pde_t *pt=pgdir+PDX(va);
+ /*       pde_t *pt=pgdir+PDX(va);
 	void *pt_kva;
 	if(*pt &PTE_P)
 	{
@@ -127,8 +145,33 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 		pt_kva=(void*)KADDR(PTE_ADDR(*pt));
 		return (pte_t*)pt_kva+PTX(va);
 	}
-	return  NULL;
-	return NULL;
+	return NULL;*/
+	printk("pgdir_walk\n");
+	pte_t *result=NULL;
+	if(pgdir[PDX(va)]==(pte_t)NULL)
+	{
+		if(create==0)
+		{
+			return NULL;
+		}
+		else
+		{
+//注意权限问题
+			struct PageInfo*page=page_alloc(1);
+			if(page==NULL)
+			{
+				return NULL;
+			}
+			page->pp_ref++;
+			pgdir[PDX(va)]=page2pa(page)|PTE_P|PTE_W|PTE_U;
+			result=page2kva(page);
+		}
+	}
+	else
+        {
+		result=page2kva(pa2page(PTE_ADDR(pgdir[PDX(va)])));
+	}
+	return &result[PTX(va)];
 }
 
 //
@@ -142,21 +185,22 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 // mapped pages.
 //
 // Hint: the TA solution uses pgdir_walk
-static void
+/*static void
 boot_map_region(pde_t *pgdir, uintptr_t va, unsigned long size, physaddr_t pa, int perm)
 {
 	// Fill this function in
 	int offset;
-	ptr_t *pte;
+	pte_t *pte;
 	for (offset=0;offset<size;offset+=PGSIZE)
 	{
-		pte=pgdir_walk(pgdir,(void*)la,1);
+	
+		pte=pgdir_walk(pgdir,(void*)va,1);
 		*pte=pa|perm|PTE_P;
 		pa+=PGSIZE;
-		la+=PGSIZE;
+		va+=PGSIZE;
 	}
 }
-
+*/
 //
 // Map the physical page 'pp' at virtual address 'va'.
 // The permissions (the low 12 bits) of the page table entry
@@ -226,7 +270,7 @@ page_lookup(pde_t *pgdir, void *va, pte_t **pte_store)
 	pte_t *pte=pgdir_walk(pgdir,va,0);
 	if(pte_store!=0)
 	{
-		*ptr_store=pte;
+		*pte_store=pte;
 	}
 	if(pte!=NULL&&(*pte&PTE_P))
 	{
@@ -238,7 +282,6 @@ page_lookup(pde_t *pgdir, void *va, pte_t **pte_store)
 //	return NULL;
 }
 
-//
 // Unmaps the physical page at virtual address 'va'.
 // If there is no physical page at that address, silently does nothing.
 //
@@ -257,13 +300,14 @@ void
 page_remove(pde_t *pgdir, void *va)
 {
         pte_t *pte;
-	struct PAGE *physpage=page_lookup(pgdir,va,&pte);
+	struct PageInfo *physpage=page_lookup(pgdir,va,&pte);
 	if(physpage!=NULL)
 	{
 		page_decref(physpage);
 		*pte=0;
 		tlb_invalidate(pgdir,va);
 	}
+
 	// Fill this function in
 }
 

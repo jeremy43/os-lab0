@@ -1,5 +1,5 @@
-#include "include/common.h"
-#include "include/string.h"
+#include "../include/common.h"
+#include "../include/string.h"
 
 /* a-z对应的键盘扫描码 */
 /*static int letter_code[] = {

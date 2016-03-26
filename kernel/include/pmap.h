@@ -5,7 +5,7 @@
 
 #include "memlayout.h"
 #include "stdio.h"
-
+#include "common.h"
 //extern char bootstacktop[], bootstack[];
 
 extern struct PageInfo pages[];
@@ -24,8 +24,8 @@ extern pde_t *kern_pgdir;
 static inline physaddr_t
 _paddr(const char *file, int line, void *kva)
 {
-	if ((uint32_t)kva < KERNBASE)
-		printk(file, line, "PADDR called with invalid kva 0x%x", kva);
+	//有问题if ((uint32_t)kva < KERNBASE)
+	//	printk(file, line, "PADDR called with invalid kva 0x%x", kva);
 	return (physaddr_t)kva - KERNBASE;
 }
 
