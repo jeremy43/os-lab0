@@ -9,7 +9,7 @@ append(char **p, const char *str) {
 		*((*p) ++) = *str ++;
 	}
 }
-//void display_buffer(void);
+void display_buffer(void);
 /* 将文件名和assert fail的行号显示在屏幕上 */
 #define BLUE_SCREEN_TEXT "Assertion failed: "
 static void

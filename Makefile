@@ -4,11 +4,11 @@
 # 编译器设定和编译选项
 CC = gcc
 LD = ld
-CFLAGS = -m32 -static -MD -std=gnu89 -ggdb \
+CFLAGS = -c -m32 -static -MD -std=gnu89 -ggdb \
 		 -fno-builtin -fno-stack-protector -fno-omit-frame-pointer \
 		 -Wall -Werror -O0 
 ASFLAGS = -m32 -MD
-LDFLAGS = -melf_i386 -nostdlib
+LDFLAGS = -m elf_i386 -nostdlib
 QEMU = qemu-system-i386
 
 # 编译目标：src目录下的所有.c和.S文件
@@ -36,14 +36,16 @@ game/%.o : game/%.[cS]
 #	$(CC) $(CFLAGS) -I game/include $< -o $@
 
 kernel/%.o : kernel/%.[cS]
-	$(CC) $(CFLAGS) -I kernel/include $< -o $@
+	$(CC) $(CFLAGS) -c -I kernel/include $< -o $@
 
 game.bin: $(GAME_OBJS)
 	$(LD) $(LDFLAGS) -e main_loop -Ttext 0x00100000 -o $@ $^
 
 kern: $(KERN_OBJS)
-	$(LD) $(LDFLAGS) -e kern_init -Ttext 0x00100000 -o kern.bin $(kern_OBJS)
-
+	echo $(KERN_CFILES)
+	echo $(KERN_SFILES)
+	echo $(KERN_OBJS)
+	$(LD) $(LDFLAGS) $(KERN_OBJS) -e entry -Ttext 0x00100000 -o kern.bin 
 #-include $(patsubst %.o, %.d, $(OBJS))
 
 # 定义的一些伪目标
@@ -59,4 +61,4 @@ debug: game.img
 # make clean可以清除已生成的文件
 clean:
 	@cd boot; make clean
-	rm -f game game.img $(OBJS) $(OBJS:.o=.d)
+	rm -f game.img $(OBJS) $(OBJS:.o=.d)

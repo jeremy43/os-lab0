@@ -8,7 +8,7 @@
 // Represents true-or-false values
 typedef _Bool bool;
 enum { false, true };
-
+enum{FALSE,TRUE};
 // Explicitly-sized versions of integer types
 typedef __signed char int8_t;
 typedef unsigned char uint8_t;

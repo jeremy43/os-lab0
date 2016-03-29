@@ -1,6 +1,8 @@
 //#include "irq.h"
 #include "x86/x86.h"
 #include "string.h"
+#include "common.h"
+#include"device/timer.h"
 //#include <sys/syscall.h>
 enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};
 //void add_irq_handle(int, void (*)(void));
