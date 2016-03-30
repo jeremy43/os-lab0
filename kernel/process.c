@@ -4,7 +4,6 @@
 PCB pcb[NR_PCB];
 ListHead pcb_head;
 ListHead unused_pcb;
-
 void init_process() {
 	list_init(&pcb_head);
 	list_init(&unused_pcb);

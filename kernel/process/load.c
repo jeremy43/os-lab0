@@ -6,14 +6,17 @@
 	 +-----------+------------------`        '-----------------+
  * C代码将游戏文件整个加载到物理内存0x100000的位置，然后跳转到游戏的入口执行。 */
 
-#include "../include/boot.h"
-
+//#include "../include/boot.h"
+#include "../include/x86/x86.h"
+#include "../include/process.h"
+#define FL_IF 0x00000200
 #define SECTSIZE 512
-
+#define GDT_ENTRY(n)    ((n) << 3)
 void readseg(unsigned char *, int, int);
-
+void set_tss_esp0(int);
 void
-bootmain(void) {
+load(void) {
+	PCB*current=new_process();
 	struct ELFHeader *elf;
 	struct ProgramHeader *ph, *eph;
 	unsigned char* pa, *i;
@@ -23,18 +26,36 @@ bootmain(void) {
 	elf = (struct ELFHeader*)0x8000;
 
 	/* 读入ELF文件头 */
-	readseg((unsigned char*)elf, 4096, 0);
+	readseg((unsigned char*)elf, 4096, 1024*100);
 
 	/* 把每个program segement依次读入内存 */
 	ph = (struct ProgramHeader*)((char *)elf + elf->phoff);
 	eph = ph + elf->phnum;
 	for(; ph < eph; ph ++) {
 		pa = (unsigned char*)ph->paddr; /* 获取物理地址 */
-		readseg(pa, ph->filesz, ph->off); /* 读入数据 */
+		readseg(pa, ph->filesz, ph->off+ 1024*100); /* 读入数据 */
 		for (i = pa + ph->filesz; i < pa + ph->memsz; *i ++ = 0);
 	}
 
-	((void(*)(void))elf->entry)();
+//	((void(*)(void))elf->entry)();
+	uint32_t eflags=read_eflags();
+	TrapFrame *tf=&current->tf;
+	set_tss_esp0((int)current->kstack+KSTACK_SIZE);
+	tf->eip=elf->entry;
+        tf->cs = GDT_ENTRY(1);
+	tf->eflags=eflags | FL_IF;
+	tf->ss = GDT_ENTRY(2);
+	tf->esp = 0x4000000;
+		     
+         asm volatile("movl %0, %%esp" : :"a"((int)tf));
+         asm volatile("popa");
+         asm volatile("addl %0, %%esp" : :"a"(8));
+
+	 asm volatile("mov 24(%esp), %eax\n\t"				    
+			 "movl %eax, %ds\n\t"				                              "movl %eax, %es\n\t"			                             "movl %eax, %fs\n\t"
+  			 "movl %eax, %gs\n\t");
+	           asm volatile("iret");
+
 }
 
 void

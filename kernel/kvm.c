@@ -1,15 +1,11 @@
 #include "include/x86/x86.h"
-//#include "include/device/serial.h"
+//#include "include/device.h"
 
 #define SECTSIZE 512
 
 SegDesc gdt[NR_SEGMENTS];       // the new GDT
 TSS tss;
 
-void set_tss_esp0(int esp)
-{
-	tss.esp0=esp;
-}
 void
 init_seg() { // setup kernel segements
 	gdt[SEG_KCODE] = SEG(STA_X | STA_R, 0,       0xffffffff, DPL_KERN);
@@ -30,8 +26,12 @@ init_seg() { // setup kernel segements
 
 	lldt(0);
 }
-
-       void
+void
+set_tss_esp0(int esp)
+{
+	tss.esp0=esp;
+}
+void
 enter_user_space(void) {
     /*
      * Before enter user space 
@@ -49,7 +49,7 @@ load_umain(void) {
      */
 }
 
-void
+/*void
 waitdisk(void) {
 	while((in_byte(0x1F7) & 0xC0) != 0x40); 
 }
@@ -69,4 +69,4 @@ readsect(void *dst, int offset) {
 	for (i = 0; i < SECTSIZE / 4; i ++) {
 		((int *)dst)[i] = in_long(0x1F0);
 	}
-}
+}*/

@@ -7,9 +7,8 @@
 #include "stdio.h"
 #include "common.h"
 //extern char bootstacktop[], bootstack[];
-
+#define Npages (1<<15)
 extern struct PageInfo pages[];
-extern size_t npages;
 
 extern pde_t *kern_pgdir;
 
@@ -36,7 +35,7 @@ _paddr(const char *file, int line, void *kva)
 static inline void*
 _kaddr(const char *file, int line, physaddr_t pa)
 {
-	if (PGNUM(pa) >= npages)
+	if (PGNUM(pa) >= Npages)
 		printk("KADDR called with invalid pa 0x%x", pa);
 	return (void *)(pa + KERNBASE);
 }
@@ -69,7 +68,7 @@ page2pa(struct PageInfo *pp)
 static inline struct PageInfo*
 pa2page(physaddr_t pa)
 {
-	if (PGNUM(pa) >= npages)
+	if (PGNUM(pa) >= Npages)
 		printk("pa2page called with invalid pa");
 	return &pages[PGNUM(pa)];
 }
