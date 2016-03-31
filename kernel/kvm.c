@@ -49,7 +49,7 @@ load_umain(void) {
      */
 }
 
-void
+/*void
 waitdisk(void) {
 	while((in_byte(0x1F7) & 0xC0) != 0x40); 
 }
@@ -69,4 +69,4 @@ readsect(void *dst, int offset) {
 	for (i = 0; i < SECTSIZE / 4; i ++) {
 		((int *)dst)[i] = in_long(0x1F0);
 	}
-}
+}*/

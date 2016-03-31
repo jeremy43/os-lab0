@@ -25,7 +25,7 @@ KERN_CFILES = $(shell find kernel/ -name "*.c")
 KERN_SFILES = $(shell find kernel/ -name "*.S")
 KERN_OBJS = $(KERN_CFILES:.c=.o) $(KERN_SFILES:.S=.o)
 
-game.img: game kern
+game.img: game  kern
 	@cd boot; make
 	cat boot/bootblock kern.bin game.bin > game.img
 
@@ -45,7 +45,7 @@ kern: $(KERN_OBJS)
 	echo $(KERN_CFILES)
 	echo $(KERN_SFILES)
 	echo $(KERN_OBJS)
-	$(LD) $(LDFLAGS) $(KERN_OBJS) -e entry -Ttext 0x00100000 -o kern.bin 
+	$(LD) $(LDFLAGS) $(KERN_OBJS) -e kernel_init  -Ttext 0x02000000 -o kern.bin 
 #-include $(patsubst %.o, %.d, $(OBJS))
 
 # 定义的一些伪目标
