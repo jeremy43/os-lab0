@@ -17,6 +17,7 @@ void init_process();
 void init_seg();
 void keyboard_event(int);
 void main_loop();
+void init_segment();
 void
 kernel_init(void) {
 	asm volatile("mov %0, %%esp" : : "r"(stack+8192));
@@ -30,6 +31,7 @@ kernel_init(void) {
 
 	//printk("game start!\n");
 	init_seg();
+	init_segment();
 	init_process();
 	//enable_interrupt();
        // printk("ENA\n");

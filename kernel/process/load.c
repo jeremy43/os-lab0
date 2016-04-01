@@ -18,6 +18,7 @@
 void readseg(unsigned char *, int, int);
 void set_tss_esp0(int);
 //void mm_malloc(pde_t *pgdir, void *va, unsigned long size);
+segment* mm_malloc(uint32_t,uint32_t, uint32_t);
 void
 load(void) {
 	PCB* current=new_process();
@@ -38,24 +39,24 @@ load(void) {
 	/* 把每个program segement依次读入内存 */
 	ph = (struct ProgramHeader*)((char *)elf + elf->phoff);
 	eph = ph + elf->phnum;
-	
-/*	int p_flag[2]={0xa,0x2};
-	int cnt=-1;
-	int va;*/
+         segment *tmp[3];	
+	int p_flag[2]={0xa,0x2};
+     	int cnt=-1;
+	int va;
 	for(; ph < eph; ph ++)
        if(ph->type==1)	{
-		pa = (unsigned char* )ph->paddr; /* 获取虚拟地址 */
-//		cnt++;
-//		tmp[cnt]=mm_malloc(va,ph->memsz,p_flag[cnt]);
+		va = (uint32_t)ph->vaddr; /* 获取虚拟地址 */
+		cnt++;
+		tmp[cnt]=mm_malloc(va,ph->memsz,p_flag[cnt]);
 		//printk("die\n");
 //		boot_map_region(current->updir, pa, ph->memsz, PTE_W | PTE_U);
-//	         pa = (unsigned char*)tmp[cnt]->base;
+	         pa = (unsigned char*)tmp[cnt]->base;
 		readseg(pa, ph->filesz, ph->off+ 1024*100); /* 读入数据 */
 		for (i = pa + ph->filesz; i < pa + ph->memsz; *i ++ = 0);
 	}
 	//enable_interrupt();
 	printk("LOAD\n");
-//	((void(*)(void))elf->entry)();
+	//((void(*)(void))elf->entry)();
 
 	 uint32_t eflags=read_eflags();
 	TrapFrame *tf=&current->tf;

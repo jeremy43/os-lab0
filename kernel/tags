@@ -93,6 +93,7 @@ LINKLIST_IMPL	include/adt/linklist.h	43;"	d
 ListHead	include/list.h	/^struct ListHead {$/;"	s
 ListHead	include/list.h	/^typedef struct ListHead ListHead;$/;"	t	typeref:struct:ListHead
 MAX	include/types.h	49;"	d
+MAX_MEM	memory/memory/memory.c	11;"	d	file:
 MIN	include/types.h	43;"	d
 MMIOBASE	include/memlayout.h	102;"	d
 MMIOLIM	include/memlayout.h	101;"	d
@@ -159,6 +160,7 @@ SEG_KERNEL_CODE	include/x86/memory.h	7;"	d
 SEG_KERNEL_DATA	include/x86/memory.h	8;"	d
 SEG_NULL	include/mmu.h	139;"	d
 SEG_NULL	include/mmu.h	168;"	d
+SEG_SIZE	memory/memory/memory.c	10;"	d	file:
 SEG_TSS	include/x86/memory.h	26;"	d
 SEG_UCODE	include/x86/memory.h	24;"	d
 SEG_UDATA	include/x86/memory.h	25;"	d
@@ -318,6 +320,7 @@ flags	include/boot.h	/^	unsigned int flags;$/;"	m	struct:ProgramHeader
 flags	include/x86/io.h	/^	unsigned int   flags;$/;"	m	struct:ELFHeader
 flags	include/x86/io.h	/^	unsigned int flags;$/;"	m	struct:ProgramHeader
 font8x8_basic	include/device/font.h	/^char font8x8_basic[128][8] = {$/;"	v
+free_seg	memory/memory/memory.c	/^ListHead free_seg;$/;"	v
 fs	include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
 fs	include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
 g	include/x86/memory.h	/^	uint32_t g : 1;          \/\/ Granularity: limit scaled by 4K when set$/;"	m	struct:SegDesc
@@ -331,6 +334,7 @@ gd_s	include/mmu.h	/^	unsigned gd_s : 1;           \/\/ must be 0 (system)$/;"	m
 gd_sel	include/mmu.h	/^	unsigned gd_sel : 16;        \/\/ segment selector$/;"	m	struct:Gatedesc
 gd_type	include/mmu.h	/^	unsigned gd_type : 4;        \/\/ type(STS_{TG,IG32,TG32})$/;"	m	struct:Gatedesc
 gdt	kvm.c	/^SegDesc gdt[NR_SEGMENTS];       \/\/ the new GDT$/;"	v
+get_free_seg	memory/memory/memory.c	/^segment *get_free_seg()$/;"	f
 get_time	src/time.c	/^int get_time(void)$/;"	f
 gs	include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
 gs	include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
@@ -346,6 +350,7 @@ init_idt	irq/idt.c	/^void init_idt() {$/;"	f
 init_intr	irq/i8259.c	/^init_intr(void) {$/;"	f
 init_process	process.c	/^void init_process() {$/;"	f
 init_seg	kvm.c	/^init_seg() { \/\/ setup kernel segements$/;"	f
+init_segment	memory/memory/memory.c	/^void init_segment()$/;"	f
 init_serial	src/serial.c	/^init_serial(void) {$/;"	f
 init_timer	src/device/timer.c	/^init_timer(void) {$/;"	f
 inl	include/x86/x86.h	/^inl(int port)$/;"	f
@@ -396,6 +401,7 @@ memcpy	lib/string.c	/^void memcpy(void *dest, const void *src, size_t size) {$/;
 memset	lib/string.c	/^void memset(void *dest, int data, size_t size) {$/;"	f
 memsz	include/boot.h	/^	unsigned int memsz;$/;"	m	struct:ProgramHeader
 memsz	include/x86/io.h	/^	unsigned int memsz;$/;"	m	struct:ProgramHeader
+mm_malloc	memory/memory/memory.c	/^segment* mm_malloc(uint32_t vaddr,uint32_t size,uint32_t type)$/;"	f
 new_process	process.c	/^PCB *new_process() {$/;"	f
 next	include/list.h	/^	struct ListHead *prev, *next;$/;"	m	struct:ListHead	typeref:struct:ListHead::
 off	include/boot.h	/^	unsigned int off;$/;"	m	struct:ProgramHeader
@@ -473,6 +479,7 @@ sd_p	include/mmu.h	/^	unsigned sd_p : 1;          \/\/ Present$/;"	m	struct:Segd
 sd_rsv1	include/mmu.h	/^	unsigned sd_rsv1 : 1;       \/\/ Reserved$/;"	m	struct:Segdesc
 sd_s	include/mmu.h	/^	unsigned sd_s : 1;          \/\/ 0 = system, 1 = application$/;"	m	struct:Segdesc
 sd_type	include/mmu.h	/^	unsigned sd_type : 4;       \/\/ Segment type (see STS_ constants)$/;"	m	struct:Segdesc
+seg	memory/memory/memory.c	/^segment seg[MAX_MEM\/SEG_SIZE];$/;"	v
 segment	include/x86/memory.h	/^	uint32_t segment          : 16;$/;"	m	struct:GateDescriptor
 serial_idle	src/serial.c	/^serial_idle(void) {$/;"	f	file:
 serial_printc	src/serial.c	/^serial_printc(char ch) {$/;"	f
@@ -562,6 +569,7 @@ uint64_t	include/types.h	/^typedef unsigned long long uint64_t;$/;"	t
 uint8_t	include/types.h	/^typedef unsigned char uint8_t;$/;"	t
 uintptr_t	include/types.h	/^typedef uint32_t uintptr_t;$/;"	t
 unused_pcb	process.c	/^ListHead unused_pcb;$/;"	v
+used_seg	memory/memory/memory.c	/^ListHead used_seg;$/;"	v
 v_buf	lib/video.c	/^static uint8_t v_buf[320*200];$/;"	v	file:
 va_arg	include/stdarg.h	9;"	d
 va_end	include/stdarg.h	11;"	d
