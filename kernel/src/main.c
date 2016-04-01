@@ -4,7 +4,7 @@
 #include "device/timer.h"
 #include "device/palette.h"
 #include "assert.h"
-
+static uint8_t stack[8196];
 void init_serial();
 void init_timer();
 void init_idt();
@@ -19,6 +19,8 @@ void keyboard_event(int);
 void main_loop();
 void
 kernel_init(void) {
+	asm volatile("mov %0, %%esp" : : "r"(stack+8192));
+	asm volatile("mov %%esp, %%ebp" : : );
 	init_serial();
 	init_timer();
 	init_idt();
@@ -27,10 +29,12 @@ kernel_init(void) {
 	set_keyboard_intr_handler(keyboard_event);
 
 	//printk("game start!\n");
-	enable_interrupt();
 	init_seg();
 	init_process();
+	//enable_interrupt();
+       // printk("ENA\n");
 	load();
+
 //	main_loop();
 	assert(0); /* main_loop是死循环，永远无法返回这里 */
 }

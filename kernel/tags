@@ -4,87 +4,579 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALLOC_ZERO	include/pmap.h	/^	ALLOC_ZERO = 1<<0,$/;"	e	enum:__anon2
 BLUE_SCREEN_TEXT	lib/abort.c	14;"	d	file:
-CHARACTER_PER_SECOND	game/game.c	7;"	d	file:
-FPS	game/game.c	6;"	d	file:
-FREQ_8253	device/timer.c	7;"	d	file:
-INTERLACE	device/video.c	15;"	d	file:
+CHECKSUM	entry.S	/^#define CHECKSUM (-(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS))$/;"	d
+CR0_AM	include/mmu.h	86;"	d
+CR0_CD	include/mmu.h	88;"	d
+CR0_EM	include/mmu.h	81;"	d
+CR0_ET	include/mmu.h	83;"	d
+CR0_MP	include/mmu.h	80;"	d
+CR0_NE	include/mmu.h	84;"	d
+CR0_NW	include/mmu.h	87;"	d
+CR0_PE	include/mmu.h	79;"	d
+CR0_PG	include/mmu.h	89;"	d
+CR0_TS	include/mmu.h	82;"	d
+CR0_WP	include/mmu.h	85;"	d
+CR4_DE	include/mmu.h	94;"	d
+CR4_MCE	include/mmu.h	92;"	d
+CR4_PCE	include/mmu.h	91;"	d
+CR4_PSE	include/mmu.h	93;"	d
+CR4_PVI	include/mmu.h	96;"	d
+CR4_TSD	include/mmu.h	95;"	d
+CR4_VME	include/mmu.h	97;"	d
+DPL_KERN	include/x86/memory.h	5;"	d
+DPL_KERNEL	include/x86/memory.h	4;"	d
+DPL_USER	include/x86/memory.h	6;"	d
+ELFHeader	include/boot.h	/^struct ELFHeader {$/;"	s
+ELFHeader	include/x86/io.h	/^struct ELFHeader {$/;"	s
+EXTPHYSMEM	include/memlayout.h	93;"	d
+FALSE	include/const.h	5;"	d
+FALSE	include/types.h	/^enum{FALSE,TRUE};$/;"	e	enum:__anon7
+FEC_PR	include/mmu.h	123;"	d
+FEC_U	include/mmu.h	125;"	d
+FEC_WR	include/mmu.h	124;"	d
+FL_AC	include/mmu.h	117;"	d
+FL_AF	include/mmu.h	102;"	d
+FL_CF	include/mmu.h	100;"	d
+FL_DF	include/mmu.h	107;"	d
+FL_ID	include/mmu.h	120;"	d
+FL_IF	include/mmu.h	106;"	d
+FL_IF	process/load.c	15;"	d	file:
+FL_IOPL_0	include/mmu.h	110;"	d
+FL_IOPL_1	include/mmu.h	111;"	d
+FL_IOPL_2	include/mmu.h	112;"	d
+FL_IOPL_3	include/mmu.h	113;"	d
+FL_IOPL_MASK	include/mmu.h	109;"	d
+FL_NT	include/mmu.h	114;"	d
+FL_OF	include/mmu.h	108;"	d
+FL_PF	include/mmu.h	101;"	d
+FL_RF	include/mmu.h	115;"	d
+FL_SF	include/mmu.h	104;"	d
+FL_TF	include/mmu.h	105;"	d
+FL_VIF	include/mmu.h	118;"	d
+FL_VIP	include/mmu.h	119;"	d
+FL_VM	include/mmu.h	116;"	d
+FL_ZF	include/mmu.h	103;"	d
+FREQ_8253	src/device/timer.c	7;"	d	file:
+GDT_ENTRY	process/load.c	17;"	d	file:
+GD_KD	include/memlayout.h	16;"	d
+GD_KT	include/memlayout.h	15;"	d
+GD_TSS0	include/memlayout.h	19;"	d
+GD_UD	include/memlayout.h	18;"	d
+GD_UT	include/memlayout.h	17;"	d
+GateDescriptor	include/x86/memory.h	/^struct GateDescriptor {$/;"	s
+Gatedesc	include/mmu.h	/^struct Gatedesc {$/;"	s
+HZ	include/device/timer.h	4;"	d
+INTERLACE	lib/video.c	15;"	d	file:
 INTERRUPT_GATE_32	irq/idt.c	3;"	d	file:
+IOPHYSMEM	include/memlayout.h	92;"	d
 IRQ_SLAVE	irq/i8259.c	5;"	d	file:
-NR_PALETTE_ENTRY	device/palette.c	10;"	d	file:
-PARTIAL_UPDATE	device/video.c	14;"	d	file:
-PARTIAL_UPDATE	device/video.c	18;"	d	file:
+JOS_INC_MEMLAYOUT_H	include/memlayout.h	2;"	d
+JOS_INC_MMU_H	include/mmu.h	2;"	d
+JOS_INC_STDARG_H	include/stdarg.h	3;"	d
+JOS_INC_STDIO_H	include/stdio.h	2;"	d
+JOS_INC_TYPES_H	include/types.h	2;"	d
+JOS_INC_X86_H	include/x86/x86.h	2;"	d
+JOS_KERN_PMAP_H	include/pmap.h	4;"	d
+KADDR	include/pmap.h	34;"	d
+KERNBASE	include/memlayout.h	87;"	d
+KERN_INC_PRECESS_H	include/process.h	2;"	d
+KSEL	include/x86/memory.h	29;"	d
+KSTACKTOP	include/memlayout.h	96;"	d
+KSTACK_SIZE	include/process.h	8;"	d
+KSTKGAP	include/memlayout.h	98;"	d
+KSTKSIZE	include/memlayout.h	97;"	d
+LINKLIST_DEF	include/adt/linklist.h	27;"	d
+LINKLIST_DEF_FI	include/adt/linklist.h	31;"	d
+LINKLIST_IMPL	include/adt/linklist.h	43;"	d
+ListHead	include/list.h	/^struct ListHead {$/;"	s
+ListHead	include/list.h	/^typedef struct ListHead ListHead;$/;"	t	typeref:struct:ListHead
+MAX	include/types.h	49;"	d
+MIN	include/types.h	43;"	d
+MMIOBASE	include/memlayout.h	102;"	d
+MMIOLIM	include/memlayout.h	101;"	d
+MULTIBOOT_HEADER_FLAGS	entry.S	/^#define MULTIBOOT_HEADER_FLAGS (0)$/;"	d
+MULTIBOOT_HEADER_MAGIC	entry.S	/^#define MULTIBOOT_HEADER_MAGIC (0x1BADB002)$/;"	d
+NPDENTRIES	include/mmu.h	45;"	d
+NPTENTRIES	include/mmu.h	46;"	d
+NR_IRQ	include/x86/cpu.h	34;"	d
+NR_PALETTE_ENTRY	src/device/palette.c	10;"	d	file:
+NR_PCB	include/process.h	9;"	d
+NR_SEGMENTS	include/x86/memory.h	21;"	d
+NULL	include/stdio.h	7;"	d
+NULL	include/types.h	5;"	d
+PADDR	include/pmap.h	22;"	d
+PARTIAL_UPDATE	lib/video.c	14;"	d	file:
+PARTIAL_UPDATE	lib/video.c	18;"	d	file:
+PCB	include/process.h	/^typedef struct PCB{$/;"	s
+PCB	include/process.h	/^} PCB;$/;"	t	typeref:struct:PCB
+PDX	include/mmu.h	33;"	d
+PDXSHIFT	include/mmu.h	55;"	d
+PFTEMP	include/memlayout.h	137;"	d
+PGADDR	include/mmu.h	42;"	d
+PGNUM	include/mmu.h	30;"	d
+PGOFF	include/mmu.h	39;"	d
+PGSHIFT	include/mmu.h	49;"	d
+PGSIZE	include/mmu.h	48;"	d
 PORT_PIC_MASTER	irq/i8259.c	3;"	d	file:
 PORT_PIC_SLAVE	irq/i8259.c	4;"	d	file:
-SERIAL_PORT	device/serial.c	3;"	d	file:
-SLOW	device/video.c	11;"	d	file:
-TIMER_PORT	device/timer.c	6;"	d	file:
+PTE_A	include/mmu.h	63;"	d
+PTE_ADDR	include/mmu.h	76;"	d
+PTE_AVAIL	include/mmu.h	70;"	d
+PTE_D	include/mmu.h	64;"	d
+PTE_G	include/mmu.h	66;"	d
+PTE_P	include/mmu.h	58;"	d
+PTE_PCD	include/mmu.h	62;"	d
+PTE_PS	include/mmu.h	65;"	d
+PTE_PWT	include/mmu.h	61;"	d
+PTE_SYSCALL	include/mmu.h	73;"	d
+PTE_U	include/mmu.h	60;"	d
+PTE_W	include/mmu.h	59;"	d
+PTSHIFT	include/mmu.h	52;"	d
+PTSIZE	include/mmu.h	51;"	d
+PTX	include/mmu.h	36;"	d
+PTXSHIFT	include/mmu.h	54;"	d
+PageInfo	include/memlayout.h	/^struct PageInfo {$/;"	s
+ProgramHeader	include/boot.h	/^struct ProgramHeader {$/;"	s
+ProgramHeader	include/x86/io.h	/^struct ProgramHeader {$/;"	s
+Pseudodesc	include/mmu.h	/^struct Pseudodesc {$/;"	s
+RELOC	entry.S	/^#define	RELOC(x) ((x) - KERNBASE)$/;"	d
+ROUNDDOWN	include/types.h	58;"	d
+ROUNDUP	include/types.h	64;"	d
+SCR_HEIGHT	include/device/video.h	9;"	d
+SCR_SIZE	include/device/video.h	10;"	d
+SCR_WIDTH	include/device/video.h	8;"	d
+SECTSIZE	kvm.c	4;"	d	file:
+SECTSIZE	process/load.c	16;"	d	file:
+SEG	include/mmu.h	142;"	d
+SEG	include/x86/memory.h	68;"	d
+SEG16	include/x86/memory.h	73;"	d
+SEG_FAULT	include/mmu.h	170;"	d
+SEG_KCODE	include/x86/memory.h	22;"	d
+SEG_KDATA	include/x86/memory.h	23;"	d
+SEG_KERNEL_CODE	include/x86/memory.h	7;"	d
+SEG_KERNEL_DATA	include/x86/memory.h	8;"	d
+SEG_NULL	include/mmu.h	139;"	d
+SEG_NULL	include/mmu.h	168;"	d
+SEG_TSS	include/x86/memory.h	26;"	d
+SEG_UCODE	include/x86/memory.h	24;"	d
+SEG_UDATA	include/x86/memory.h	25;"	d
+SERIAL_PORT	src/serial.c	3;"	d	file:
+SETCALLGATE	include/mmu.h	296;"	d
+SETGATE	include/mmu.h	282;"	d
+SLOW	lib/video.c	11;"	d	file:
+SRL	entry.S	/^#define SRL(val, shamt)		(((val) >> (shamt)) & ~(-1 << (32 - (shamt))))$/;"	d
+STA_A	include/mmu.h	189;"	d
+STA_C	include/mmu.h	186;"	d
+STA_E	include/mmu.h	185;"	d
+STA_R	include/mmu.h	188;"	d
+STA_R	include/x86/memory.h	13;"	d
+STA_W	include/mmu.h	187;"	d
+STA_W	include/x86/memory.h	12;"	d
+STA_X	include/mmu.h	184;"	d
+STA_X	include/x86/memory.h	11;"	d
+STS_CG16	include/mmu.h	195;"	d
+STS_CG32	include/mmu.h	201;"	d
+STS_IG16	include/mmu.h	197;"	d
+STS_IG32	include/mmu.h	202;"	d
+STS_IG32	include/x86/memory.h	17;"	d
+STS_LDT	include/mmu.h	193;"	d
+STS_T16A	include/mmu.h	192;"	d
+STS_T16B	include/mmu.h	194;"	d
+STS_T32A	include/mmu.h	199;"	d
+STS_T32A	include/x86/memory.h	16;"	d
+STS_T32B	include/mmu.h	200;"	d
+STS_TG	include/mmu.h	196;"	d
+STS_TG16	include/mmu.h	198;"	d
+STS_TG32	include/mmu.h	203;"	d
+STS_TG32	include/x86/memory.h	18;"	d
+SYS_draw	syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+SYS_keyboard1	syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+SYS_time1	syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+SYS_write1	syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+SegDesc	include/x86/memory.h	/^struct SegDesc {$/;"	s
+SegDesc	include/x86/memory.h	/^typedef struct SegDesc SegDesc;$/;"	t	typeref:struct:SegDesc
+Segdesc	include/mmu.h	/^struct Segdesc {$/;"	s
+TIMER_PORT	src/device/timer.c	6;"	d	file:
 TRAP_GATE_32	irq/idt.c	4;"	d	file:
-UPDATE_PER_SECOND	game/game.c	8;"	d	file:
-VGA_DAC_DATA	device/palette.c	7;"	d	file:
-VGA_DAC_READ_INDEX	device/palette.c	5;"	d	file:
-VGA_DAC_WRITE_INDEX	device/palette.c	6;"	d	file:
+TRUE	include/const.h	4;"	d
+TRUE	include/types.h	/^enum{FALSE,TRUE};$/;"	e	enum:__anon7
+TSS	include/x86/memory.h	/^struct TSS {$/;"	s
+TSS	include/x86/memory.h	/^typedef struct TSS TSS;$/;"	t	typeref:struct:TSS
+Taskstate	include/mmu.h	/^struct Taskstate {$/;"	s
+TrapFrame	include/x86/memory.h	/^  typedef struct TrapFrame {$/;"	s
+TrapFrame	include/x86/memory.h	/^  } TrapFrame;$/;"	t	typeref:struct:TrapFrame
+UENVS	include/memlayout.h	116;"	d
+ULIM	include/memlayout.h	104;"	d
+UPAGES	include/memlayout.h	114;"	d
+USEL	include/x86/memory.h	30;"	d
+USTABDATA	include/memlayout.h	139;"	d
+USTACKTOP	include/memlayout.h	128;"	d
+UTEMP	include/memlayout.h	134;"	d
+UTEXT	include/memlayout.h	131;"	d
+UTOP	include/memlayout.h	123;"	d
+UVPT	include/memlayout.h	112;"	d
+UXSTACKTOP	include/memlayout.h	125;"	d
+VGA_DAC_DATA	src/device/palette.c	7;"	d	file:
+VGA_DAC_READ_INDEX	src/device/palette.c	5;"	d	file:
+VGA_DAC_WRITE_INDEX	src/device/palette.c	6;"	d	file:
+VMEM_ADDR	include/device/video.h	11;"	d
+__ASSERT_H__	include/assert.h	2;"	d
+__COMMON_H__	include/common.h	2;"	d
+__CONST_H__	include/const.h	2;"	d
+__FONT_H__	include/device/font.h	21;"	d
+__GAME_H__	include/game.h	2;"	d
+__IRQ_H__	include/irq.h	2;"	d
+__LINKLIST_H__	include/adt/linklist.h	2;"	d
+__LIST_H__	include/list.h	2;"	d
+__PALETTE_H__	include/device/palette.h	2;"	d
+__STRING_H__	include/string.h	2;"	d
+__TIMER_H__	include/device/timer.h	2;"	d
+__VIDEO_H__	include/device/video.h	2;"	d
+__X86_CPU_H__	include/x86/cpu.h	2;"	d
+__X86_IO_H__	include/x86/io.h	2;"	d
+__X86_MEMORY_H__	include/x86/memory.h	2;"	d
+_kaddr	include/pmap.h	/^_kaddr(const char *file, int line, physaddr_t pa)$/;"	f
+_paddr	include/pmap.h	/^_paddr(const char *file, int line, void *kva)$/;"	f
+_start	entry.S	/^_start = RELOC(entry)$/;"	d
 abort	lib/abort.c	/^abort(const char *fname, int line) {$/;"	f
+align	include/boot.h	/^	unsigned int align;$/;"	m	struct:ProgramHeader
+align	include/x86/io.h	/^	unsigned int align;$/;"	m	struct:ProgramHeader
 append	lib/abort.c	/^append(char **p, const char *str) {$/;"	f	file:
 asm_do_irq	irq/do_irq.S	/^asm_do_irq:$/;"	l
+assert	include/assert.h	7;"	d
+avl	include/x86/memory.h	/^	uint32_t avl : 1;        \/\/ Unused (available for software use)$/;"	m	struct:SegDesc
+base_15_0	include/x86/memory.h	/^	uint32_t base_15_0 : 16; \/\/ Low bits of segment base address$/;"	m	struct:SegDesc
+base_23_16	include/x86/memory.h	/^	uint32_t base_23_16 : 8; \/\/ Middle bits of segment base address$/;"	m	struct:SegDesc
+base_31_24	include/x86/memory.h	/^	uint32_t base_31_24 : 8; \/\/ High bits of segment base address$/;"	m	struct:SegDesc
 blue_screen	lib/abort.c	/^blue_screen(const char *file, int line) {$/;"	f	file:
-characters	game/effect.c	/^characters(void) {$/;"	f
-create_new_letter	game/effect.c	/^create_new_letter(void) {$/;"	f
-display_buffer	device/video.c	/^display_buffer(void) {$/;"	f
+bool	include/types.h	/^typedef _Bool bool;$/;"	t
+bootstack	entry.S	/^bootstack:$/;"	l
+bootstacktop	entry.S	/^bootstacktop:$/;"	l
+breakpoint	include/x86/x86.h	/^breakpoint(void)$/;"	f
+cpuid	include/x86/x86.h	/^cpuid(uint32_t info, uint32_t *eaxp, uint32_t *ebxp, uint32_t *ecxp, uint32_t *edxp)$/;"	f
+cr3	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+cs	include/x86/memory.h	/^	    uint32_t eip, cs, eflags;$/;"	m	struct:TrapFrame
+cs	include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
+db	include/x86/memory.h	/^	uint32_t db : 1;         \/\/ 0 = 16-bit segment, 1 = 32-bit segment$/;"	m	struct:SegDesc
+disable_interrupt	include/x86/cpu.h	/^disable_interrupt(void) {$/;"	f
+display_buffer	lib/video.c	/^display_buffer(void) {$/;"	f
 do_keyboard	irq/irq_handle.c	/^static void (*do_keyboard)(int);$/;"	v	file:
+do_syscall	syscall/do_syscall.c	/^void do_syscall(struct TrapFrame *tf) {$/;"	f
 do_timer	irq/irq_handle.c	/^static void (*do_timer)(void);$/;"	v	file:
-draw_character	device/video.c	/^draw_character(char ch, int x, int y, int color) {$/;"	f	file:
-draw_string	device/video.c	/^draw_string(const char *str, int x, int y, int color) {$/;"	f
-font8x8_basic	device/font.c	/^char font8x8_basic[128][8] = {$/;"	v
-game_init	main.c	/^game_init(void) {$/;"	f
-get_fps	game/game.c	/^get_fps() {$/;"	f
-get_hit	game/effect.c	/^get_hit(void) {$/;"	f
-get_miss	game/effect.c	/^get_miss(void) {$/;"	f
-head	game/effect.c	/^static fly_t head = NULL;$/;"	v	file:
-hit	game/effect.c	/^static int hit = 0, miss = 0;$/;"	v	file:
+dontcare	include/x86/memory.h	/^                char dontcare[88];$/;"	m	struct:TSS::__anon3::__anon4
+dpl	include/x86/memory.h	/^	uint32_t dpl : 2;        \/\/ Descriptor Privilege Level$/;"	m	struct:SegDesc
+draw_character	lib/video.c	/^draw_character(char ch, int x, int y, int color) {$/;"	f	file:
+draw_pixel	include/device/video.h	/^draw_pixel(int x, int y, int color) {$/;"	f
+draw_string	lib/video.c	/^draw_string(const char *str, int x, int y, int color) {$/;"	f
+ds	include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
+ds	include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
+eax	include/x86/memory.h	/^	   uint32_t edi, esi, ebp, old_esp, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+eax	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+ebp	include/x86/memory.h	/^	   uint32_t edi, esi, ebp, old_esp, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ebp	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+ebx	include/x86/memory.h	/^	   uint32_t edi, esi, ebp, old_esp, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ebx	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+ecx	include/x86/memory.h	/^	   uint32_t edi, esi, ebp, old_esp, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+ecx	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+edi	include/x86/memory.h	/^	   uint32_t edi, esi, ebp, old_esp, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+edi	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+edx	include/x86/memory.h	/^	   uint32_t edi, esi, ebp, old_esp, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+edx	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+eflags	include/x86/memory.h	/^	    uint32_t eip, cs, eflags;$/;"	m	struct:TrapFrame
+eflags	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+ehsize	include/boot.h	/^	unsigned short ehsize;$/;"	m	struct:ELFHeader
+ehsize	include/x86/io.h	/^	unsigned short ehsize;$/;"	m	struct:ELFHeader
+eip	include/x86/memory.h	/^	    uint32_t eip, cs, eflags;$/;"	m	struct:TrapFrame
+eip	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+elf	include/boot.h	/^	unsigned char  elf[12];$/;"	m	struct:ELFHeader
+elf	include/x86/io.h	/^	unsigned char  elf[12];$/;"	m	struct:ELFHeader
+enable_interrupt	include/x86/cpu.h	/^enable_interrupt(void) {$/;"	f
+enter_user_space	kvm.c	/^enter_user_space(void) {$/;"	f
+entry	entry.S	/^entry:$/;"	l
+entry	include/boot.h	/^	unsigned int   entry;$/;"	m	struct:ELFHeader
+entry	include/x86/io.h	/^	unsigned int   entry;$/;"	m	struct:ELFHeader
+entry_pgdir	src/entrypgdir.c	/^pde_t entry_pgdir[NPDENTRIES] = {$/;"	v
+entry_pgtable	src/entrypgdir.c	/^pte_t entry_pgtable[NPTENTRIES] = {$/;"	v
+entry_pgtable	src/entrypgdir.c	/^pte_t entry_pgtable[NPTENTRIES];$/;"	v
+error_code	include/x86/memory.h	/^	   uint32_t error_code;$/;"	m	struct:TrapFrame
+es	include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
+es	include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
+esi	include/x86/memory.h	/^	   uint32_t edi, esi, ebp, old_esp, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+esi	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+esp	include/x86/memory.h	/^	    uint32_t esp, ss;$/;"	m	struct:TrapFrame
+esp	include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
+esp0	include/x86/memory.h	/^	uint32_t esp0;         \/\/ Ring 0 Stack pointer and segment selector$/;"	m	struct:TSS
+esp1	include/x86/memory.h	/^                uint32_t esp1,ss1,esp2,ss2;$/;"	m	struct:TSS::__anon3::__anon5
+esp2	include/x86/memory.h	/^                uint32_t esp1,ss1,esp2,ss2;$/;"	m	struct:TSS::__anon3::__anon5
+false	include/types.h	/^enum { false, true };$/;"	e	enum:__anon6
+filesz	include/boot.h	/^	unsigned int filesz;$/;"	m	struct:ProgramHeader
+filesz	include/x86/io.h	/^	unsigned int filesz;$/;"	m	struct:ProgramHeader
+flags	include/boot.h	/^	unsigned int   flags;$/;"	m	struct:ELFHeader
+flags	include/boot.h	/^	unsigned int flags;$/;"	m	struct:ProgramHeader
+flags	include/x86/io.h	/^	unsigned int   flags;$/;"	m	struct:ELFHeader
+flags	include/x86/io.h	/^	unsigned int flags;$/;"	m	struct:ProgramHeader
+font8x8_basic	include/device/font.h	/^char font8x8_basic[128][8] = {$/;"	v
+fs	include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
+fs	include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
+g	include/x86/memory.h	/^	uint32_t g : 1;          \/\/ Granularity: limit scaled by 4K when set$/;"	m	struct:SegDesc
+gd_args	include/mmu.h	/^	unsigned gd_args : 5;        \/\/ # args, 0 for interrupt\/trap gates$/;"	m	struct:Gatedesc
+gd_dpl	include/mmu.h	/^	unsigned gd_dpl : 2;         \/\/ descriptor(meaning new) privilege level$/;"	m	struct:Gatedesc
+gd_off_15_0	include/mmu.h	/^	unsigned gd_off_15_0 : 16;   \/\/ low 16 bits of offset in segment$/;"	m	struct:Gatedesc
+gd_off_31_16	include/mmu.h	/^	unsigned gd_off_31_16 : 16;  \/\/ high bits of offset in segment$/;"	m	struct:Gatedesc
+gd_p	include/mmu.h	/^	unsigned gd_p : 1;           \/\/ Present$/;"	m	struct:Gatedesc
+gd_rsv1	include/mmu.h	/^	unsigned gd_rsv1 : 3;        \/\/ reserved(should be zero I guess)$/;"	m	struct:Gatedesc
+gd_s	include/mmu.h	/^	unsigned gd_s : 1;           \/\/ must be 0 (system)$/;"	m	struct:Gatedesc
+gd_sel	include/mmu.h	/^	unsigned gd_sel : 16;        \/\/ segment selector$/;"	m	struct:Gatedesc
+gd_type	include/mmu.h	/^	unsigned gd_type : 4;        \/\/ type(STS_{TG,IG32,TG32})$/;"	m	struct:Gatedesc
+gdt	kvm.c	/^SegDesc gdt[NR_SEGMENTS];       \/\/ the new GDT$/;"	v
+get_time	src/time.c	/^int get_time(void)$/;"	f
+gs	include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
+gs	include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
+hhhh	syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
+hlt	include/x86/x86.h	/^hlt(void)$/;"	f
 idt	irq/idt.c	/^struct GateDescriptor idt[NR_IRQ];$/;"	v	typeref:struct:GateDescriptor
+in_byte	include/boot.h	/^in_byte(short port) {$/;"	f
+in_byte	include/x86/io.h	/^in_byte(uint16_t port) {$/;"	f
+in_long	include/boot.h	/^in_long(short port) {$/;"	f
+in_long	include/x86/io.h	/^in_long(short port) {$/;"	f
+inb	include/x86/x86.h	/^inb(int port)$/;"	f
 init_idt	irq/idt.c	/^void init_idt() {$/;"	f
 init_intr	irq/i8259.c	/^init_intr(void) {$/;"	f
-init_serial	device/serial.c	/^init_serial(void) {$/;"	f
-init_timer	device/timer.c	/^init_timer(void) {$/;"	f
+init_process	process.c	/^void init_process() {$/;"	f
+init_seg	kvm.c	/^init_seg() { \/\/ setup kernel segements$/;"	f
+init_serial	src/serial.c	/^init_serial(void) {$/;"	f
+init_timer	src/device/timer.c	/^init_timer(void) {$/;"	f
+inl	include/x86/x86.h	/^inl(int port)$/;"	f
+insb	include/x86/x86.h	/^insb(int port, void *addr, int cnt)$/;"	f
+insl	include/x86/x86.h	/^insl(int port, void *addr, int cnt)$/;"	f
+insw	include/x86/x86.h	/^insw(int port, void *addr, int cnt)$/;"	f
+int16_t	include/types.h	/^typedef short int16_t;$/;"	t
+int32_t	include/types.h	/^typedef int int32_t;$/;"	t
+int64_t	include/types.h	/^typedef long long int64_t;$/;"	t
+int8_t	include/types.h	/^typedef __signed char int8_t;$/;"	t
+intptr_t	include/types.h	/^typedef int32_t intptr_t;$/;"	t
+invlpg	include/x86/x86.h	/^invlpg(void *addr)$/;"	f
+inw	include/x86/x86.h	/^inw(int port)$/;"	f
+irq	include/x86/memory.h	/^	   int32_t irq;$/;"	m	struct:TrapFrame
 irq_handle	irq/irq_handle.c	/^irq_handle(struct TrapFrame *tf) {$/;"	f
 itoa	lib/string.c	/^char *itoa(int a) {$/;"	f
-key_code	game/keyboard.c	/^static volatile int key_code = 0;$/;"	v	file:
-keyboard_event	game/keyboard.c	/^keyboard_event(int code) {$/;"	f
-last_key_code	game/keyboard.c	/^int last_key_code(void) {$/;"	f
-letter_code	game/keyboard.c	/^static int letter_code[] = {$/;"	v	file:
-letter_pressed	game/keyboard.c	/^static bool letter_pressed[26];$/;"	v	file:
-main_loop	game/game.c	/^main_loop(void) {$/;"	f
+kernel_init	src/main.c	/^kernel_init(void) {$/;"	f
+key_code	src/keyboard.c	/^static volatile int key_code = 0;$/;"	v	file:
+keyboard_event	src/keyboard.c	/^keyboard_event(int code) {$/;"	f
+kstack	include/process.h	/^	uint8_t kstack[KSTACK_SIZE];$/;"	m	struct:PCB
+lcr0	include/x86/x86.h	/^lcr0(uint32_t val)$/;"	f
+lcr3	include/x86/x86.h	/^lcr3(uint32_t val)$/;"	f
+lcr4	include/x86/x86.h	/^lcr4(uint32_t val)$/;"	f
+ldt	include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
+lgdt	include/x86/x86.h	/^lgdt(void *p)$/;"	f
+lidt	include/x86/x86.h	/^lidt(void *p)$/;"	f
+lim_15_0	include/x86/memory.h	/^	uint32_t lim_15_0 : 16;  \/\/ Low bits of segment limit$/;"	m	struct:SegDesc
+lim_19_16	include/x86/memory.h	/^	uint32_t lim_19_16 : 4;  \/\/ High bits of segment limit$/;"	m	struct:SegDesc
+link	include/x86/memory.h	/^	uint32_t link;         \/\/ old ts selector$/;"	m	struct:TSS
+list	include/process.h	/^	ListHead list;$/;"	m	struct:PCB
+list_add	include/list.h	/^list_add(ListHead *prev, ListHead *next, ListHead *data) {$/;"	f
+list_add_after	include/list.h	/^list_add_after(ListHead *list, ListHead *data) {$/;"	f
+list_add_before	include/list.h	/^list_add_before(ListHead *list, ListHead *data) {$/;"	f
+list_del	include/list.h	/^list_del(ListHead *data) {$/;"	f
+list_empty	include/list.h	/^list_empty(ListHead *list) {$/;"	f
+list_entry	include/list.h	11;"	d
+list_foreach	include/list.h	56;"	d
+list_init	include/list.h	/^list_init(ListHead *list) {$/;"	f
+lldt	include/x86/x86.h	/^lldt(uint16_t sel)$/;"	f
+load	process/load.c	/^load(void) {$/;"	f
+load_umain	kvm.c	/^load_umain(void) {$/;"	f
+ltr	include/x86/x86.h	/^ltr(uint16_t sel)$/;"	f
+machine	include/boot.h	/^	unsigned short machine;$/;"	m	struct:ELFHeader
+machine	include/x86/io.h	/^	unsigned short machine;$/;"	m	struct:ELFHeader
+magic	include/boot.h	/^	unsigned int   magic;$/;"	m	struct:ELFHeader
+magic	include/x86/io.h	/^	unsigned int   magic;$/;"	m	struct:ELFHeader
 memcpy	lib/string.c	/^void memcpy(void *dest, const void *src, size_t size) {$/;"	f
 memset	lib/string.c	/^void memset(void *dest, int data, size_t size) {$/;"	f
-miss	game/effect.c	/^static int hit = 0, miss = 0;$/;"	v	file:
-palette	device/palette.c	/^static uint8_t palette[NR_PALETTE_ENTRY][3] = {$/;"	v	file:
-prepare_buffer	device/video.c	/^prepare_buffer(void) {$/;"	f
-press_key	game/keyboard.c	/^press_key(int scan_code) {$/;"	f
+memsz	include/boot.h	/^	unsigned int memsz;$/;"	m	struct:ProgramHeader
+memsz	include/x86/io.h	/^	unsigned int memsz;$/;"	m	struct:ProgramHeader
+new_process	process.c	/^PCB *new_process() {$/;"	f
+next	include/list.h	/^	struct ListHead *prev, *next;$/;"	m	struct:ListHead	typeref:struct:ListHead::
+off	include/boot.h	/^	unsigned int off;$/;"	m	struct:ProgramHeader
+off	include/x86/io.h	/^	unsigned int off;$/;"	m	struct:ProgramHeader
+off_t	include/types.h	/^typedef int32_t off_t;$/;"	t
+offset_15_0	include/x86/memory.h	/^	uint32_t offset_15_0      : 16;$/;"	m	struct:GateDescriptor
+offset_31_16	include/x86/memory.h	/^	uint32_t offset_31_16     : 16;$/;"	m	struct:GateDescriptor
+offsetof	include/types.h	71;"	d
+old_esp	include/x86/memory.h	/^	   uint32_t edi, esi, ebp, old_esp, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
+out_byte	include/boot.h	/^out_byte(short port, char data) {$/;"	f
+out_byte	include/x86/io.h	/^out_byte(uint16_t port, int8_t data) {$/;"	f
+out_byte2	include/x86/io.h	/^out_byte2(short port, char data) {$/;"	f
+outb	include/x86/x86.h	/^outb(int port, uint8_t data)$/;"	f
+outl	include/x86/x86.h	/^outl(int port, uint32_t data)$/;"	f
+outsb	include/x86/x86.h	/^outsb(int port, const void *addr, int cnt)$/;"	f
+outsl	include/x86/x86.h	/^outsl(int port, const void *addr, int cnt)$/;"	f
+outsw	include/x86/x86.h	/^outsw(int port, const void *addr, int cnt)$/;"	f
+outw	include/x86/x86.h	/^outw(int port, uint16_t data)$/;"	f
+p	include/x86/memory.h	/^	uint32_t p : 1;          \/\/ Present$/;"	m	struct:SegDesc
+pa2page	include/pmap.h	/^pa2page(physaddr_t pa)$/;"	f
+pad0	include/x86/memory.h	/^	uint32_t pad0             : 8;$/;"	m	struct:GateDescriptor
+paddr	include/boot.h	/^	unsigned int paddr;$/;"	m	struct:ProgramHeader
+paddr	include/x86/io.h	/^	unsigned int paddr;$/;"	m	struct:ProgramHeader
+page2kva	include/pmap.h	/^page2kva(struct PageInfo *pp)$/;"	f
+page2pa	include/pmap.h	/^page2pa(struct PageInfo *pp)$/;"	f
+palette	src/device/palette.c	/^static uint8_t palette[NR_PALETTE_ENTRY][3] = {$/;"	v	file:
+pcb	process.c	/^PCB pcb[NR_PCB];$/;"	v
+pcb_head	process.c	/^ListHead pcb_head;$/;"	v
+pd_base	include/mmu.h	/^	uint32_t pd_base;		\/\/ Base address$/;"	m	struct:Pseudodesc
+pd_lim	include/mmu.h	/^	uint16_t pd_lim;		\/\/ Limit$/;"	m	struct:Pseudodesc
+pde_t	include/memlayout.h	/^typedef uint32_t pde_t;$/;"	t
+phentsize	include/boot.h	/^	unsigned short phentsize;$/;"	m	struct:ELFHeader
+phentsize	include/x86/io.h	/^	unsigned short phentsize;$/;"	m	struct:ELFHeader
+phnum	include/boot.h	/^	unsigned short phnum;$/;"	m	struct:ELFHeader
+phnum	include/x86/io.h	/^	unsigned short phnum;$/;"	m	struct:ELFHeader
+phoff	include/boot.h	/^	unsigned int   phoff;$/;"	m	struct:ELFHeader
+phoff	include/x86/io.h	/^	unsigned int   phoff;$/;"	m	struct:ELFHeader
+physaddr_t	include/types.h	/^typedef uint32_t physaddr_t;$/;"	t
+pp_link	include/memlayout.h	/^	struct PageInfo *pp_link;$/;"	m	struct:PageInfo	typeref:struct:PageInfo::PageInfo
+pp_ref	include/memlayout.h	/^	uint16_t pp_ref;$/;"	m	struct:PageInfo
+ppn_t	include/types.h	/^typedef uint32_t ppn_t;$/;"	t
+prepare_buffer	lib/video.c	/^prepare_buffer(void) {$/;"	f
+present	include/x86/memory.h	/^	uint32_t present          : 1;$/;"	m	struct:GateDescriptor
+press_snake_key	src/keyboard.c	/^void press_snake_key(int scan_code)$/;"	f
+prev	include/list.h	/^	struct ListHead *prev, *next;$/;"	m	struct:ListHead	typeref:struct:ListHead::ListHead
 printk	lib/printk.c	/^printk(const char *ctl, ...) {$/;"	f
-query_key	game/keyboard.c	/^query_key(int index) {$/;"	f
-rand	lib/random.c	/^rand(void) {$/;"	f
-read_palette	device/palette.c	/^void read_palette() {$/;"	f
-real_fps	game/game.c	/^static int real_fps;$/;"	v	file:
-redraw_screen	game/draw.c	/^redraw_screen() {$/;"	f
-release_key	game/keyboard.c	/^release_key(int index) {$/;"	f
-seed	lib/random.c	/^static int seed = 0;$/;"	v	file:
-serial_idle	device/serial.c	/^serial_idle(void) {$/;"	f	file:
-serial_printc	device/serial.c	/^serial_printc(char ch) {$/;"	f
-set_fps	game/game.c	/^set_fps(int value) {$/;"	f
+privilege_level	include/x86/memory.h	/^	uint32_t privilege_level  : 2;$/;"	m	struct:GateDescriptor
+pte_t	include/memlayout.h	/^typedef uint32_t pte_t;$/;"	t
+query_key	src/keyboard.c	/^bool query_key(int index)$/;"	f
+rcr0	include/x86/x86.h	/^rcr0(void)$/;"	f
+rcr2	include/x86/x86.h	/^rcr2(void)$/;"	f
+rcr3	include/x86/x86.h	/^rcr3(void)$/;"	f
+rcr4	include/x86/x86.h	/^rcr4(void)$/;"	f
+read_ebp	include/x86/x86.h	/^read_ebp(void)$/;"	f
+read_eflags	include/x86/x86.h	/^read_eflags(void)$/;"	f
+read_esp	include/x86/x86.h	/^read_esp(void)$/;"	f
+read_palette	src/device/palette.c	/^void read_palette() {$/;"	f
+read_tsc	include/x86/x86.h	/^read_tsc(void)$/;"	f
+readsect	process/load.c	/^readsect(void *dst, int offset) {$/;"	f
+readseg	process/load.c	/^readseg(unsigned char *pa, int count, int offset) {$/;"	f
+relocated	entry.S	/^relocated:$/;"	l
+rsv1	include/x86/memory.h	/^	uint32_t rsv1 : 1;       \/\/ Reserved$/;"	m	struct:SegDesc
+s	include/x86/memory.h	/^	uint32_t s : 1;          \/\/ 0 = system, 1 = application$/;"	m	struct:SegDesc
+save_idt	include/x86/cpu.h	/^save_idt(void *addr, uint32_t size) {$/;"	f
+sd_avl	include/mmu.h	/^	unsigned sd_avl : 1;        \/\/ Unused (available for software use)$/;"	m	struct:Segdesc
+sd_base_15_0	include/mmu.h	/^	unsigned sd_base_15_0 : 16; \/\/ Low bits of segment base address$/;"	m	struct:Segdesc
+sd_base_23_16	include/mmu.h	/^	unsigned sd_base_23_16 : 8; \/\/ Middle bits of segment base address$/;"	m	struct:Segdesc
+sd_base_31_24	include/mmu.h	/^	unsigned sd_base_31_24 : 8; \/\/ High bits of segment base address$/;"	m	struct:Segdesc
+sd_db	include/mmu.h	/^	unsigned sd_db : 1;         \/\/ 0 = 16-bit segment, 1 = 32-bit segment$/;"	m	struct:Segdesc
+sd_dpl	include/mmu.h	/^	unsigned sd_dpl : 2;        \/\/ Descriptor Privilege Level$/;"	m	struct:Segdesc
+sd_g	include/mmu.h	/^	unsigned sd_g : 1;          \/\/ Granularity: limit scaled by 4K when set$/;"	m	struct:Segdesc
+sd_lim_15_0	include/mmu.h	/^	unsigned sd_lim_15_0 : 16;  \/\/ Low bits of segment limit$/;"	m	struct:Segdesc
+sd_lim_19_16	include/mmu.h	/^	unsigned sd_lim_19_16 : 4;  \/\/ High bits of segment limit$/;"	m	struct:Segdesc
+sd_p	include/mmu.h	/^	unsigned sd_p : 1;          \/\/ Present$/;"	m	struct:Segdesc
+sd_rsv1	include/mmu.h	/^	unsigned sd_rsv1 : 1;       \/\/ Reserved$/;"	m	struct:Segdesc
+sd_s	include/mmu.h	/^	unsigned sd_s : 1;          \/\/ 0 = system, 1 = application$/;"	m	struct:Segdesc
+sd_type	include/mmu.h	/^	unsigned sd_type : 4;       \/\/ Segment type (see STS_ constants)$/;"	m	struct:Segdesc
+segment	include/x86/memory.h	/^	uint32_t segment          : 16;$/;"	m	struct:GateDescriptor
+serial_idle	src/serial.c	/^serial_idle(void) {$/;"	f	file:
+serial_printc	src/serial.c	/^serial_printc(char ch) {$/;"	f
+set_gdt	include/x86/memory.h	/^set_gdt(SegDesc *gdt, uint32_t size) {$/;"	f
 set_intr	irq/idt.c	/^set_intr(struct GateDescriptor *ptr, uint32_t selector, uint32_t offset, uint32_t dpl) {$/;"	f	file:
 set_keyboard_intr_handler	irq/irq_handle.c	/^set_keyboard_intr_handler( void (*ptr)(int) ) {$/;"	f
 set_timer_intr_handler	irq/irq_handle.c	/^set_timer_intr_handler( void (*ptr)(void) ) {$/;"	f
 set_trap	irq/idt.c	/^set_trap(struct GateDescriptor *ptr, uint32_t selector, uint32_t offset, uint32_t dpl) {$/;"	f	file:
-srand	lib/random.c	/^srand(int s) {$/;"	f
+set_tss_esp0	kvm.c	/^void set_tss_esp0(int esp)$/;"	f
+shentsize	include/boot.h	/^	unsigned short shentsize;$/;"	m	struct:ELFHeader
+shentsize	include/x86/io.h	/^	unsigned short shentsize;$/;"	m	struct:ELFHeader
+shnum	include/boot.h	/^	unsigned short shnum;$/;"	m	struct:ELFHeader
+shnum	include/x86/io.h	/^	unsigned short shnum;$/;"	m	struct:ELFHeader
+shoff	include/boot.h	/^	unsigned int   shoff;$/;"	m	struct:ELFHeader
+shoff	include/x86/io.h	/^	unsigned int   shoff;$/;"	m	struct:ELFHeader
+shstrndx	include/boot.h	/^	unsigned short shstrndx;$/;"	m	struct:ELFHeader
+shstrndx	include/x86/io.h	/^	unsigned short shstrndx;$/;"	m	struct:ELFHeader
+size_t	include/types.h	/^typedef uint32_t size_t;$/;"	t
+snake_code	src/keyboard.c	/^static int snake_code[]=$/;"	v	file:
+snake_pressed	src/keyboard.c	/^static bool snake_pressed[4];$/;"	v	file:
+spin	entry.S	/^spin:	jmp	spin$/;"	l
+ss	include/x86/memory.h	/^	    uint32_t esp, ss;$/;"	m	struct:TrapFrame
+ss	include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
+ss0	include/x86/memory.h	/^	uint32_t ss0;          \/\/ after an increase in privilege level$/;"	m	struct:TSS
+ss1	include/x86/memory.h	/^                uint32_t esp1,ss1,esp2,ss2;$/;"	m	struct:TSS::__anon3::__anon5
+ss2	include/x86/memory.h	/^                uint32_t esp1,ss1,esp2,ss2;$/;"	m	struct:TSS::__anon3::__anon5
+ssize_t	include/types.h	/^typedef int32_t ssize_t;$/;"	t
+stack	src/main.c	/^static uint8_t stack[8196];$/;"	v	file:
 strcpy	lib/string.c	/^void strcpy(char *d, const char *s) {$/;"	f
 strlen	lib/string.c	/^size_t strlen(const char *str) {$/;"	f
-tick	game/game.c	/^volatile int tick = 0;$/;"	v
-timer_event	game/game.c	/^timer_event(void) {$/;"	f
-update_keypress	game/effect.c	/^update_keypress(void) {$/;"	f
-update_letter_pos	game/effect.c	/^update_letter_pos(void) {$/;"	f
-vbuf	device/video.c	/^static uint8_t vbuf[SCR_SIZE];$/;"	v	file:
-vfprintf	lib/printk.c	/^void vfprintf(void (*printer)(char), const char *ctl, void **args) {$/;"	f
-vmem	device/video.c	/^uint8_t *vmem = VMEM_ADDR;$/;"	v
-vref	device/video.c	/^static uint8_t vref[SCR_SIZE];$/;"	v	file:
-write_palette	device/palette.c	/^void write_palette() {$/;"	f
+sys_draw	syscall/do_syscall.c	/^static void sys_draw(struct TrapFrame *tf) {$/;"	f	file:
+sys_keyboard	syscall/do_syscall.c	/^static void sys_keyboard(struct TrapFrame *tf)$/;"	f	file:
+sys_write	syscall/do_syscall.c	/^static void sys_write(struct TrapFrame *tf) {$/;"	f	file:
+system	include/x86/memory.h	/^	uint32_t system           : 1;$/;"	m	struct:GateDescriptor
+tf	include/process.h	/^	TrapFrame tf;$/;"	m	struct:PCB
+tick	src/time.c	/^volatile int tick = 0;$/;"	v
+timer_event	src/time.c	/^timer_event(void) {$/;"	f
+tlbflush	include/x86/x86.h	/^tlbflush(void)$/;"	f
+true	include/types.h	/^enum { false, true };$/;"	e	enum:__anon6
+ts_cr3	include/mmu.h	/^	physaddr_t ts_cr3;	\/\/ Page directory base$/;"	m	struct:Taskstate
+ts_cs	include/mmu.h	/^	uint16_t ts_cs;$/;"	m	struct:Taskstate
+ts_ds	include/mmu.h	/^	uint16_t ts_ds;$/;"	m	struct:Taskstate
+ts_eax	include/mmu.h	/^	uint32_t ts_eax;	\/\/ More saved state (registers)$/;"	m	struct:Taskstate
+ts_ebp	include/mmu.h	/^	uintptr_t ts_ebp;$/;"	m	struct:Taskstate
+ts_ebx	include/mmu.h	/^	uint32_t ts_ebx;$/;"	m	struct:Taskstate
+ts_ecx	include/mmu.h	/^	uint32_t ts_ecx;$/;"	m	struct:Taskstate
+ts_edi	include/mmu.h	/^	uint32_t ts_edi;$/;"	m	struct:Taskstate
+ts_edx	include/mmu.h	/^	uint32_t ts_edx;$/;"	m	struct:Taskstate
+ts_eflags	include/mmu.h	/^	uint32_t ts_eflags;$/;"	m	struct:Taskstate
+ts_eip	include/mmu.h	/^	uintptr_t ts_eip;	\/\/ Saved state from last task switch$/;"	m	struct:Taskstate
+ts_es	include/mmu.h	/^	uint16_t ts_es;		\/\/ Even more saved state (segment selectors)$/;"	m	struct:Taskstate
+ts_esi	include/mmu.h	/^	uint32_t ts_esi;$/;"	m	struct:Taskstate
+ts_esp	include/mmu.h	/^	uintptr_t ts_esp;$/;"	m	struct:Taskstate
+ts_esp0	include/mmu.h	/^	uintptr_t ts_esp0;	\/\/ Stack pointers and segment selectors$/;"	m	struct:Taskstate
+ts_esp1	include/mmu.h	/^	uintptr_t ts_esp1;$/;"	m	struct:Taskstate
+ts_esp2	include/mmu.h	/^	uintptr_t ts_esp2;$/;"	m	struct:Taskstate
+ts_fs	include/mmu.h	/^	uint16_t ts_fs;$/;"	m	struct:Taskstate
+ts_gs	include/mmu.h	/^	uint16_t ts_gs;$/;"	m	struct:Taskstate
+ts_iomb	include/mmu.h	/^	uint16_t ts_iomb;	\/\/ I\/O map base address$/;"	m	struct:Taskstate
+ts_ldt	include/mmu.h	/^	uint16_t ts_ldt;$/;"	m	struct:Taskstate
+ts_link	include/mmu.h	/^	uint32_t ts_link;	\/\/ Old ts selector$/;"	m	struct:Taskstate
+ts_padding1	include/mmu.h	/^	uint16_t ts_padding1;$/;"	m	struct:Taskstate
+ts_padding10	include/mmu.h	/^	uint16_t ts_padding10;$/;"	m	struct:Taskstate
+ts_padding2	include/mmu.h	/^	uint16_t ts_padding2;$/;"	m	struct:Taskstate
+ts_padding3	include/mmu.h	/^	uint16_t ts_padding3;$/;"	m	struct:Taskstate
+ts_padding4	include/mmu.h	/^	uint16_t ts_padding4;$/;"	m	struct:Taskstate
+ts_padding5	include/mmu.h	/^	uint16_t ts_padding5;$/;"	m	struct:Taskstate
+ts_padding6	include/mmu.h	/^	uint16_t ts_padding6;$/;"	m	struct:Taskstate
+ts_padding7	include/mmu.h	/^	uint16_t ts_padding7;$/;"	m	struct:Taskstate
+ts_padding8	include/mmu.h	/^	uint16_t ts_padding8;$/;"	m	struct:Taskstate
+ts_padding9	include/mmu.h	/^	uint16_t ts_padding9;$/;"	m	struct:Taskstate
+ts_ss	include/mmu.h	/^	uint16_t ts_ss;$/;"	m	struct:Taskstate
+ts_ss0	include/mmu.h	/^	uint16_t ts_ss0;	\/\/   after an increase in privilege level$/;"	m	struct:Taskstate
+ts_ss1	include/mmu.h	/^	uint16_t ts_ss1;$/;"	m	struct:Taskstate
+ts_ss2	include/mmu.h	/^	uint16_t ts_ss2;$/;"	m	struct:Taskstate
+ts_t	include/mmu.h	/^	uint16_t ts_t;		\/\/ Trap on task switch$/;"	m	struct:Taskstate
+tss	kvm.c	/^TSS tss;$/;"	v
+type	include/boot.h	/^	unsigned int type;$/;"	m	struct:ProgramHeader
+type	include/boot.h	/^	unsigned short type;$/;"	m	struct:ELFHeader
+type	include/x86/io.h	/^	unsigned int type;$/;"	m	struct:ProgramHeader
+type	include/x86/io.h	/^	unsigned short type;$/;"	m	struct:ELFHeader
+type	include/x86/memory.h	/^	uint32_t type             : 4;$/;"	m	struct:GateDescriptor
+type	include/x86/memory.h	/^	uint32_t type : 4;       \/\/ Segment type (see STS_ constants)$/;"	m	struct:SegDesc
+uint16_t	include/types.h	/^typedef unsigned short uint16_t;$/;"	t
+uint32_t	include/types.h	/^typedef unsigned int uint32_t;$/;"	t
+uint64_t	include/types.h	/^typedef unsigned long long uint64_t;$/;"	t
+uint8_t	include/types.h	/^typedef unsigned char uint8_t;$/;"	t
+uintptr_t	include/types.h	/^typedef uint32_t uintptr_t;$/;"	t
+unused_pcb	process.c	/^ListHead unused_pcb;$/;"	v
+v_buf	lib/video.c	/^static uint8_t v_buf[320*200];$/;"	v	file:
+va_arg	include/stdarg.h	9;"	d
+va_end	include/stdarg.h	11;"	d
+va_list	include/stdarg.h	/^typedef __builtin_va_list va_list;$/;"	t
+va_start	include/stdarg.h	7;"	d
+vaddr	include/boot.h	/^	unsigned int vaddr;$/;"	m	struct:ProgramHeader
+vaddr	include/x86/io.h	/^	unsigned int vaddr;$/;"	m	struct:ProgramHeader
+vbuf	lib/video.c	/^static uint8_t vbuf[SCR_SIZE];$/;"	v	file:
+version	include/boot.h	/^	unsigned int   version;$/;"	m	struct:ELFHeader
+version	include/x86/io.h	/^	unsigned int   version;$/;"	m	struct:ELFHeader
+vfprintf	lib/printk.c	/^int vfprintf(void (*printer)(char), const char *ctl, void **args) {$/;"	f
+vmem	lib/video.c	/^uint8_t *vmem = v_buf;$/;"	v
+vref	lib/video.c	/^static uint8_t vref[SCR_SIZE];$/;"	v	file:
+wait_for_interrupt	include/x86/cpu.h	/^wait_for_interrupt() {$/;"	f
+waitdisk	process/load.c	/^waitdisk(void) {$/;"	f
+write_eflags	include/x86/x86.h	/^write_eflags(uint32_t eflags)$/;"	f
+write_palette	src/device/palette.c	/^void write_palette() {$/;"	f
+xchg	include/x86/x86.h	/^xchg(volatile uint32_t *addr, uint32_t newval)$/;"	f

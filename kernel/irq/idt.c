@@ -50,7 +50,7 @@ void vec11();
 void vec12();
 void vec13();
 void vecsys();
-
+void irq14();
 void irq_empty();
 
 void init_idt() {
@@ -80,7 +80,7 @@ void init_idt() {
 	/* 设置外部中断的处理 */
 	set_intr(idt + 32, SEG_KERNEL_CODE, (uint32_t)irq0, DPL_KERNEL);
         set_intr(idt+32 + 1,SEG_KERNEL_CODE, (uint32_t)irq1, DPL_KERNEL); 
-	
+        set_intr(idt+46,SEG_KERNEL_CODE,(uint32_t)irq14,DPL_KERNEL);	
 	/* 写入IDT */
 	save_idt(idt, sizeof(idt));
 }

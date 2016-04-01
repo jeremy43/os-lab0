@@ -8,50 +8,74 @@
 
 //#include "../include/boot.h"
 #include "../include/x86/x86.h"
-#include"../include/process.h"
+#include "../include/process.h"
+#include "../include/memlayout.h"
+#include "../include/memory.h"
+#include "../include/string.h"
 #define FL_IF 0x00000200
 #define SECTSIZE 512
-void set_tss_esp0(int);
 #define GDT_ENTRY(n)    ((n) << 3)
 void readseg(unsigned char *, int, int);
-
+void set_tss_esp0(int);
+//void mm_malloc(pde_t *pgdir, void *va, unsigned long size);
 void
 load(void) {
-	PCB*current=new_process();
+	PCB* current=new_process();
 	struct ELFHeader *elf;
 	struct ProgramHeader *ph, *eph;
-	unsigned char* pa, *i;
+	unsigned char *pa, *i;
 
 	/* 因为引导扇区只有512字节，我们设置了堆栈从0x8000向下生长。
 	 * 我们需要一块连续的空间来容纳ELF文件头，因此选定了0x8000。 */
-	elf = (struct ELFHeader*)0x8000;
-
+       // elf = (struct ELFHeader*)0x08000;
 	/* 读入ELF文件头 */
-	readseg((unsigned char*)elf, 4096, 1024*100);
-
+	uint8_t temp[4096];
+	elf=(void*)temp;
+	readseg((unsigned char*)elf, 4096, 100*1024);
+	printk("fuck\n");
+	//        memcpy(game_pgdir, entry_pgdir, 4096);
+	//lcr3(((uintptr_t)game_pgdir) - KERNBASE);
 	/* 把每个program segement依次读入内存 */
 	ph = (struct ProgramHeader*)((char *)elf + elf->phoff);
 	eph = ph + elf->phnum;
-	for(; ph < eph; ph ++) {
-		pa = (unsigned char*)ph->paddr; /* 获取物理地址 */
-		readseg(pa, ph->filesz, ph->off+1024*100); /* 读入数据 */
+	
+/*	int p_flag[2]={0xa,0x2};
+	int cnt=-1;
+	int va;*/
+	for(; ph < eph; ph ++)
+       if(ph->type==1)	{
+		pa = (unsigned char* )ph->paddr; /* 获取虚拟地址 */
+//		cnt++;
+//		tmp[cnt]=mm_malloc(va,ph->memsz,p_flag[cnt]);
+		//printk("die\n");
+//		boot_map_region(current->updir, pa, ph->memsz, PTE_W | PTE_U);
+//	         pa = (unsigned char*)tmp[cnt]->base;
+		readseg(pa, ph->filesz, ph->off+ 1024*100); /* 读入数据 */
 		for (i = pa + ph->filesz; i < pa + ph->memsz; *i ++ = 0);
 	}
-         uint32_t eflags=read_eflags();
-	 TrapFrame *tf=&current->tf;
-	 set_tss_esp0((int)current->kstack+KSTACK_SIZE);
-	 tf->eip=elf->entry;
-	   tf->cs = GDT_ENTRY(1);
-	   tf->eflags=eflags | FL_IF;
-	   tf->ss = GDT_ENTRY(2);
-	   tf->esp = 0x4000000;
-	   asm volatile("movl %0, %%esp" : :"a"((int)tf));
-	   asm volatile("popa");
-	   asm volatile("addl %0, %%esp" : :"a"(8));
-	   asm volatile("mov 24(%esp), %eax\n\t"				                    "movl %eax, %ds\n\t"				                              "movl %eax, %es\n\t"			                             "movl %eax, %fs\n\t"
-			"movl %eax, %gs\n\t");
-	                 asm volatile("iret");
-	((void(*)(void))elf->entry)();
+	//enable_interrupt();
+	printk("LOAD\n");
+//	((void(*)(void))elf->entry)();
+
+	 uint32_t eflags=read_eflags();
+	TrapFrame *tf=&current->tf;
+	set_tss_esp0((int)current->kstack+KSTACK_SIZE);
+       tf->eip=elf->entry;
+        tf->cs = GDT_ENTRY(1);
+	tf->eflags=eflags | FL_IF;
+	tf->ss = GDT_ENTRY(2);
+	printk("&&&\n");
+	tf->esp = 0x00300000;
+//	 tf->esp = 0x2000000 - tmp[1]->base + va;
+         asm volatile("movl %0, %%esp" : :"a"((int)tf));
+         asm volatile("popa");
+         asm volatile("addl %0, %%esp" : :"a"(8));
+
+	 asm volatile("mov 24(%esp), %eax\n\t"				    
+			 "movl %eax, %ds\n\t"				                              "movl %eax, %es\n\t"			                             "movl %eax, %fs\n\t"
+  			 "movl %eax, %gs\n\t");
+	           asm volatile("iret");
+           printk("563\n");
 }
 
 void
@@ -70,7 +94,6 @@ readsect(void *dst, int offset) {
 	out_byte(0x1F5, offset >> 16);
 	out_byte(0x1F6, (offset >> 24) | 0xE0);
 	out_byte(0x1F7, 0x20);
-
 	waitdisk();
 	for (i = 0; i < SECTSIZE / 4; i ++) {
 		((int *)dst)[i] = in_long(0x1F0);
