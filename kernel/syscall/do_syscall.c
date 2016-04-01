@@ -38,7 +38,11 @@ static void sys_keyboard(struct TrapFrame *tf)
 	int i;
 	bool * key = (bool *)tf->ebx;
 	for(i = 0;i < 4; ++ i)
-	   if( query_key(i)) key[i]=1;
+	   if( query_key(i))
+	   {
+		   key[i]=1;
+		   printk("HH\n");
+	   }
 	   else key[i]=0;
 }
 
