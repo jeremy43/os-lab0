@@ -129,6 +129,11 @@ segment *get_free_seg()
 	list_add_after(&used_seg,new_seg);
 	return list_entry(new_seg,segment,list);
 
+
+}
+uint32_t get_gdt_off(uint32_t id)
+{
+	return gdt[id].base_15_0 + (gdt[id].base_23_16 << 16) + (gdt[id].base_31_24 << 24);
 }
 /*void
 init_kernel_segment(void) {

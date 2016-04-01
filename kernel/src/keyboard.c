@@ -26,7 +26,6 @@ void press_snake_key(int scan_code)
 
 	//		if((snake_code[i] & 0x80) != 0) snake_pressed[i] = FALSE; else
 	       	snake_pressed[i]=TRUE;
-			printk("**\n");
 		}
 		else snake_pressed[i]=FALSE;
 	}
@@ -50,7 +49,12 @@ query_key(int index) {
 bool query_key(int index)
 {
 	assert(0<=index&& index<4);
-	return snake_pressed[index];
+	if( snake_pressed[index])
+	{
+		snake_pressed[index]=0;
+		return 1;
+	}
+	else return 0;
 }
 /* key_code保存了上一次键盘事件中的扫描码 */
 static volatile int key_code = 0;

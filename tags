@@ -42,12 +42,12 @@ ELFHeader	kernel/include/x86/io.h	/^struct ELFHeader {$/;"	s
 EXTPHYSMEM	kernel/include/memlayout.h	93;"	d
 FALSE	app/include/const.h	5;"	d
 FALSE	kernel/include/const.h	5;"	d
-FALSE	kernel/include/types.h	/^enum{FALSE,TRUE};$/;"	e	enum:__anon7
+FALSE	kernel/include/types.h	/^enum{FALSE,TRUE};$/;"	e	enum:__anon8
 FEC_PR	kernel/include/mmu.h	123;"	d
 FEC_U	kernel/include/mmu.h	125;"	d
 FEC_WR	kernel/include/mmu.h	124;"	d
 FLOOR	app/lib/effect.c	/^static int FLOOR;$/;"	v	file:
-FLOOR_NUMBER	app/include/game.h	/^}FLOOR_NUMBER;$/;"	t	typeref:struct:__anon9
+FLOOR_NUMBER	app/include/game.h	/^}FLOOR_NUMBER;$/;"	t	typeref:struct:__anon10
 FL_AC	kernel/include/mmu.h	117;"	d
 FL_AF	kernel/include/mmu.h	102;"	d
 FL_CF	kernel/include/mmu.h	100;"	d
@@ -104,6 +104,9 @@ KERNBASE	kernel/include/memlayout.h	87;"	d
 KERNEL_CFILES	Makefile	/^KERNEL_CFILES = $(shell find kernel\/ -name "*.c")$/;"	m
 KERNEL_SFILES	Makefile	/^KERNEL_SFILES = $(shell find kernel\/ -name "*.S")$/;"	m
 KERN_INC_PRECESS_H	kernel/include/process.h	2;"	d
+KMEM	kernel/include/memory.h	17;"	d
+KOFFSET	kernel/include/memory.h	10;"	d
+KOFFSET	kernel/include/memory.h	7;"	d
 KSEL	kernel/include/x86/memory.h	29;"	d
 KSTACKTOP	kernel/include/memlayout.h	96;"	d
 KSTACK_SIZE	kernel/include/process.h	8;"	d
@@ -121,6 +124,8 @@ LINKLIST_IMPL	kernel/include/adt/linklist.h	43;"	d
 ListHead	kernel/include/list.h	/^struct ListHead {$/;"	s
 ListHead	kernel/include/list.h	/^typedef struct ListHead ListHead;$/;"	t	typeref:struct:ListHead
 MAX	kernel/include/types.h	49;"	d
+MAX_MEM	kernel/include/memory.h	8;"	d
+MAX_MEM	kernel/memory/memory.c	11;"	d	file:
 MIN	kernel/include/types.h	43;"	d
 MMIOBASE	kernel/include/memlayout.h	102;"	d
 MMIOLIM	kernel/include/memlayout.h	101;"	d
@@ -153,6 +158,7 @@ PGNUM	kernel/include/mmu.h	30;"	d
 PGOFF	kernel/include/mmu.h	39;"	d
 PGSHIFT	kernel/include/mmu.h	49;"	d
 PGSIZE	kernel/include/mmu.h	48;"	d
+PHY_MEM	kernel/include/memory.h	20;"	d
 PORT_PIC_MASTER	kernel/irq/i8259.c	3;"	d	file:
 PORT_PIC_SLAVE	kernel/irq/i8259.c	4;"	d	file:
 PTE_A	kernel/include/mmu.h	63;"	d
@@ -203,9 +209,11 @@ SEG_KERNEL_DATA	kernel/include/x86/memory.h	8;"	d
 SEG_NULL	kernel/include/mmu.h	139;"	d
 SEG_NULL	kernel/include/mmu.h	168;"	d
 SEG_NULLASM	boot/asm.h	5;"	d
+SEG_SIZE	kernel/memory/memory.c	10;"	d	file:
 SEG_TSS	kernel/include/x86/memory.h	26;"	d
 SEG_UCODE	kernel/include/x86/memory.h	24;"	d
 SEG_UDATA	kernel/include/x86/memory.h	25;"	d
+SELECTOR_USER	kernel/kvm.c	5;"	d	file:
 SERIAL_PORT	kernel/src/serial.c	3;"	d	file:
 SETCALLGATE	kernel/include/mmu.h	296;"	d
 SETGATE	kernel/include/mmu.h	282;"	d
@@ -237,13 +245,13 @@ STS_TG	kernel/include/mmu.h	196;"	d
 STS_TG16	kernel/include/mmu.h	198;"	d
 STS_TG32	kernel/include/mmu.h	203;"	d
 STS_TG32	kernel/include/x86/memory.h	18;"	d
-SYS_draw	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon8	file:
+SYS_draw	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon9	file:
 SYS_draw	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
-SYS_keyboard1	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon8	file:
+SYS_keyboard1	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon9	file:
 SYS_keyboard1	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
-SYS_time1	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon8	file:
+SYS_time1	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon9	file:
 SYS_time1	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
-SYS_write1	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon8	file:
+SYS_write1	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon9	file:
 SYS_write1	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
 SegDesc	kernel/include/x86/memory.h	/^struct SegDesc {$/;"	s
 SegDesc	kernel/include/x86/memory.h	/^typedef struct SegDesc SegDesc;$/;"	t	typeref:struct:SegDesc
@@ -252,7 +260,7 @@ TIMER_PORT	kernel/src/device/timer.c	6;"	d	file:
 TRAP_GATE_32	kernel/irq/idt.c	4;"	d	file:
 TRUE	app/include/const.h	4;"	d
 TRUE	kernel/include/const.h	4;"	d
-TRUE	kernel/include/types.h	/^enum{FALSE,TRUE};$/;"	e	enum:__anon7
+TRUE	kernel/include/types.h	/^enum{FALSE,TRUE};$/;"	e	enum:__anon8
 TSS	kernel/include/x86/memory.h	/^struct TSS {$/;"	s
 TSS	kernel/include/x86/memory.h	/^typedef struct TSS TSS;$/;"	t	typeref:struct:TSS
 Taskstate	kernel/include/mmu.h	/^struct Taskstate {$/;"	s
@@ -292,6 +300,7 @@ __IRQ_H__	kernel/include/irq.h	2;"	d
 __LINKLIST_H__	app/include/adt/linklist.h	2;"	d
 __LINKLIST_H__	kernel/include/adt/linklist.h	2;"	d
 __LIST_H__	kernel/include/list.h	2;"	d
+__MEMORY_H__	kernel/include/memory.h	2;"	d
 __PALETTE_H__	app/include/device/palette.h	2;"	d
 __PALETTE_H__	kernel/include/device/palette.h	2;"	d
 __STRING_H__	app/include/string.h	2;"	d
@@ -323,6 +332,7 @@ assert	app/include/assert.h	7;"	d
 assert	app/lib/assert.h	7;"	d
 assert	kernel/include/assert.h	7;"	d
 avl	kernel/include/x86/memory.h	/^	uint32_t avl : 1;        \/\/ Unused (available for software use)$/;"	m	struct:SegDesc
+base	kernel/include/memory.h	/^	uint32_t base,limit,gdt;$/;"	m	struct:__anon6
 base_15_0	kernel/include/x86/memory.h	/^	uint32_t base_15_0 : 16; \/\/ Low bits of segment base address$/;"	m	struct:SegDesc
 base_23_16	kernel/include/x86/memory.h	/^	uint32_t base_23_16 : 8; \/\/ Middle bits of segment base address$/;"	m	struct:SegDesc
 base_31_24	kernel/include/x86/memory.h	/^	uint32_t base_31_24 : 8; \/\/ High bits of segment base address$/;"	m	struct:SegDesc
@@ -361,8 +371,8 @@ door	app/lib/draw.c	5;"	d	file:
 door	app/lib/effect.c	8;"	d	file:
 down	app/lib/draw.c	9;"	d	file:
 down	app/lib/effect.c	12;"	d	file:
-down_x	app/include/game.h	/^	int down_x;$/;"	m	struct:__anon9
-down_y	app/include/game.h	/^	int down_y;$/;"	m	struct:__anon9
+down_x	app/include/game.h	/^	int down_x;$/;"	m	struct:__anon10
+down_y	app/include/game.h	/^	int down_y;$/;"	m	struct:__anon10
 dpl	kernel/include/x86/memory.h	/^	uint32_t dpl : 2;        \/\/ Descriptor Privilege Level$/;"	m	struct:SegDesc
 draw_aixin	app/device/video.c	/^draw_aixin(int x,int y,int color)$/;"	f
 draw_bottle	app/device/video.c	/^draw_bottle(int x,int y)$/;"	f
@@ -430,7 +440,7 @@ esp0	kernel/include/x86/memory.h	/^	uint32_t esp0;         \/\/ Ring 0 Stack poi
 esp1	kernel/include/x86/memory.h	/^                uint32_t esp1,ss1,esp2,ss2;$/;"	m	struct:TSS::__anon3::__anon5
 esp2	kernel/include/x86/memory.h	/^                uint32_t esp1,ss1,esp2,ss2;$/;"	m	struct:TSS::__anon3::__anon5
 exist	app/include/game.h	/^	int exist;$/;"	v
-false	kernel/include/types.h	/^enum { false, true };$/;"	e	enum:__anon6
+false	kernel/include/types.h	/^enum { false, true };$/;"	e	enum:__anon7
 fhead	app/lib/effect.c	/^static food_t fhead=NULL;$/;"	v	file:
 filesz	boot/boot.h	/^	unsigned int filesz;$/;"	m	struct:ProgramHeader
 filesz	kernel/include/boot.h	/^	unsigned int filesz;$/;"	m	struct:ProgramHeader
@@ -444,6 +454,7 @@ flags	kernel/include/x86/io.h	/^	unsigned int flags;$/;"	m	struct:ProgramHeader
 floor_number	app/include/game.h	/^FLOOR_NUMBER floor_number[10];$/;"	v
 font8x8_basic	app/device/font.c	/^char font8x8_basic[128][8] = {$/;"	v
 font8x8_basic	kernel/include/device/font.h	/^char font8x8_basic[128][8] = {$/;"	v
+free_seg	kernel/memory/memory.c	/^ListHead free_seg;$/;"	v
 fs	kernel/include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
 fs	kernel/include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
 g	kernel/include/x86/memory.h	/^	uint32_t g : 1;          \/\/ Granularity: limit scaled by 4K when set$/;"	m	struct:SegDesc
@@ -457,16 +468,18 @@ gd_s	kernel/include/mmu.h	/^	unsigned gd_s : 1;           \/\/ must be 0 (system
 gd_sel	kernel/include/mmu.h	/^	unsigned gd_sel : 16;        \/\/ segment selector$/;"	m	struct:Gatedesc
 gd_type	kernel/include/mmu.h	/^	unsigned gd_type : 4;        \/\/ type(STS_{TG,IG32,TG32})$/;"	m	struct:Gatedesc
 gdt	boot/start.S	/^gdt:$/;"	l
+gdt	kernel/include/memory.h	/^	uint32_t base,limit,gdt;$/;"	m	struct:__anon6
 gdt	kernel/kvm.c	/^SegDesc gdt[NR_SEGMENTS];       \/\/ the new GDT$/;"	v
 gdtdesc	boot/start.S	/^gdtdesc:                           # GDT描述符$/;"	l
 get_floor	app/lib/effect.c	/^get_floor(void)$/;"	f
 get_fps	app/game.c	/^get_fps() {$/;"	f
+get_free_seg	kernel/memory/memory.c	/^segment *get_free_seg()$/;"	f
 get_hit	app/lib/effect.c	/^get_hit(void) {$/;"	f
 get_miss	app/lib/effect.c	/^get_miss(void) {$/;"	f
 get_time	kernel/src/time.c	/^int get_time(void)$/;"	f
 gs	kernel/include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
 gs	kernel/include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
-hhh	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon8	file:
+hhh	app/lib/syscall.c	/^enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon9	file:
 hhhh	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};$/;"	e	enum:__anon1	file:
 hit	app/lib/effect.c	/^static int hit = 0, miss = 0;$/;"	v	file:
 hlt	kernel/include/x86/x86.h	/^hlt(void)$/;"	f
@@ -485,6 +498,7 @@ init_intr	kernel/irq/i8259.c	/^init_intr(void) {$/;"	f
 init_map	app/lib/effect.c	/^void init_map(void)$/;"	f
 init_process	kernel/process.c	/^void init_process() {$/;"	f
 init_seg	kernel/kvm.c	/^init_seg() { \/\/ setup kernel segements$/;"	f
+init_segment	kernel/memory/memory.c	/^void init_segment()$/;"	f
 init_serial	kernel/src/serial.c	/^init_serial(void) {$/;"	f
 init_timer	kernel/src/device/timer.c	/^init_timer(void) {$/;"	f
 inl	kernel/include/x86/x86.h	/^inl(int port)$/;"	f
@@ -522,7 +536,9 @@ lgdt	kernel/include/x86/x86.h	/^lgdt(void *p)$/;"	f
 lidt	kernel/include/x86/x86.h	/^lidt(void *p)$/;"	f
 lim_15_0	kernel/include/x86/memory.h	/^	uint32_t lim_15_0 : 16;  \/\/ Low bits of segment limit$/;"	m	struct:SegDesc
 lim_19_16	kernel/include/x86/memory.h	/^	uint32_t lim_19_16 : 4;  \/\/ High bits of segment limit$/;"	m	struct:SegDesc
+limit	kernel/include/memory.h	/^	uint32_t base,limit,gdt;$/;"	m	struct:__anon6
 link	kernel/include/x86/memory.h	/^	uint32_t link;         \/\/ old ts selector$/;"	m	struct:TSS
+list	kernel/include/memory.h	/^	ListHead list;$/;"	m	struct:__anon6
 list	kernel/include/process.h	/^	ListHead list;$/;"	m	struct:PCB
 list_add	kernel/include/list.h	/^list_add(ListHead *prev, ListHead *next, ListHead *data) {$/;"	f
 list_add_after	kernel/include/list.h	/^list_add_after(ListHead *list, ListHead *data) {$/;"	f
@@ -543,6 +559,10 @@ magic	boot/boot.h	/^	unsigned int   magic;$/;"	m	struct:ELFHeader
 magic	kernel/include/boot.h	/^	unsigned int   magic;$/;"	m	struct:ELFHeader
 magic	kernel/include/x86/io.h	/^	unsigned int   magic;$/;"	m	struct:ELFHeader
 main_loop	app/game.c	/^main_loop(void) {$/;"	f
+make_invalid_pde	kernel/include/memory.h	22;"	d
+make_invalid_pte	kernel/include/memory.h	23;"	d
+make_pde	kernel/include/memory.h	24;"	d
+make_pte	kernel/include/memory.h	25;"	d
 map	app/include/game.h	/^int map[2][12][12];$/;"	v
 memcpy	app/lib/string.c	/^void memcpy(void *dest, const void *src, size_t size) {$/;"	f
 memcpy	kernel/lib/string.c	/^void memcpy(void *dest, const void *src, size_t size) {$/;"	f
@@ -552,6 +572,7 @@ memsz	boot/boot.h	/^	unsigned int memsz;$/;"	m	struct:ProgramHeader
 memsz	kernel/include/boot.h	/^	unsigned int memsz;$/;"	m	struct:ProgramHeader
 memsz	kernel/include/x86/io.h	/^	unsigned int memsz;$/;"	m	struct:ProgramHeader
 miss	app/lib/effect.c	/^static int hit = 0, miss = 0;$/;"	v	file:
+mm_malloc	kernel/memory/memory.c	/^segment* mm_malloc(uint32_t vaddr,uint32_t size,uint32_t type)$/;"	f
 monster	app/lib/draw.c	6;"	d	file:
 monster	app/lib/effect.c	9;"	d	file:
 monster_blood	app/include/game.h	28;"	d
@@ -580,6 +601,7 @@ outsw	kernel/include/x86/x86.h	/^outsw(int port, const void *addr, int cnt)$/;"	
 outw	kernel/include/x86/x86.h	/^outw(int port, uint16_t data)$/;"	f
 p	kernel/include/x86/memory.h	/^	uint32_t p : 1;          \/\/ Present$/;"	m	struct:SegDesc
 pa2page	kernel/include/pmap.h	/^pa2page(physaddr_t pa)$/;"	f
+pa_to_va	kernel/include/memory.h	14;"	d
 pad0	app/include/x86/memory.h	/^	uint32_t pad0             : 8;$/;"	m	struct:GateDescriptor
 pad0	kernel/include/x86/memory.h	/^	uint32_t pad0             : 8;$/;"	m	struct:GateDescriptor
 paddr	boot/boot.h	/^	unsigned int paddr;$/;"	m	struct:ProgramHeader
@@ -656,7 +678,9 @@ sd_rsv1	kernel/include/mmu.h	/^	unsigned sd_rsv1 : 1;       \/\/ Reserved$/;"	m	
 sd_s	kernel/include/mmu.h	/^	unsigned sd_s : 1;          \/\/ 0 = system, 1 = application$/;"	m	struct:Segdesc
 sd_type	kernel/include/mmu.h	/^	unsigned sd_type : 4;       \/\/ Segment type (see STS_ constants)$/;"	m	struct:Segdesc
 seed	app/lib/random.c	/^static int seed = 0;$/;"	v	file:
+seg	kernel/memory/memory.c	/^segment seg[MAX_MEM\/SEG_SIZE];$/;"	v
 segment	app/include/x86/memory.h	/^	uint32_t segment          : 16;$/;"	m	struct:GateDescriptor
+segment	kernel/include/memory.h	/^segment;$/;"	t	typeref:struct:__anon6
 segment	kernel/include/x86/memory.h	/^	uint32_t segment          : 16;$/;"	m	struct:GateDescriptor
 serial_idle	kernel/src/serial.c	/^serial_idle(void) {$/;"	f	file:
 serial_printc	kernel/src/serial.c	/^serial_printc(char ch) {$/;"	f
@@ -664,9 +688,10 @@ set_fps	app/game.c	/^set_fps(int value) {$/;"	f
 set_gdt	kernel/include/x86/memory.h	/^set_gdt(SegDesc *gdt, uint32_t size) {$/;"	f
 set_intr	kernel/irq/idt.c	/^set_intr(struct GateDescriptor *ptr, uint32_t selector, uint32_t offset, uint32_t dpl) {$/;"	f	file:
 set_keyboard_intr_handler	kernel/irq/irq_handle.c	/^set_keyboard_intr_handler( void (*ptr)(int) ) {$/;"	f
+set_segment	kernel/kvm.c	/^ set_segment(SegDesc *ptr, uint32_t pl, uint32_t type, uint32_t base, uint32_t limit) {$/;"	f
 set_timer_intr_handler	kernel/irq/irq_handle.c	/^set_timer_intr_handler( void (*ptr)(void) ) {$/;"	f
 set_trap	kernel/irq/idt.c	/^set_trap(struct GateDescriptor *ptr, uint32_t selector, uint32_t offset, uint32_t dpl) {$/;"	f	file:
-set_tss_esp0	kernel/kvm.c	/^void set_tss_esp0(int esp)$/;"	f
+set_tss_esp0	kernel/kvm.c	/^set_tss_esp0(int esp)$/;"	f
 shead	app/lib/effect.c	/^static snake_t shead=NULL;\/\/snake$/;"	v	file:
 shentsize	boot/boot.h	/^	unsigned short shentsize;$/;"	m	struct:ELFHeader
 shentsize	kernel/include/boot.h	/^	unsigned short shentsize;$/;"	m	struct:ELFHeader
@@ -713,7 +738,7 @@ tick	kernel/src/time.c	/^volatile int tick = 0;$/;"	v
 time	app/lib/syscall.c	/^int time(void)$/;"	f
 timer_event	kernel/src/time.c	/^timer_event(void) {$/;"	f
 tlbflush	kernel/include/x86/x86.h	/^tlbflush(void)$/;"	f
-true	kernel/include/types.h	/^enum { false, true };$/;"	e	enum:__anon6
+true	kernel/include/types.h	/^enum { false, true };$/;"	e	enum:__anon7
 ts_cr3	kernel/include/mmu.h	/^	physaddr_t ts_cr3;	\/\/ Page directory base$/;"	m	struct:Taskstate
 ts_cs	kernel/include/mmu.h	/^	uint16_t ts_cs;$/;"	m	struct:Taskstate
 ts_ds	kernel/include/mmu.h	/^	uint16_t ts_ds;$/;"	m	struct:Taskstate
@@ -772,11 +797,12 @@ uintptr_t	kernel/include/types.h	/^typedef uint32_t uintptr_t;$/;"	t
 unused_pcb	kernel/process.c	/^ListHead unused_pcb;$/;"	v
 up	app/lib/draw.c	8;"	d	file:
 up	app/lib/effect.c	11;"	d	file:
-up_x	app/include/game.h	/^	int up_x;$/;"	m	struct:__anon9
-up_y	app/include/game.h	/^	int up_y;$/;"	m	struct:__anon9
+up_x	app/include/game.h	/^	int up_x;$/;"	m	struct:__anon10
+up_y	app/include/game.h	/^	int up_y;$/;"	m	struct:__anon10
 update_kbd	app/lib/kbd.c	/^void update_kbd()$/;"	f
 update_keypress	app/lib/effect.c	/^void  update_keypress(void) {$/;"	f
 update_letter_pos	app/lib/effect.c	/^update_letter_pos(void) {$/;"	f
+used_seg	kernel/memory/memory.c	/^ListHead used_seg;$/;"	v
 v	app/include/game.h	/^	float v;$/;"	v
 v_buf	app/device/video.c	/^static uint8_t v_buf[320*200];$/;"	v	file:
 v_buf	kernel/lib/video.c	/^static uint8_t v_buf[320*200];$/;"	v	file:
@@ -784,6 +810,7 @@ va_arg	kernel/include/stdarg.h	9;"	d
 va_end	kernel/include/stdarg.h	11;"	d
 va_list	kernel/include/stdarg.h	/^typedef __builtin_va_list va_list;$/;"	t
 va_start	kernel/include/stdarg.h	7;"	d
+va_to_pa	kernel/include/memory.h	13;"	d
 vaddr	boot/boot.h	/^	unsigned int vaddr;$/;"	m	struct:ProgramHeader
 vaddr	kernel/include/boot.h	/^	unsigned int vaddr;$/;"	m	struct:ProgramHeader
 vaddr	kernel/include/x86/io.h	/^	unsigned int vaddr;$/;"	m	struct:ProgramHeader

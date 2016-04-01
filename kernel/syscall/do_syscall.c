@@ -9,6 +9,7 @@ enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};
 //void mm_brk(uint32_t);
 void serial_printc(char);
 bool query_key(int);
+uint32_t Get_seg_off();
 /*int fs_open(const char *pathname, int flags);
 int fs_read(int fd, void *buf, int len);
 int fs_write(int fd, void *buf, int len);
@@ -26,7 +27,7 @@ static void sys_write(struct TrapFrame *tf) {
 //#ifdef HAS_DEVICE
 	int i;
 	for(i = 0; i < tf->ecx; ++ i)
-		serial_printc(*(char *)(tf->ebx + i));
+		serial_printc(*(char *)(tf->ebx + Get_seg_off()+ i));
 //#else				
 //	asm volatile (".byte 0xd6" : : "a"(2), "c"(tf->ecx), "d"(tf->edx));
 //#endif
@@ -36,7 +37,7 @@ int get_time();
 static void sys_keyboard(struct TrapFrame *tf)
 {
 	int i;
-	bool * key = (bool *)tf->ebx;
+	int  * key = (int *)(tf->ebx+ Get_seg_off());
 	for(i = 0;i < 4; ++ i)
 	   if( query_key(i))
 	   {
@@ -47,7 +48,7 @@ static void sys_keyboard(struct TrapFrame *tf)
 }
 
 static void sys_draw(struct TrapFrame *tf) {
-	memcpy((void*)0xA0000, (void*)tf->ebx, 320*200);
+	memcpy((void*)0xA0000, (void*)tf->ebx+ Get_seg_off(), 320*200);
 }
 void do_syscall(struct TrapFrame *tf) {
 	switch(tf->eax) {

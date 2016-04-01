@@ -1,9 +1,9 @@
 #include "x86/x86.h"
 #include "game.h"
-
+#define SELECTOR_KERNEL(s) ( ((s) << 3) | 0 )
 static void (*do_timer)(void);
 static void (*do_keyboard)(int);
-
+uint32_t get_gdt_off(uint32_t);
 void
 set_timer_intr_handler( void (*ptr)(void) ) {
 	do_timer = ptr;
@@ -14,11 +14,20 @@ set_keyboard_intr_handler( void (*ptr)(int) ) {
 }
 
 void do_syscall(struct TrapFrame*);
-
+int offset;
 /* TrapFrame的定义在include/x86/memory.h
  * 请仔细理解这段程序的含义，这些内容将在后续的实验中被反复使用。 */
 void
 irq_handle(struct TrapFrame *tf) {
+	int seg_tmp;
+	asm volatile("movl %%es, %0" : "=a"(seg_tmp) :);
+	asm volatile("movl %0, %%es\n\t"
+			 "movl %0, %%ds\n\t"
+			  "movl %0, %%fs\n\t"
+			  "movl %0, %%gs\n\t"
+			   :
+			  : "a"(SELECTOR_KERNEL(SEG_KERNEL_DATA)));
+	 offset = get_gdt_off(seg_tmp >> 3);
 	if(tf->irq < 1000) {
 		if(tf->irq == -1) {
 			printk("%s, %d: Unhandled exception! %d\n", __FUNCTION__, __LINE__, tf->irq);
@@ -48,4 +57,6 @@ irq_handle(struct TrapFrame *tf) {
 		assert(0);
 	}
 }
-
+uint32_t Get_seg_off() {
+	 return offset;
+}
