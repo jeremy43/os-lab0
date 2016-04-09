@@ -12,6 +12,8 @@ typedef struct PCB{
 	TrapFrame tf;
 	uint8_t kstack[KSTACK_SIZE];
 //	struct PCB *next;
+	int pid;
+	int time;
 	ListHead list;
 } PCB;
 
