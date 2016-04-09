@@ -85,6 +85,7 @@ GD_UT	kernel/include/memlayout.h	17;"	d
 GateDescriptor	app/include/x86/memory.h	/^struct GateDescriptor {$/;"	s
 GateDescriptor	kernel/include/x86/memory.h	/^struct GateDescriptor {$/;"	s
 Gatedesc	kernel/include/mmu.h	/^struct Gatedesc {$/;"	s
+Get_seg_off	kernel/irq/irq_handle.c	/^uint32_t Get_seg_off() {$/;"	f
 HZ	app/include/device/timer.h	4;"	d
 HZ	kernel/include/device/timer.h	4;"	d
 INTERLACE	app/device/video.c	15;"	d	file:
@@ -213,6 +214,7 @@ SEG_SIZE	kernel/memory/memory.c	10;"	d	file:
 SEG_TSS	kernel/include/x86/memory.h	26;"	d
 SEG_UCODE	kernel/include/x86/memory.h	24;"	d
 SEG_UDATA	kernel/include/x86/memory.h	25;"	d
+SELECTOR_KERNEL	kernel/irq/irq_handle.c	3;"	d	file:
 SELECTOR_USER	kernel/kvm.c	5;"	d	file:
 SERIAL_PORT	kernel/src/serial.c	3;"	d	file:
 SETCALLGATE	kernel/include/mmu.h	296;"	d
@@ -256,6 +258,7 @@ SYS_write1	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_key
 SegDesc	kernel/include/x86/memory.h	/^struct SegDesc {$/;"	s
 SegDesc	kernel/include/x86/memory.h	/^typedef struct SegDesc SegDesc;$/;"	t	typeref:struct:SegDesc
 Segdesc	kernel/include/mmu.h	/^struct Segdesc {$/;"	s
+Sleep	kernel/process.c	/^void Sleep (PCB *l,uint32_t Time)$/;"	f
 TIMER_PORT	kernel/src/device/timer.c	6;"	d	file:
 TRAP_GATE_32	kernel/irq/idt.c	4;"	d	file:
 TRUE	app/include/const.h	4;"	d
@@ -316,6 +319,7 @@ __X86_IO_H__	app/include/x86/io.h	2;"	d
 __X86_IO_H__	kernel/include/x86/io.h	2;"	d
 __X86_MEMORY_H__	app/include/x86/memory.h	2;"	d
 __X86_MEMORY_H__	kernel/include/x86/memory.h	2;"	d
+__list_add	kernel/include/list.h	/^ static inline void __list_add(ListHead *new,  ListHead *prev, ListHead *next)$/;"	f
 __x86_H__	app/include/x86/x86.h	2;"	d
 _kaddr	kernel/include/pmap.h	/^_kaddr(const char *file, int line, physaddr_t pa)$/;"	f
 _paddr	kernel/include/pmap.h	/^_paddr(const char *file, int line, void *kva)$/;"	f
@@ -355,6 +359,7 @@ creat_new_food	app/lib/effect.c	/^void creat_new_food(void)$/;"	f
 creat_new_snake	app/lib/effect.c	/^void creat_new_snake(void)$/;"	f
 cs	kernel/include/x86/memory.h	/^	    uint32_t eip, cs, eflags;$/;"	m	struct:TrapFrame
 cs	kernel/include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
+current	kernel/process.c	/^PCB *current =&idle;$/;"	v
 db	kernel/include/x86/memory.h	/^	uint32_t db : 1;         \/\/ 0 = 16-bit segment, 1 = 32-bit segment$/;"	m	struct:SegDesc
 decide	app/lib/effect.c	/^bool decide(int x,int y)$/;"	f
 die	app/lib/effect.c	/^void die(void)$/;"	f
@@ -439,6 +444,7 @@ esp	kernel/include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax
 esp0	kernel/include/x86/memory.h	/^	uint32_t esp0;         \/\/ Ring 0 Stack pointer and segment selector$/;"	m	struct:TSS
 esp1	kernel/include/x86/memory.h	/^                uint32_t esp1,ss1,esp2,ss2;$/;"	m	struct:TSS::__anon3::__anon5
 esp2	kernel/include/x86/memory.h	/^                uint32_t esp1,ss1,esp2,ss2;$/;"	m	struct:TSS::__anon3::__anon5
+exe	kernel/process/load.c	/^void exe(TrapFrame *tf)$/;"	f
 exist	app/include/game.h	/^	int exist;$/;"	v
 false	kernel/include/types.h	/^enum { false, true };$/;"	e	enum:__anon7
 fhead	app/lib/effect.c	/^static food_t fhead=NULL;$/;"	v	file:
@@ -474,8 +480,10 @@ gdtdesc	boot/start.S	/^gdtdesc:                           # GDT描述符$/;"	l
 get_floor	app/lib/effect.c	/^get_floor(void)$/;"	f
 get_fps	app/game.c	/^get_fps() {$/;"	f
 get_free_seg	kernel/memory/memory.c	/^segment *get_free_seg()$/;"	f
+get_gdt_off	kernel/memory/memory.c	/^uint32_t get_gdt_off(uint32_t id)$/;"	f
 get_hit	app/lib/effect.c	/^get_hit(void) {$/;"	f
 get_miss	app/lib/effect.c	/^get_miss(void) {$/;"	f
+get_pcb	kernel/process.c	/^void get_pcb(PCB *c)$/;"	f
 get_time	kernel/src/time.c	/^int get_time(void)$/;"	f
 gs	kernel/include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
 gs	kernel/include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
@@ -484,6 +492,7 @@ hhhh	kernel/syscall/do_syscall.c	/^enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1
 hit	app/lib/effect.c	/^static int hit = 0, miss = 0;$/;"	v	file:
 hlt	kernel/include/x86/x86.h	/^hlt(void)$/;"	f
 icharacters	app/lib/effect.c	/^icharacters(void){$/;"	f
+idle	kernel/process.c	/^static PCB idle;$/;"	v	file:
 idt	kernel/irq/idt.c	/^struct GateDescriptor idt[NR_IRQ];$/;"	v	typeref:struct:GateDescriptor
 in_byte	app/include/x86/io.h	/^in_byte(uint16_t port) {$/;"	f
 in_byte	boot/boot.h	/^in_byte(short port) {$/;"	f
@@ -543,10 +552,11 @@ list	kernel/include/process.h	/^	ListHead list;$/;"	m	struct:PCB
 list_add	kernel/include/list.h	/^list_add(ListHead *prev, ListHead *next, ListHead *data) {$/;"	f
 list_add_after	kernel/include/list.h	/^list_add_after(ListHead *list, ListHead *data) {$/;"	f
 list_add_before	kernel/include/list.h	/^list_add_before(ListHead *list, ListHead *data) {$/;"	f
+list_add_tail	kernel/include/list.h	/^static inline void list_add_tail(ListHead *new, ListHead *head)$/;"	f
 list_del	kernel/include/list.h	/^list_del(ListHead *data) {$/;"	f
 list_empty	kernel/include/list.h	/^list_empty(ListHead *list) {$/;"	f
 list_entry	kernel/include/list.h	11;"	d
-list_foreach	kernel/include/list.h	56;"	d
+list_foreach	kernel/include/list.h	68;"	d
 list_init	kernel/include/list.h	/^list_init(ListHead *list) {$/;"	f
 lldt	kernel/include/x86/x86.h	/^lldt(uint16_t sel)$/;"	f
 load	kernel/process/load.c	/^load(void) {$/;"	f
@@ -578,10 +588,12 @@ monster	app/lib/effect.c	9;"	d	file:
 monster_blood	app/include/game.h	28;"	d
 new_process	kernel/process.c	/^PCB *new_process() {$/;"	f
 next	kernel/include/list.h	/^	struct ListHead *prev, *next;$/;"	m	struct:ListHead	typeref:struct:ListHead::
+number	kernel/process.c	/^static uint32_t number;$/;"	v	file:
 off	boot/boot.h	/^	unsigned int off;$/;"	m	struct:ProgramHeader
 off	kernel/include/boot.h	/^	unsigned int off;$/;"	m	struct:ProgramHeader
 off	kernel/include/x86/io.h	/^	unsigned int off;$/;"	m	struct:ProgramHeader
 off_t	kernel/include/types.h	/^typedef int32_t off_t;$/;"	t
+offset	kernel/irq/irq_handle.c	/^int offset;$/;"	v
 offset_15_0	app/include/x86/memory.h	/^	uint32_t offset_15_0      : 16;$/;"	m	struct:GateDescriptor
 offset_15_0	kernel/include/x86/memory.h	/^	uint32_t offset_15_0      : 16;$/;"	m	struct:GateDescriptor
 offset_31_16	app/include/x86/memory.h	/^	uint32_t offset_31_16     : 16;$/;"	m	struct:GateDescriptor
@@ -625,6 +637,7 @@ phoff	boot/boot.h	/^	unsigned int   phoff;$/;"	m	struct:ELFHeader
 phoff	kernel/include/boot.h	/^	unsigned int   phoff;$/;"	m	struct:ELFHeader
 phoff	kernel/include/x86/io.h	/^	unsigned int   phoff;$/;"	m	struct:ELFHeader
 physaddr_t	kernel/include/types.h	/^typedef uint32_t physaddr_t;$/;"	t
+pid	kernel/include/process.h	/^	int pid;$/;"	m	struct:PCB
 pp_link	kernel/include/memlayout.h	/^	struct PageInfo *pp_link;$/;"	m	struct:PageInfo	typeref:struct:PageInfo::PageInfo
 pp_ref	kernel/include/memlayout.h	/^	uint16_t pp_ref;$/;"	m	struct:PageInfo
 ppn_t	kernel/include/types.h	/^typedef uint32_t ppn_t;$/;"	t
@@ -655,6 +668,8 @@ readsect	boot/main.c	/^readsect(void *dst, int offset) {$/;"	f
 readsect	kernel/process/load.c	/^readsect(void *dst, int offset) {$/;"	f
 readseg	boot/main.c	/^readseg(unsigned char *pa, int count, int offset) {$/;"	f
 readseg	kernel/process/load.c	/^readseg(unsigned char *pa, int count, int offset) {$/;"	f
+ready	kernel/process.c	/^ListHead ready;$/;"	v
+ready_pcb	kernel/process.c	/^void ready_pcb(PCB *l)$/;"	f
 real_fps	app/game.c	/^static int real_fps;$/;"	v	file:
 realdraw	app/lib/syscall.c	/^void realdraw(uint8_t *buf) {$/;"	f
 redraw_screen	app/lib/draw.c	/^redraw_screen() {$/;"	f
@@ -664,6 +679,7 @@ rsv1	kernel/include/x86/memory.h	/^	uint32_t rsv1 : 1;       \/\/ Reserved$/;"	m
 s	kernel/include/x86/memory.h	/^	uint32_t s : 1;          \/\/ 0 = system, 1 = application$/;"	m	struct:SegDesc
 save_idt	app/include/x86/cpu.h	/^save_idt(void *addr, uint32_t size) {$/;"	f
 save_idt	kernel/include/x86/cpu.h	/^save_idt(void *addr, uint32_t size) {$/;"	f
+schedule	kernel/process.c	/^void schedule(void)$/;"	f
 sd_avl	kernel/include/mmu.h	/^	unsigned sd_avl : 1;        \/\/ Unused (available for software use)$/;"	m	struct:Segdesc
 sd_base_15_0	kernel/include/mmu.h	/^	unsigned sd_base_15_0 : 16; \/\/ Low bits of segment base address$/;"	m	struct:Segdesc
 sd_base_23_16	kernel/include/mmu.h	/^	unsigned sd_base_23_16 : 8; \/\/ Middle bits of segment base address$/;"	m	struct:Segdesc
@@ -707,6 +723,7 @@ shstrndx	kernel/include/boot.h	/^	unsigned short shstrndx;$/;"	m	struct:ELFHeade
 shstrndx	kernel/include/x86/io.h	/^	unsigned short shstrndx;$/;"	m	struct:ELFHeader
 size_t	app/include/types.h	/^typedef int32_t size_t;$/;"	t
 size_t	kernel/include/types.h	/^typedef uint32_t size_t;$/;"	t
+sleep	kernel/process.c	/^ListHead sleep;$/;"	v
 snake_code	kernel/src/keyboard.c	/^static int snake_code[]=$/;"	v	file:
 snake_pressed	app/lib/kbd.c	/^static bool snake_pressed[4];$/;"	v	file:
 snake_pressed	kernel/src/keyboard.c	/^static bool snake_pressed[4];$/;"	v	file:
@@ -736,6 +753,7 @@ text	app/include/game.h	/^	int text;$/;"	v
 tf	kernel/include/process.h	/^	TrapFrame tf;$/;"	m	struct:PCB
 tick	kernel/src/time.c	/^volatile int tick = 0;$/;"	v
 time	app/lib/syscall.c	/^int time(void)$/;"	f
+time	kernel/include/process.h	/^	int time;$/;"	m	struct:PCB
 timer_event	kernel/src/time.c	/^timer_event(void) {$/;"	f
 tlbflush	kernel/include/x86/x86.h	/^tlbflush(void)$/;"	f
 true	kernel/include/types.h	/^enum { false, true };$/;"	e	enum:__anon7

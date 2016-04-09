@@ -17,6 +17,7 @@
 #define GDT_ENTRY(n)    ((n) << 3)
 void readseg(unsigned char *, int, int);
 void set_tss_esp0(int);
+void get_pcb(PCB*);
 //void mm_malloc(pde_t *pgdir, void *va, unsigned long size);
 segment* mm_malloc(uint32_t,uint32_t, uint32_t);
 void
@@ -67,8 +68,12 @@ load(void) {
 	tf->ss = GDT_ENTRY(2);
 	printk("&&&\n");
 	tf->esp = 0x00300000;
+	get_pcb(current);
+}
 //	 tf->esp = 0x2000000 - tmp[1]->base + va;
-         asm volatile("movl %0, %%esp" : :"a"((int)tf));
+void exe(TrapFrame *tf)
+{
+       asm volatile("movl %0, %%esp" : :"a"((int)tf));
          asm volatile("popa");
          asm volatile("addl %0, %%esp" : :"a"(8));
 

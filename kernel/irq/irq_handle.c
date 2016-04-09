@@ -12,7 +12,7 @@ void
 set_keyboard_intr_handler( void (*ptr)(int) ) {
 	do_keyboard = ptr;
 }
-
+void schedule();
 void do_syscall(struct TrapFrame*);
 int offset;
 /* TrapFrame的定义在include/x86/memory.h
@@ -41,7 +41,11 @@ irq_handle(struct TrapFrame *tf) {
 	}else 
 
 	if (tf->irq == 1000) {
+	//	printk("Jere\n");
 		do_timer();
+	        disable_interrupt();
+		schedule();
+	
 	}
 	else if(tf->irq==1014) return;	
 	else if (tf->irq == 1001) {
@@ -55,6 +59,7 @@ irq_handle(struct TrapFrame *tf) {
 	} else {
 		printk("Undefined %x\n", tf->irq);
 		assert(0);
+	printk("&&&&&\n");
 	}
 }
 uint32_t Get_seg_off() {

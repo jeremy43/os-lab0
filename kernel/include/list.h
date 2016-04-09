@@ -46,11 +46,23 @@ list_init(ListHead *list) {
 	assert(list != NULL);
 	list->prev = list->next = list;
 }
+ static inline void __list_add(ListHead *new,  ListHead *prev, ListHead *next)
+ {
+         next->prev = new;
+         new->next = next;
+         new->prev = prev;
+         prev->next = new;
+}
 
 static inline bool
 list_empty(ListHead *list) {
 //	assert(list != NULL);
 	return list == list->next;
+}
+static inline void list_add_tail(ListHead *new, ListHead *head)
+
+{
+      list_add(new, head->prev, head);
 }
 
 #define list_foreach(ptr, head) \

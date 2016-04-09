@@ -75,7 +75,7 @@ main_loop(void) {
 		redraw = FALSE;
 	
 		update_keypress();
-		printf("RR\n");
+//		printf("RR\n");
 //		ifood=icharacters();
   //              if(!ifood->exist) creat_new_food();
 		/* 依次模拟已经错过的时钟中断。一次主循环如果执行时间长，期间可能到来多次时钟中断，

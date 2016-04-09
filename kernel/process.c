@@ -1,6 +1,7 @@
 #include "include/process.h"
 #include "include/list.h"
-
+#include "include/common.h"
+//#include  "include/x86.h"
 PCB pcb[NR_PCB];
 ListHead pcb_head;
 ListHead unused_pcb;
@@ -9,6 +10,7 @@ ListHead sleep;
 static PCB idle;
 static uint32_t number;
 PCB *current =&idle;
+void exe(struct TrapFrame *);
  void ready_pcb(PCB *l);
 void init_process() {
 	list_init(&pcb_head);
@@ -33,28 +35,38 @@ PCB *new_process() {
 		return new_pcb;
 	}
 	
-PCB * running_process()
+void get_pcb(PCB *c)
 {
-		return current;
+     //current=c;
+     ready_pcb(c);
+//     printk("!!\n");
+//  exe(&(c->tf));
 }
 void ready_pcb(PCB *l)
 {
 
-
 		list_del(&l->list);
 		if(list_empty(&ready)) list_add_before(&ready,&l->list);
 		else list_add_before(&idle.list,&l->list);
+	//	exe(&(l->tf));
 }
 void Sleep (PCB *l,uint32_t Time)
-{
+{	
 		list_del(&l->list);
 		l->time=Time;
 		list_add_before(&sleep,&l->list);
 }
 void schedule(void)
 {
-
+          //    printk("^^^\n"); 
+	if (current!=&idle)
+	       {
+		       list_add_tail(&current->list,&ready);
+	       }
 		assert(!list_empty(&ready)); 
 		current=list_entry(ready.next,PCB,list);
+		list_del(&current->list);
+		printk("pid= %d\n",current->pid);
+	       if(current->pid==1)exe(&(current->tf));
 		ready_pcb(current);
 }

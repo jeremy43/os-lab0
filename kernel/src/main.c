@@ -33,10 +33,10 @@ kernel_init(void) {
 	init_seg();
 	init_segment();
 	init_process();
-	//enable_interrupt();
-       // printk("ENA\n");
 	load();
-
+        printk("ENA\n");
+	enable_interrupt();
+       while (1); 
 //	main_loop();
 	assert(0); /* main_loop是死循环，永远无法返回这里 */
 }
