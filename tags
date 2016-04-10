@@ -75,6 +75,8 @@ FREQ_8253	kernel/src/device/timer.c	7;"	d	file:
 GAME_CFILES	Makefile	/^GAME_CFILES = $(shell find app\/ -name "*.c")$/;"	m
 GAME_OBJS	Makefile	/^GAME_OBJS = $(GAME_CFILES:.c=.o) $(GAME_SFILES:.S=.o)$/;"	m
 GAME_SFILES	Makefile	/^GAME_SFILES = $(shell find app\/ -name "*.S")$/;"	m
+GDB	Makefile	/^GDB = gdb$/;"	m
+GDB_OPTIONS	Makefile	/^GDB_OPTIONS = -ex "target remote 127.0.0.1:1234"$/;"	m
 GDT_ENTRY	boot/asm.h	2;"	d
 GDT_ENTRY	kernel/process/load.c	17;"	d	file:
 GD_KD	kernel/include/memlayout.h	16;"	d
@@ -102,6 +104,7 @@ JOS_INC_X86_H	kernel/include/x86/x86.h	2;"	d
 JOS_KERN_PMAP_H	kernel/include/pmap.h	4;"	d
 KADDR	kernel/include/pmap.h	34;"	d
 KERNBASE	kernel/include/memlayout.h	87;"	d
+KERNEL	Makefile	/^KERNEL=k.dat$/;"	m
 KERNEL_CFILES	Makefile	/^KERNEL_CFILES = $(shell find kernel\/ -name "*.c")$/;"	m
 KERNEL_SFILES	Makefile	/^KERNEL_SFILES = $(shell find kernel\/ -name "*.S")$/;"	m
 KERN_INC_PRECESS_H	kernel/include/process.h	2;"	d
@@ -336,7 +339,7 @@ assert	app/include/assert.h	7;"	d
 assert	app/lib/assert.h	7;"	d
 assert	kernel/include/assert.h	7;"	d
 avl	kernel/include/x86/memory.h	/^	uint32_t avl : 1;        \/\/ Unused (available for software use)$/;"	m	struct:SegDesc
-base	kernel/include/memory.h	/^	uint32_t base,limit,gdt;$/;"	m	struct:__anon6
+base	kernel/include/memory.h	/^	uint32_t base,limit,gdt,cs,ds;$/;"	m	struct:__anon6
 base_15_0	kernel/include/x86/memory.h	/^	uint32_t base_15_0 : 16; \/\/ Low bits of segment base address$/;"	m	struct:SegDesc
 base_23_16	kernel/include/x86/memory.h	/^	uint32_t base_23_16 : 8; \/\/ Middle bits of segment base address$/;"	m	struct:SegDesc
 base_31_24	kernel/include/x86/memory.h	/^	uint32_t base_31_24 : 8; \/\/ High bits of segment base address$/;"	m	struct:SegDesc
@@ -357,6 +360,7 @@ cpuid	kernel/include/x86/x86.h	/^cpuid(uint32_t info, uint32_t *eaxp, uint32_t *
 cr3	kernel/include/x86/memory.h	/^                uint32_t cr3, eip, eflags, eax, ecx, edx, ebx, esp, ebp, esi, edi;$/;"	m	struct:TSS::__anon3::__anon5
 creat_new_food	app/lib/effect.c	/^void creat_new_food(void)$/;"	f
 creat_new_snake	app/lib/effect.c	/^void creat_new_snake(void)$/;"	f
+cs	kernel/include/memory.h	/^	uint32_t base,limit,gdt,cs,ds;$/;"	m	struct:__anon6
 cs	kernel/include/x86/memory.h	/^	    uint32_t eip, cs, eflags;$/;"	m	struct:TrapFrame
 cs	kernel/include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
 current	kernel/process.c	/^PCB *current =&idle;$/;"	v
@@ -393,6 +397,7 @@ draw_string	app/device/video.c	/^draw_string(const char *str, int x, int y, int 
 draw_string	kernel/lib/video.c	/^draw_string(const char *str, int x, int y, int color) {$/;"	f
 draw_up	app/device/video.c	/^draw_up(int x,int y)$/;"	f
 draw_yaoshi	app/device/video.c	/^draw_yaoshi(int x,int y)$/;"	f
+ds	kernel/include/memory.h	/^	uint32_t base,limit,gdt,cs,ds;$/;"	m	struct:__anon6
 ds	kernel/include/x86/memory.h	/^	     uint32_t gs, fs, es, ds;$/;"	m	struct:TrapFrame
 ds	kernel/include/x86/memory.h	/^                uint32_t es, cs, ss, ds, fs, gs, ldt;$/;"	m	struct:TSS::__anon3::__anon5
 eax	app/include/x86/memory.h	/^	uint32_t edi, esi, ebp, xxx, ebx, edx, ecx, eax;$/;"	m	struct:TrapFrame
@@ -474,7 +479,7 @@ gd_s	kernel/include/mmu.h	/^	unsigned gd_s : 1;           \/\/ must be 0 (system
 gd_sel	kernel/include/mmu.h	/^	unsigned gd_sel : 16;        \/\/ segment selector$/;"	m	struct:Gatedesc
 gd_type	kernel/include/mmu.h	/^	unsigned gd_type : 4;        \/\/ type(STS_{TG,IG32,TG32})$/;"	m	struct:Gatedesc
 gdt	boot/start.S	/^gdt:$/;"	l
-gdt	kernel/include/memory.h	/^	uint32_t base,limit,gdt;$/;"	m	struct:__anon6
+gdt	kernel/include/memory.h	/^	uint32_t base,limit,gdt,cs,ds;$/;"	m	struct:__anon6
 gdt	kernel/kvm.c	/^SegDesc gdt[NR_SEGMENTS];       \/\/ the new GDT$/;"	v
 gdtdesc	boot/start.S	/^gdtdesc:                           # GDT描述符$/;"	l
 get_floor	app/lib/effect.c	/^get_floor(void)$/;"	f
@@ -545,7 +550,7 @@ lgdt	kernel/include/x86/x86.h	/^lgdt(void *p)$/;"	f
 lidt	kernel/include/x86/x86.h	/^lidt(void *p)$/;"	f
 lim_15_0	kernel/include/x86/memory.h	/^	uint32_t lim_15_0 : 16;  \/\/ Low bits of segment limit$/;"	m	struct:SegDesc
 lim_19_16	kernel/include/x86/memory.h	/^	uint32_t lim_19_16 : 4;  \/\/ High bits of segment limit$/;"	m	struct:SegDesc
-limit	kernel/include/memory.h	/^	uint32_t base,limit,gdt;$/;"	m	struct:__anon6
+limit	kernel/include/memory.h	/^	uint32_t base,limit,gdt,cs,ds;$/;"	m	struct:__anon6
 link	kernel/include/x86/memory.h	/^	uint32_t link;         \/\/ old ts selector$/;"	m	struct:TSS
 list	kernel/include/memory.h	/^	ListHead list;$/;"	m	struct:__anon6
 list	kernel/include/process.h	/^	ListHead list;$/;"	m	struct:PCB
@@ -613,6 +618,8 @@ outsw	kernel/include/x86/x86.h	/^outsw(int port, const void *addr, int cnt)$/;"	
 outw	kernel/include/x86/x86.h	/^outw(int port, uint16_t data)$/;"	f
 p	kernel/include/x86/memory.h	/^	uint32_t p : 1;          \/\/ Present$/;"	m	struct:SegDesc
 pa2page	kernel/include/pmap.h	/^pa2page(physaddr_t pa)$/;"	f
+pa_cs	kernel/include/process.h	/^	int pa_cs;$/;"	m	struct:PCB
+pa_ds	kernel/include/process.h	/^	int pa_ds;$/;"	m	struct:PCB
 pa_to_va	kernel/include/memory.h	14;"	d
 pad0	app/include/x86/memory.h	/^	uint32_t pad0             : 8;$/;"	m	struct:GateDescriptor
 pad0	kernel/include/x86/memory.h	/^	uint32_t pad0             : 8;$/;"	m	struct:GateDescriptor
@@ -824,6 +831,7 @@ used_seg	kernel/memory/memory.c	/^ListHead used_seg;$/;"	v
 v	app/include/game.h	/^	float v;$/;"	v
 v_buf	app/device/video.c	/^static uint8_t v_buf[320*200];$/;"	v	file:
 v_buf	kernel/lib/video.c	/^static uint8_t v_buf[320*200];$/;"	v	file:
+va	kernel/include/process.h	/^	int va;$/;"	m	struct:PCB
 va_arg	kernel/include/stdarg.h	9;"	d
 va_end	kernel/include/stdarg.h	11;"	d
 va_list	kernel/include/stdarg.h	/^typedef __builtin_va_list va_list;$/;"	t

@@ -46,9 +46,16 @@ get_fps() {
  * -DTOOSLOW，此时将会采用隔行扫描的方式更新屏幕(可能会降低显示效果)。
  * 这些机制的实现在device/video.c中。
  * */
+void main_loop(void)
+{ while(1)
+	{
+   int t=time();
+   printf("time= %d\n",t);
+	}
+}
 void
-main_loop(void) {
-	printf("Jery!");
+main_(void) {
+       time();
 
 	printf("))\n");
 	int now = 0, target;
@@ -58,7 +65,8 @@ main_loop(void) {
 	//food_t ifood;
 	init_map();
         creat_new_snake();
-//	 creat_new_food();
+	printf("Jery!");
+	 creat_new_food();
 	enable_interrupt();
 	while (TRUE) {
 		wait_for_interrupt();

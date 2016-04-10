@@ -28,6 +28,8 @@ irq_handle(struct TrapFrame *tf) {
 			   :
 			  : "a"(SELECTOR_KERNEL(SEG_KERNEL_DATA)));
 	 offset = get_gdt_off(seg_tmp >> 3);
+//	 printk("seg%d\n",seg_tmp>>3);
+//	 printk("irq %d\n",tf->irq);
 	if(tf->irq < 1000) {
 		if(tf->irq == -1) {
 			printk("%s, %d: Unhandled exception! %d\n", __FUNCTION__, __LINE__, tf->irq);
@@ -36,15 +38,15 @@ irq_handle(struct TrapFrame *tf) {
 		}
 		else {
 			printk("%s, %d: Unexpected exception #%d!\n", __FUNCTION__, __LINE__, tf->irq);
+		assert(0);
 		}
-		//assert(0);
 	}else 
 
 	if (tf->irq == 1000) {
 	//	printk("Jere\n");
 		do_timer();
-	        disable_interrupt();
-		schedule();
+	      // disable_interrupt();
+	//	schedule();
 	
 	}
 	else if(tf->irq==1014) return;	

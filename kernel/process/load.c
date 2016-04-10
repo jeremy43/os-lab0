@@ -18,6 +18,7 @@
 void readseg(unsigned char *, int, int);
 void set_tss_esp0(int);
 void get_pcb(PCB*);
+void exe(TrapFrame *);
 //void mm_malloc(pde_t *pgdir, void *va, unsigned long size);
 segment* mm_malloc(uint32_t,uint32_t, uint32_t);
 void
@@ -49,30 +50,47 @@ load(void) {
 		va = (uint32_t)ph->vaddr; /* 获取虚拟地址 */
 		cnt++;
 		tmp[cnt]=mm_malloc(va,ph->memsz,p_flag[cnt]);
+		if(cnt==0)
+		{
+			(current->tf).cs=tmp[cnt]->cs;
+	//		printk("cs.gdt%d\n",tmp[cnt]->gdt);
+		}
+		else
+		{	(current->tf).ds=tmp[cnt]->ds;
+	//	        printk("ds.gdt%d\n",tmp[cnt]->gdt);	
+		}
 		//printk("die\n");
 //		boot_map_region(current->updir, pa, ph->memsz, PTE_W | PTE_U);
 	         pa = (unsigned char*)tmp[cnt]->base;
+		 if(cnt==0) current->pa_cs=*pa;
+		 else current->pa_ds=*pa;
+		// printk("fileze %d\n",ph->filesz);
 		readseg(pa, ph->filesz, ph->off+ 1024*100); /* 读入数据 */
+
 		for (i = pa + ph->filesz; i < pa + ph->memsz; *i ++ = 0);
 	}
 	//enable_interrupt();
-	printk("LOAD\n");
+	current->va=va;
 	//((void(*)(void))elf->entry)();
-
+        current->tf.ss=current->tf.es=current->tf.fs=current->tf.gs=current->tf.ds;
 	 uint32_t eflags=read_eflags();
 	TrapFrame *tf=&current->tf;
 	set_tss_esp0((int)current->kstack+KSTACK_SIZE);
        tf->eip=elf->entry;
-        tf->cs = GDT_ENTRY(1);
+//        tf->cs = GDT_ENTRY(1);
 	tf->eflags=eflags | FL_IF;
-	tf->ss = GDT_ENTRY(2);
-	printk("&&&\n");
+//	tf->ss = GDT_ENTRY(2);
+	
+//	printk("cs%d\n",(tf->cs)>>3);
+//	printk("ss%d\n",(tf->ds)>>3);
 	tf->esp = 0x00300000;
-	get_pcb(current);
+	//get_pcb(current);
+		exe(tf);
 }
 //	 tf->esp = 0x2000000 - tmp[1]->base + va;
 void exe(TrapFrame *tf)
 {
+	printk("@@@\n");
        asm volatile("movl %0, %%esp" : :"a"((int)tf));
          asm volatile("popa");
          asm volatile("addl %0, %%esp" : :"a"(8));
@@ -81,7 +99,6 @@ void exe(TrapFrame *tf)
 			 "movl %eax, %ds\n\t"				                              "movl %eax, %es\n\t"			                             "movl %eax, %fs\n\t"
   			 "movl %eax, %gs\n\t");
 	           asm volatile("iret");
-           printk("563\n");
 }
 
 void

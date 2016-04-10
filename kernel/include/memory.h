@@ -25,7 +25,7 @@
 #define make_pte(addr) ((((uint32_t)(addr)) & 0xfffff000) | 0x7)
 
 typedef struct{
-	uint32_t base,limit,gdt;
+	uint32_t base,limit,gdt,cs,ds;
 	ListHead list;
 }
 segment;

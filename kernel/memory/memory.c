@@ -116,6 +116,8 @@ void init_segment()
 		seg[i].base=i*SEG_SIZE;
 		seg[i].limit=0x1FF;
 		seg[i].gdt=i+3;
+                seg[i].cs=((i+3)*8)|3;
+		seg[i].ds=((i+3)*8)|3;
 		list_add_before(&free_seg,&seg[i].list);
 	}
 }

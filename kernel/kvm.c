@@ -1,8 +1,9 @@
 #include "include/x86/x86.h"
-//#include "include/device.h"
+#include "include/memory.h"
 #include "include/string.h"
 #define SECTSIZE 512
 #define SELECTOR_USER(s)          ( ((s) << 3) | DPL_USER )
+#define SELECTOR_KERNEL(s)  (((s)<<3)|0)
 SegDesc gdt[NR_SEGMENTS];       // the new GDT
 TSS tss;
 
@@ -34,6 +35,7 @@ init_seg() { // setup kernel segements
         gdt[SEG_TSS].s = 0;
 	set_gdt(gdt, sizeof(gdt));
         ltr(SELECTOR_USER(SEG_TSS));
+	tss.ss0=SELECTOR_KERNEL(SEG_KERNEL_DATA);
     /*
 	 * 初始化TSS
 	 */

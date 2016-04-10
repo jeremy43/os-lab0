@@ -7,6 +7,10 @@ CFLAGS = -m32 -c -static  -MD -std=gnu89 -ggdb \
 ASFLAGS = -m32 -MD
 LDFLAGS = -melf_i386
 QEMU = qemu-system-i386
+GDB = gdb
+KERNEL=k.dat
+GDB_OPTIONS = -ex "target remote 127.0.0.1:1234"
+GDB_OPTIONS += -ex "symbol $(KERNEL)"
 
 CFILES = $(shell find kernel/ app/ -name "*.c")
 SFILES = $(shell find kernel/ app/ -name "*.S")
@@ -38,12 +42,14 @@ k: $(K_OBJS)
 #@perl ./jbtx.pl k.dat
 #-include $(patsubst %.o, %.d, $(OBJS))
 
-.PHONY: play clean debug
+.PHONY: play clean debug gdb
 
 play: game.img
 	$(QEMU)  -serial  stdio game.img #-d int
 debug: game.img
-	$(QEMU) -serial stdio -s -S game.img
+	$(QEMU) -d int -serial stdio -s -S game.img
+gdb:
+	$(GDB) $(GDB_OPTIONS)
 
 clean:
 	@cd boot; make clean

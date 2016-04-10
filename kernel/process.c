@@ -9,6 +9,7 @@ ListHead ready;
 ListHead sleep;
 static PCB idle;
 static uint32_t number;
+ void set_tss_esp0(int);
 PCB *current =&idle;
 void exe(struct TrapFrame *);
  void ready_pcb(PCB *l);
@@ -39,7 +40,6 @@ void get_pcb(PCB *c)
 {
      //current=c;
      ready_pcb(c);
-//     printk("!!\n");
 //  exe(&(c->tf));
 }
 void ready_pcb(PCB *l)
@@ -56,9 +56,28 @@ void Sleep (PCB *l,uint32_t Time)
 		l->time=Time;
 		list_add_before(&sleep,&l->list);
 }
+/*uint32_t fork(PCB *l)
+{
+	uint32_t vaddr=l->va;
+
+        segment *tmp=mm_malloc(vaddr,1000,0x2);//权限需要修改
+	uint32_t pa_cs=l->pa_cs;
+	uint32_t pa_ds=l->pa_ds;
+	memcpy(tmp->base,pa_cs,20000);
+	memcpy(tmp
+	PCB* son=new_process();
+	TrapFrame *tf1;
+	tf1=&l->tf;
+	son->tf=*tf1;
+//	*(son->tf)=l->tf;
+	(son->tf).eax=0;
+	set_tss_esp0((int)son->kstack+4096);
+	return son->pid;
+
+}*/
 void schedule(void)
 {
-          //    printk("^^^\n"); 
+  //            printk("^^^\n"); 
 	if (current!=&idle)
 	       {
 		       list_add_tail(&current->list,&ready);
@@ -66,7 +85,7 @@ void schedule(void)
 		assert(!list_empty(&ready)); 
 		current=list_entry(ready.next,PCB,list);
 		list_del(&current->list);
-		printk("pid= %d\n",current->pid);
+//		printk("pid= %d\n",current->pid);
 	       if(current->pid==1)exe(&(current->tf));
 		ready_pcb(current);
 }

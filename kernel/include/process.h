@@ -14,6 +14,9 @@ typedef struct PCB{
 //	struct PCB *next;
 	int pid;
 	int time;
+	int va;
+	int pa_cs;
+	int pa_ds;
 	ListHead list;
 } PCB;
 
