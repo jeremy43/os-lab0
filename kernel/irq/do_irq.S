@@ -25,7 +25,7 @@
 .globl asm_do_irq
 .extern irq_handle
 asm_do_irq:
-//	cli
+	cli
         pushal
 
 	pushl %esp			# ???
@@ -34,5 +34,5 @@ asm_do_irq:
 
 	popal
 	addl $4, %esp
-//	sti
+	sti
 	iret

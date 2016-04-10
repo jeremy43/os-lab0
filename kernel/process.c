@@ -12,7 +12,7 @@ ListHead sleep;
 static PCB idle;
 static uint32_t number;
  void set_tss_esp0(int);
-PCB *current =&idle;
+PCB *current; 
 segment * mm_malloc(uint32_t,uint32_t,uint32_t);
 void exe(struct TrapFrame *);
  void ready_pcb(PCB *l);
@@ -21,6 +21,7 @@ void init_process() {
 	list_init(&unused_pcb);
 	list_init(&ready);
 	list_init(&sleep);
+	current=&idle;
 	int i;
 	for( i = 0; i < NR_PCB; ++ i) {
 		list_add_after(&unused_pcb, &pcb[i].list);
@@ -79,6 +80,7 @@ uint32_t fork()
         son->va=current->va;
         son->pa_cs=tmp_c->base;	
 	son->pa_ds=tmp_d->base;
+	son->tf=current->tf;
 //	son->tf=(TrapFrame )((int)son->kstack+(int)l->tf-(int)l->kstack);
 	int i;
 	for (i=0;i<KSTACK_SIZE;++i)
@@ -88,27 +90,62 @@ uint32_t fork()
 	printk("son_cs %d\n",(current->tf).cs);
 	printk("son_ds %d\n",(current->tf).ds);
 	ready_pcb(son);
+
 	return son->pid;
 
 }
 void schedule(void)
 {
-  //            printk("^^^\n"); 
-	if (current!=&idle)
-	       {
-		       list_add_tail(&current->list,&ready);
-	       }
-		assert(!list_empty(&ready)); 
+	printk("&&&\n");
+	if(!list_empty(&(ready)))
+	{
+		//printk("##");
+//		if (current!=&idle)list_add_tail(&current->list,&ready);
+	 //      ready(current);
 		current=list_entry(ready.next,PCB,list);
-		list_del(&current->list);
-	//	if(current->pid!=0)
-			printk("pid= %d\n",current->pid);
-	       if(current->pid!=0)
-	       {
-		       printk("pid1= %d\n",current->pid);
-	set_tss_esp0((int)current->kstack+4096);
-		       exe(&(current->tf));
-		}
-		ready_pcb(current);
+		if(current==&idle)
+		{
+		//	list_del(&current->list);
+		//	current=list_entry(ready.next,PCB,list);
+		//	printk("curent1->pid %d\n",current->pid);
 
+		}
+		
+	}
+         if(current!=&idle)
+	 
+        {
+	               set_tss_esp0((int)current->kstack+4096);
+		       ready_pcb(current);
+		       printk("** %d\n",current->pid);
+		       exe(&(current->tf));
+		
+	}
+ /*             printk("c%d\n",current->pid);
+	     PCB * index=list_entry(ready.next,PCB,list);
+	    if( index!=&idle)
+	    {
+
+		       list_add_tail(&current->list,&ready);
+	               list_del(&current->list);
+		       current=list_entry(ready.next,PCB,list);
+              printk("c%d\n",current->pid);
+	    }
+	     
+*/
+          
+	/*if (current!=&idle)
+	       {
+	       
+	//	assert(!list_empty(&ready)); 
+//	current=list_entry(ready.next,PCB,list);
+	//	       printk("pid1= %d\n",current->pid);
+	               // exe(tf);
+		}
+	       else 
+	       {
+		       current=list_entry(ready.next,PCB,list);
+		 //      ready_pcb(current);
+	        }
+      */
 }

@@ -72,8 +72,9 @@ void do_syscall(struct TrapFrame *tf) {
 			       break;
 	        case SYS_keyboard1:sys_keyboard(tf);break;
 		case SYS_draw: sys_draw(tf);break;
-		case SYS_fork: disable_interrupt();tf->eax=fork();enable_interrupt();break;
-/*		case SYS_open : 
+		case SYS_fork: disable_interrupt();printk("pid3 %d\n",tf->old_esp);tf->eax=fork();printk("tf->eax= %d\n",tf->eax);enable_interrupt();break;
+
+			   /*		case SYS_open : 
 		tf->eax = fs_open((char *)tf->ebx, tf->ecx); break;
 		case SYS_read : 
 //			Log("%x %x %x %x %x\n", tf->ebx, tf->ecx, tf->edx, tf->edi, tf->esi);

@@ -35,7 +35,10 @@ irq_handle(struct TrapFrame *tf) {
 		if(tf->irq == -1) {
 			printk("%s, %d: Unhandled exception! %d\n", __FUNCTION__, __LINE__, tf->irq);
 		}else if(tf->irq == 0x80) {
+		///	disable_interrupt();
+//			printk("tf1 %d\n",tf->old_esp);
 			do_syscall(tf);
+		//	enable_interrupt();
 		}
 		else {
 			printk("%s, %d: Unexpected exception #%d!\n", __FUNCTION__, __LINE__, tf->irq);

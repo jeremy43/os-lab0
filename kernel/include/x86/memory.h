@@ -39,9 +39,11 @@ struct GateDescriptor {
 	uint32_t present          : 1;
 	uint32_t offset_31_16     : 16;
 };
+
   typedef struct TrapFrame {
 	   uint32_t edi, esi, ebp, old_esp, ebx, edx, ecx, eax;
 	   int32_t irq;
+//	   int32_t pid;
 	   uint32_t error_code;
 	    uint32_t eip, cs, eflags;
 	    uint32_t esp, ss;

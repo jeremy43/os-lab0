@@ -9,6 +9,7 @@ ListHead used_seg;
 extern SegDesc gdt[NR_SEGMENTS]; 
 #define SEG_SIZE 0x2000000
 #define MAX_MEM 0x8000000
+int number;
 segment seg[MAX_MEM/SEG_SIZE];
 segment *get_free_seg();
 //__attribute__((__aligned__(PGSIZE)))
@@ -109,6 +110,7 @@ set_segment(SegDesc *ptr, uint32_t pl, uint32_t type) {
 void init_segment()
 {
 	int i;
+	number=0;
 	list_init(&free_seg);
 	list_init(&used_seg);
 	for (i=0;i<MAX_MEM/SEG_SIZE;i++)
@@ -125,6 +127,8 @@ void init_segment()
 
 segment *get_free_seg()
 {
+	number++;
+	printk("nuembr %d\n",number);
 	assert(!list_empty(&free_seg));
 	ListHead *new_seg=free_seg.next;
 	list_del(new_seg);

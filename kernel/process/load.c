@@ -88,7 +88,7 @@ load(void) {
 //	 tf->esp = 0x2000000 - tmp[1]->base + va;
 void exe(TrapFrame *tf)
 {
-	printk("@@@\n");
+	//printk("@@@%d\n",tf->pid);
        asm volatile("movl %0, %%esp" : :"a"((int)tf));
          asm volatile("popa");
          asm volatile("addl %0, %%esp" : :"a"(8));
