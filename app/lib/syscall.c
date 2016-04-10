@@ -1,21 +1,26 @@
 #include "../include/common.h"
 //#include <sys/syscall.h>
 //#include <sys/stat.h>
-enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};
+enum {hhh=0,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw,SYS_fork};
  //__attribute__((__noinline__))
 int syscall(int id, int val1, int val2, int val3) {
 	int ret;
 //	Log("%x %x %x %x", args[0], args[1], args[2], args[3]);	
-	asm volatile("int $0x80": "=a"(ret) : "a"(id), "b"(val1), "c"(val2), "d"(val3));
+	asm volatile("int $0x80": "=b"(ret) : "a"(id), "b"(val1), "c"(val2), "d"(val3));
+        //printf("ret= %d\n",ret);
 	return ret;
 }
 
 void  write(char *buf, int len) {
 	 syscall(SYS_write1, (int)buf, len, 0); 
 }
+void fork()
+{
+	syscall(SYS_fork,0,0,0);
+}
 int time(void)
 {
-	return syscall(SYS_time1, 0, 0, 0);
+	return syscall(SYS_time1,0, 0, 0);
 }
 
 void UPDATE_kbd(int * key)

@@ -12,6 +12,7 @@ volatile int tick = 0;
 void
 timer_event(void) {
 	tick ++;
+//`	printk("tick%d\n",tick);
 }
 int get_time(void)
 {

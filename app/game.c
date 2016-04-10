@@ -46,12 +46,14 @@ get_fps() {
  * -DTOOSLOW，此时将会采用隔行扫描的方式更新屏幕(可能会降低显示效果)。
  * 这些机制的实现在device/video.c中。
  * */
+void fork();
 void main_loop(void)
-{ while(1)
-	{
+{ 
    int t=time();
    printf("time= %d\n",t);
-	}
+   fork();
+  while(1);
+
 }
 void
 main_(void) {

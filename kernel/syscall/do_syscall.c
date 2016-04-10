@@ -1,10 +1,11 @@
 //#include "irq.h"
 #include "x86/x86.h"
+#include "../include/x86/cpu.h"
 #include "string.h"
 #include "common.h"
 #include"device/timer.h"
 //#include <sys/syscall.h>
-enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw};
+enum {hhhh,SYS_write1,SYS_time1,SYS_keyboard1, SYS_draw,SYS_fork};
 //void add_irq_handle(int, void (*)(void));
 //void mm_brk(uint32_t);
 void serial_printc(char);
@@ -23,6 +24,7 @@ static void sys_brk(TrapFrame *tf) {
 	tf->eax = 0;
 }
 */
+int fork();
 static void sys_write(struct TrapFrame *tf) {
 //#ifdef HAS_DEVICE
 	int i;
@@ -42,7 +44,7 @@ static void sys_keyboard(struct TrapFrame *tf)
 	   if( query_key(i))
 	   {
 		   key[i]=1;
-		   printk("HH\n");
+//		   printk("HH\n");
 	   }
 	   else key[i]=0;
 }
@@ -63,11 +65,14 @@ void do_syscall(struct TrapFrame *tf) {
 			sti();
 			break;*/
 
-//		case SYS_brk: /*panic("@@@");*/sys_brk(tf); break;
+//		case SYS_brk: /*paniwc("@@@");*/sys_brk(tf); break;
 		case SYS_write1: sys_write(tf); break;
-		case SYS_time1:tf->eax=get_time(); break;
+		case SYS_time1:tf->eax=get_time();
+			       //printk("ebx=%d\n",tf->ebx);
+			       break;
 	        case SYS_keyboard1:sys_keyboard(tf);break;
 		case SYS_draw: sys_draw(tf);break;
+		case SYS_fork: disable_interrupt();tf->eax=fork();enable_interrupt();break;
 /*		case SYS_open : 
 		tf->eax = fs_open((char *)tf->ebx, tf->ecx); break;
 		case SYS_read : 

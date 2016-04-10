@@ -111,7 +111,7 @@ void init_segment()
 	int i;
 	list_init(&free_seg);
 	list_init(&used_seg);
-	for (i=1;i<MAX_MEM/SEG_SIZE;i++)
+	for (i=0;i<MAX_MEM/SEG_SIZE;i++)
 	{
 		seg[i].base=i*SEG_SIZE;
 		seg[i].limit=0x1FF;

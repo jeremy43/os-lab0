@@ -53,18 +53,15 @@ load(void) {
 		if(cnt==0)
 		{
 			(current->tf).cs=tmp[cnt]->cs;
-	//		printk("cs.gdt%d\n",tmp[cnt]->gdt);
+		//	printk("cs.gdt%d\n",((current->tf).cs)>>3);
 		}
 		else
 		{	(current->tf).ds=tmp[cnt]->ds;
 	//	        printk("ds.gdt%d\n",tmp[cnt]->gdt);	
 		}
-		//printk("die\n");
-//		boot_map_region(current->updir, pa, ph->memsz, PTE_W | PTE_U);
 	         pa = (unsigned char*)tmp[cnt]->base;
 		 if(cnt==0) current->pa_cs=*pa;
 		 else current->pa_ds=*pa;
-		// printk("fileze %d\n",ph->filesz);
 		readseg(pa, ph->filesz, ph->off+ 1024*100); /* 读入数据 */
 
 		for (i = pa + ph->filesz; i < pa + ph->memsz; *i ++ = 0);
@@ -72,20 +69,21 @@ load(void) {
 	//enable_interrupt();
 	current->va=va;
 	//((void(*)(void))elf->entry)();
-        current->tf.ss=current->tf.es=current->tf.fs=current->tf.gs=current->tf.ds;
-	 uint32_t eflags=read_eflags();
-	TrapFrame *tf=&current->tf;
+        (current->tf).ss=(current->tf).es=(current->tf).fs=(current->tf).gs=(current->tf).ds;
+	 
+	uint32_t eflags=read_eflags();
+	TrapFrame *tf=&(current->tf);
+
 	set_tss_esp0((int)current->kstack+KSTACK_SIZE);
        tf->eip=elf->entry;
 //        tf->cs = GDT_ENTRY(1);
 	tf->eflags=eflags | FL_IF;
 //	tf->ss = GDT_ENTRY(2);
-	
-//	printk("cs%d\n",(tf->cs)>>3);
-//	printk("ss%d\n",(tf->ds)>>3);
+	printk("cs%d\n",((current->tf).cs)>>3);
+	printk("ss%d\n",(tf->ds)>>3);
 	tf->esp = 0x00300000;
-	//get_pcb(current);
-		exe(tf);
+	get_pcb(current);
+	//	exe(tf);
 }
 //	 tf->esp = 0x2000000 - tmp[1]->base + va;
 void exe(TrapFrame *tf)

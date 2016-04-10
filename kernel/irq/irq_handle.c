@@ -15,6 +15,7 @@ set_keyboard_intr_handler( void (*ptr)(int) ) {
 void schedule();
 void do_syscall(struct TrapFrame*);
 int offset;
+uint32_t number;
 /* TrapFrame的定义在include/x86/memory.h
  * 请仔细理解这段程序的含义，这些内容将在后续的实验中被反复使用。 */
 void
@@ -43,10 +44,15 @@ irq_handle(struct TrapFrame *tf) {
 	}else 
 
 	if (tf->irq == 1000) {
-	//	printk("Jere\n");
+		//printk("Jere\n");
 		do_timer();
-	      // disable_interrupt();
-	//	schedule();
+		if(number==1000)
+		{
+	         disable_interrupt();
+	         schedule();
+		 number=0;
+		}
+		else number++;
 	
 	}
 	else if(tf->irq==1014) return;	
